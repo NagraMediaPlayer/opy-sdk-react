@@ -1,0 +1,9 @@
+*.aar filter=lfs diff=lfs merge=lfs -text
+OPYSDKFPS filter=lfs diff=lfs merge=lfs -text
+OPYSDKFPSTv filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.72.4/ios/libs filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.72.4/android/libs filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.72.4/web/libs filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.67.4/web/libs filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.67.4/android/libs filter=lfs diff=lfs merge=lfs -text
+react-native-otvplayer/otvplayer-0.67.4/ios/libs filter=lfs diff=lfs merge=lfs -text

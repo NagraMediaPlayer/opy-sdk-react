@@ -1,0 +1,221 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name InsightAgentiOS
+import Foundation
+import Network
+import Swift
+import SystemConfiguration
+import UIKit
+import os
+public enum ContentQualty : Swift.String {
+  case sd
+  case hd
+  case fourk
+  case eightk
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct VODContent : Swift.Codable {
+  public init(contentId: Swift.String, contentName: Swift.String, genre: [Swift.String]? = nil, bitrates: [Swift.Int]? = nil, uri: Swift.String? = nil, duration: Foundation.TimeInterval? = nil)
+  public init(from decoder: Swift.Decoder) throws
+}
+extension VODContent {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct LiveContent : Swift.Codable {
+  public init(channelId: Swift.String, channelName: Swift.String, eventId: Swift.String? = nil, eventName: Swift.String? = nil, genre: [Swift.String]? = nil, bitrates: [Swift.Int]? = nil, uri: Swift.String? = nil, duration: Foundation.TimeInterval? = nil, type: Swift.String = "LIVE")
+  public init(from decoder: Swift.Decoder) throws
+}
+extension LiveContent {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum DeviceType {
+  case handheld
+  case desktop
+  case stb
+  public static func == (a: InsightAgentiOS.DeviceType, b: InsightAgentiOS.DeviceType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct InsightConfig {
+  public let collectorURL: Swift.String
+  public var deviceId: Swift.String
+  public var operatorId: Swift.String
+  public let samplingInterval: Foundation.TimeInterval
+  public let reportingInterval: Foundation.TimeInterval
+  public let deviceType: InsightAgentiOS.DeviceType?
+  public let deviceManufacturer: Swift.String?
+  public let deviceModel: Swift.String?
+  public let appName: Swift.String?
+  public let appVersion: Swift.String?
+  public let osName: Swift.String?
+  public let osVersion: Swift.String?
+  public let screenWidth: Swift.Int?
+  public let screenHeight: Swift.Int?
+  public let screenDensity: Swift.Int?
+  public let timezone: Swift.String?
+  public let framedropsEnabled: Swift.Bool
+  public let integrationMode: Swift.Bool
+  public init(collectorURL: Swift.String = "https://collector.insight-stats.com/api/v1/", deviceId: Swift.String, operatorId: Swift.String, samplingInterval: Foundation.TimeInterval = 30, reportingInterval: Foundation.TimeInterval = 60 * 5, framedropsEnabled: Swift.Bool = true, deviceType: InsightAgentiOS.DeviceType? = nil, appName: Swift.String? = nil, appVersion: Swift.String? = nil, screenWidth: Swift.Int? = nil, screenHeight: Swift.Int? = nil, screenDensity: Swift.Int? = nil, timezone: Swift.String? = nil, integrationMode: Swift.Bool = false)
+}
+public struct UserInfo : Swift.Codable {
+  public var userId: Swift.String?
+  public var accountId: Swift.String?
+  public var fullName: Swift.String?
+  public var gender: Swift.String?
+  public var age: Swift.Int?
+  public var ageRange: Swift.String?
+  public var category: Swift.String?
+  public var street: Swift.String?
+  public var city: Swift.String?
+  public var state: Swift.String?
+  public var postCode: Swift.String?
+  public var country: Swift.String?
+  public var corp: Swift.String?
+  public var node: Swift.String?
+  public init(userId: Swift.String? = nil, accountId: Swift.String? = nil, fullName: Swift.String? = nil, gender: Swift.String? = nil, age: Swift.Int? = nil, ageRange: Swift.String? = nil, category: Swift.String? = nil, street: Swift.String? = nil, city: Swift.String? = nil, state: Swift.String? = nil, postCode: Swift.String? = nil, country: Swift.String? = nil, corp: Swift.String? = nil, node: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class InsightAgent {
+  public static let shared: InsightAgentiOS.InsightAgent
+  public var vodContent: InsightAgentiOS.VODContent? {
+    get
+  }
+  public var liveContent: InsightAgentiOS.LiveContent? {
+    get
+  }
+  public var config: InsightAgentiOS.InsightConfig? {
+    get
+  }
+  public func initialise(config: InsightAgentiOS.InsightConfig, userInfo: InsightAgentiOS.UserInfo?)
+  public func terminate()
+  public func play()
+  public func playing()
+  public func buffering()
+  public func seeking()
+  public func seekTo(_ position: Swift.Double)
+  public func pause()
+  public func stop()
+  public func setLiveContent(_ liveContent: InsightAgentiOS.LiveContent)
+  public func setVodContent(_ vodContent: InsightAgentiOS.VODContent)
+  public func setPosition(_ seconds: Foundation.TimeInterval)
+  public func setOffsetFromLive(_ offset: Foundation.TimeInterval)
+  public func setAvailableBitrates(_ bitrates: [Swift.Int])
+  public func addFramedrops(_ framedrops: Swift.Int)
+  public func setBitrate(_ bitrate: Swift.Int)
+  public func setContentQuality(_ contentQuality: InsightAgentiOS.ContentQualty)
+  public func setAudioLanguage(_ language: Swift.String)
+  public func setSubtitleLanguage(_ language: Swift.String)
+  public func setUserInfo(_ userInfo: InsightAgentiOS.UserInfo)
+  public func addErrorEvent(code: Swift.Int, message: Swift.String)
+  public func addNamedEvent(name: Swift.String, description: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ErrorHandlingService {
+  public static func setErrorHandler(errorHandler: InsightAgentiOS.ErrorHandler?)
+  public static func getErrorHandler(config: InsightAgentiOS.InsightConfig?) -> InsightAgentiOS.ErrorHandler
+  @objc deinit
+}
+public protocol ErrorHandler {
+  func handleError(_ message: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class AgentErrorHandler : InsightAgentiOS.ErrorHandler {
+  public func handleError(_ message: Swift.String)
+  @objc deinit
+}
+public enum ReachabilityError : Swift.Error {
+  case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
+  case failedToCreateWithHostname(Swift.String, Swift.Int32)
+  case unableToSetCallback(Swift.Int32)
+  case unableToSetDispatchQueue(Swift.Int32)
+  case unableToGetFlags(Swift.Int32)
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension NSNotification.Name {
+  public static let reachabilityChanged: Foundation.Notification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (InsightAgentiOS.Reachability) -> ()
+  public typealias NetworkUnreachable = (InsightAgentiOS.Reachability) -> ()
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: InsightAgentiOS.Reachability.NetworkStatus, b: InsightAgentiOS.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    case unavailable, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    @available(*, deprecated, renamed: "unavailable")
+    public static let none: InsightAgentiOS.Reachability.Connection
+    public static func == (a: InsightAgentiOS.Reachability.Connection, b: InsightAgentiOS.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: InsightAgentiOS.Reachability.NetworkReachable?
+  public var whenUnreachable: InsightAgentiOS.Reachability.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: InsightAgentiOS.Reachability.Connection {
+    get
+  }
+  public var connection: InsightAgentiOS.Reachability.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main)
+  convenience public init(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  convenience public init(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil, notificationQueue: Dispatch.DispatchQueue? = .main) throws
+  @objc deinit
+}
+extension Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+extension InsightAgentiOS.ContentQualty : Swift.Equatable {}
+extension InsightAgentiOS.ContentQualty : Swift.Hashable {}
+extension InsightAgentiOS.ContentQualty : Swift.RawRepresentable {}
+extension InsightAgentiOS.DeviceType : Swift.Equatable {}
+extension InsightAgentiOS.DeviceType : Swift.Hashable {}
+extension InsightAgentiOS.Reachability.NetworkStatus : Swift.Equatable {}
+extension InsightAgentiOS.Reachability.NetworkStatus : Swift.Hashable {}
+extension InsightAgentiOS.Reachability.Connection : Swift.Equatable {}
+extension InsightAgentiOS.Reachability.Connection : Swift.Hashable {}

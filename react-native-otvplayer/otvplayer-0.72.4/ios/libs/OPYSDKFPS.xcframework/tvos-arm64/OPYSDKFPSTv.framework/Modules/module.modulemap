@@ -1,0 +1,11 @@
+framework module OPYSDKFPSTv {
+  umbrella header "OPYSDKFPSTv.h"
+  export *
+
+  module * { export * }
+}
+
+module OPYSDKFPSTv.Swift {
+  header "OPYSDKFPSTv-Swift.h"
+  requires objc
+}

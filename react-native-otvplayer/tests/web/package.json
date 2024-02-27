@@ -1,0 +1,22 @@
+{
+  "name": "web-unit-tests",
+  "version": "0.0.1",
+  "homepage": "https://www.nagra.com",
+  "scripts": {
+    "test": "yarn install --modules-folder ../../node_modules && ../../node_modules/.bin/jest --config jest.config.js"
+  },
+  "dependencies": {
+    "react-native": "npm:react-native-tvos@0.63.4-0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.4",
+    "@babel/preset-env": "7.21.4",
+    "@babel/preset-typescript": "7.21.4",
+    "@types/react-native": "0.63.17",
+    "jest": "25.1.0",
+    "jest-junit": "16.0.0",
+    "metro-react-native-babel-preset": "0.59.0",
+    "react": "16.13.1",
+    "sinon": "15.0.4"
+  }
+}

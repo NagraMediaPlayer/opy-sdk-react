@@ -1,0 +1,1 @@
+This folder is where test reports will be placed when retrieved from the device before they are evaluated by Jenkins for pipeline success/failure.

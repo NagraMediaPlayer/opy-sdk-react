@@ -1,0 +1,14 @@
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property 'sonar.sources', '.'
+        // TODO need to work this out
+        property 'sonar.c.file.suffixes', '-'
+        property 'sonar.objc.file.suffixes', '-'
+        property 'sonar.cpp.file.suffixes', '-'
+        property 'sonar.exclusions','otvplayer-*/react-native.config.js,src/ios/OPYIMAWrapper/*,dist/**/*,otvplayer-*/android/**,otvplayer-*/distTemplate/ios/**,otvplayer-*/distTemplate/android/**,otvplayer-*/webpack.handheld.config.js,otvplayer-*/webpack.config.js,**/,docs/**,junit.xml,examples/**,buildScripts/**,build/**,test/**,exportFolder/**,node_modules/**,src/android/**,dependencies/**,*.framework/**,Pods/**,tests/**,src/OTVPlayer.web.tsx,src/web/common/**'
+        property 'sonar.coverageReportPaths', 'build/coverage.xml'
+        property 'sonar.javascript.lcov.reportPaths', 'tests/web/reports/coverage/lcov.info'
+    }
+}

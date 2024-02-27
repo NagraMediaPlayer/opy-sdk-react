@@ -1,0 +1,21 @@
+{
+  "eslint.options": {
+    "configFile": "./.eslintrc.json"
+  },
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "cSpell.words": [
+    "beforeinitialize",
+    "controlbar",
+    "initialisation",
+    "initialised",
+    "lifecycle",
+    "otvplayer"
+  ],
+  "git.autofetch": true,
+  "sonarlint.connectedMode.project": {
+    "connectionId": "#sonarlint.connectedMode.connections.sonarqube#",
+    "projectKey": "com.nagra:OPY_SDK_REACT"
+  },
+  "java.configuration.updateBuildConfiguration": "disabled"
+}

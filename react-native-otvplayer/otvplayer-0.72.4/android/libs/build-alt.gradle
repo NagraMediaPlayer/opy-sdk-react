@@ -1,0 +1,3 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('otvsdk.aar'))
+artifacts.add("default", file('react-otvplayer-release.aar'))

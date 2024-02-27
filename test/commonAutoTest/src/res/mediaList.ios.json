@@ -1,0 +1,570 @@
+{
+  "streams": {
+    "DASH Sintel Clear": {
+      "url": "https://replacemewithyourown.com/demo/content/cd_sintel_1080p/sintel.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH LIVE": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash/Live/Channel(bbc1)/manifest.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH Big Buck Bunny Clear": {
+      "url": "https://d3bqrzf9w11pn3.cloudfront.net/basic_dash_bbb_clear/bbb_public.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "NO ThumbNail Content": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH BBB Thumbs Clear": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_4_tiles_thumbnails.mpd",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH BBB Thumbs Multi Clear": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "ThumbNail Content": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "ThumbNail Content with display true": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "display": true,
+          "style": {
+            "top": 10,
+            "left": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content With Style PropMissing": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "left": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content left Style Missing": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content width Style Missing": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 100,
+            "left": 10,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content height Style Missing": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 10,
+            "left": 100,
+            "width": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "VOD Clear": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "duration": 600,
+        "availableBitrates": [
+          553010, 582387, 774387, 922242, 951619, 1143619, 1296989, 1326366
+        ],
+        "tracks": {
+          "textTracks": [
+            {
+              "title": "English CC",
+              "language": "en",
+              "encodeType": 1000,
+              "characteristics": []
+            },
+            {
+              "title": "English",
+              "language": "en",
+              "encodeType": 1000,
+              "characteristics": []
+            }
+          ],
+          "audioTracks": [
+            {
+              "title": "English",
+              "language": "en",
+              "encodeType": 1000
+            }
+          ]
+        }
+      }
+    },
+    "LIVE Clear": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-harmonic/hls/clear/bbc1clear/index.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "duration": -1,
+        "availableBitrates": [122032, 604906, 825602, 1046298, 1598037],
+        "tracks": {
+          "textTracks": [
+            {
+              "characteristics": [],
+              "title": "CC",
+              "encodeType": 1000,
+              "language": null
+            }
+          ],
+          "audioTracks": [
+            {
+              "language": null,
+              "title": "Unknown",
+              "encodeType": 1000
+            }
+          ]
+        }
+      }
+    },
+    "HLS Big Buck Bunny Encrypted": {
+      "url": "https://d3bqrzf9w11pn3.cloudfront.net/basic_hls_bbb_encrypted/index.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "token": "eyJraWQiOiI4MTI0MjUiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiZDhkNzBmYmQtMmNkMi00OTcxLWI4MGMtNjYxNzIwMTE3NjViIl0sImNvbnRlbnRJZCI6ImU4YmJmNzQ4LWE0ZDgtNDc5MS1hNDcwLTEzOTlmZWE5MTQ2MCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwid2F0ZXJtYXJraW5nRW5hYmxlZCI6dHJ1ZSwiaW1hZ2VDb25zdHJhaW50IjpmYWxzZSwiaGRjcFR5cGUiOiJUWVBFXzAiLCJ1bmNvbXByZXNzZWREaWdpdGFsQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJ1bnByb3RlY3RlZEFuYWxvZ091dHB1dCI6dHJ1ZSwiYW5hbG9nQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJoZGNwIjp0cnVlLCJkZXZpY2VDYXBwaW5nUmVzb2x1dGlvbiI6Ik5PX1JFU1RSSUNUSU9OUyIsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.X7kslNaBkbccfGboIDwMJ-ZXpsBUjtpxV6G575D_TkE",
+      "drmServerId": "FP-VSD02FY1",
+      "licenseURL": "https://vsd02fy1.anycast.nagra.com/VSD02FY1/fpls/contentlicenseservice/v1/licenses",
+      "drm": "Fairplay",
+      "certificateURL": "https://vsd02fy1.anycast.nagra.com/VSD02FY1/fpls/contentlicenseservice/v1/certificates",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS Encrypted - Channel 4 Live (SSP Cloud)": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-pmxo/Content/hls_fairplay_ssp/Live/Channel(Channel4)/index.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJDSDRfRlBTX1NTUEFXUyIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.dPW7IORMhOIXUpVd7h1DxY38WchpuO1dxpK9WMJ9IHQ",
+      "drmServerId": "FP-TENANTNAME",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "VOD Encrypted": {
+      "url": "https://replacemewithyourown.com/vod/hls5/scramble/doctors_smpte-tt-id3-png_subtitles_fairplay/index-ssp.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA",
+      "drmServerId": "FP-TENANTNAME",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "duration": 152,
+        "availableBitrates": [1431254, 2452993, 3474733, 4496472],
+        "tracks": {
+          "textTracks": [
+            {
+              "characteristics": [],
+              "title": "CC",
+              "encodeType": 1000,
+              "language": null
+            },
+            {
+              "characteristics": [],
+              "title": "Track:5303",
+              "encodeType": 1000,
+              "language": "eng"
+            }
+          ],
+          "audioTracks": [
+            {
+              "language": null,
+              "title": "Unknown",
+              "encodeType": 1000
+            }
+          ]
+        }
+      }
+    },
+    "VOD Clear Statistics": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "statistics": [
+          "availableBitrates",
+          "selectedBitrate",
+          "frameDrops",
+          "framesPerSecondNominal",
+          "framesPerSecond",
+          "frameDropsPerSecond",
+          "averageBitrate",
+          "downloadBitrate",
+          "downloadBitrateAverage",
+          "bytesDownloaded",
+          "numberOfServerAddressChanges",
+          "bitrateSwitches",
+          "downloadsOverdue",
+          "numberOfMediaRequests",
+          "bitrateDowngrade",
+          "availableResolutions",
+          "resolutionHeight",
+          "resolutionWidth",
+          "numberOfStalls",
+          "playbackStartOffset",
+          "startUpTime",
+          "bufferedDuration",
+          "url",
+          "transferDuration"
+        ],
+        "statisticsRendering": [
+          "frameDrops",
+          "framesPerSecond",
+          "frameDropsPerSecond",
+          "framesPerSecondNominal"
+        ],
+        "StatisticsNetwork": [
+          "availableBitrates",
+          "averageBitrate",
+          "selectedBitrate",
+          "downloadBitrate",
+          "downloadBitrateAverage",
+          "bytesDownloaded",
+          "numberOfServerAddressChanges",
+          "bitrateSwitches",
+          "downloadsOverdue",
+          "numberOfMediaRequests",
+          "bitrateDowngrade",
+          "transferDuration",
+          "url"
+        ],
+        "statisticsPlayback": [
+          "availableResolutions",
+          "resolutionHeight",
+          "resolutionWidth",
+          "numberOfStalls",
+          "playbackStartOffset",
+          "startUpTime",
+          "bufferedDuration"
+        ]
+      }
+    },
+    "VOD Zap Stream": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS SSM Big Buck Bunny FPS Encrypted": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/scramble/elephants_dream_24fps_fmp4_fps_scramble/master-ssp.m3u8",
+      "token": "eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s",
+      "drmServerId": "FP-TENANTNAME-SSM",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm/v1",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM Encrypted BAD": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/scramble/elephants_dream_24fps_fmp4_fps_scramble/master-ssp.m3u8",
+      "token": "eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s",
+      "drmServerId": "FP-TENANTNAME-SSM-BAD",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "htps://tenantname-ssm.anycast.nagra.com/TENANTNAME/notValid",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM Encrypted VOD": {
+      "url": "https://replacemewithyourown.com/vod/hls6/scramble/bbb_sunflower_60fps_fmp4_fps_scramble/master-ssp.m3u8",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm/v1",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "drm": "Fairplay",
+      "expectedOutput": {
+        "duration": 635,
+        "availableBitrates": [20504711, 24702207, 30545551],
+        "tracks": {
+          "textTracks": [
+            {
+              "characteristics": [],
+              "title": "CC",
+              "encodeType": 1000,
+              "language": null
+            }
+          ],
+          "audioTracks": [
+            {
+              "language": "und",
+              "title": "Unknown language",
+              "encodeType": 1000
+            }
+          ]
+        }
+      }
+    },
+    "VOD Long Play": {
+      "url": "https://replacemewithyourown.com/vod/hls5/scramble/lord_of_the_rings_extended_cc_id3_subs_fairplay/index-ssp.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA",
+      "drmServerId": "FP-TENANTNAME",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS VOD Long Play": {
+      "url": "https://replacemewithyourown.com/vod/hls5/scramble/lord_of_the_rings_extended_cc_id3_subs_fairplay/index-ssp.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA",
+      "drmServerId": "FP-TENANTNAME",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM HLS Killable": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/scramble/elephants_dream_24fps_fmp4_fps_scramble/master-ssp.m3u8",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/licenses",
+      "certificateURL": "https://tenantname.anycast.nagra.com/TENANTNAME/fpls/contentlicenseservice/v1/certificates",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm/v1",
+      "killServer": "https://tenantname-op.anycast.nagra.com/TENANTNAME/ssm/v1/sessions/killAccountSessions",
+      "drm": "Fairplay",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "Multi Track Content": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "maxBitrate": null,
+        "maxResolution": {
+          "width": 0,
+          "height": 0
+        }
+      },
+      "expectedOutput": {
+        "eventsExpected": [
+          {
+            "event": "onAudioTrackSelected",
+            "payload": {
+              "index": 0
+            }
+          },
+          {
+            "event": "onTracksChanged",
+            "payload": {
+              "audioTracks": [
+                {
+                  "language": "en",
+                  "title": "English",
+                  "encodeType": 1000
+                },
+                {
+                  "language": "en",
+                  "title": "BipBop Audio 2 - English",
+                  "encodeType": 1000
+                }
+              ],
+              "textTracks": [
+                {
+                  "characteristics": [],
+                  "title": "English SDH",
+                  "encodeType": 1000,
+                  "language": "en"
+                },
+                {
+                  "characteristics": [],
+                  "title": "English (Forced) Forced",
+                  "encodeType": 1000,
+                  "language": "en"
+                },
+                {
+                  "characteristics": [],
+                  "title": "French SDH",
+                  "encodeType": 1000,
+                  "language": "fr"
+                },
+                {
+                  "characteristics": [],
+                  "title": "French Forced",
+                  "encodeType": 1000,
+                  "language": "fr"
+                },
+                {
+                  "characteristics": [],
+                  "title": "Spanish SDH",
+                  "encodeType": 1000,
+                  "language": "es"
+                },
+                {
+                  "characteristics": [],
+                  "title": "Spanish Forced",
+                  "encodeType": 1000,
+                  "language": "es"
+                },
+                {
+                  "characteristics": [],
+                  "title": "Japanese SDH",
+                  "encodeType": 1000,
+                  "language": "ja"
+                },
+                {
+                  "characteristics": [],
+                  "title": "Japanese Forced",
+                  "encodeType": 1000,
+                  "language": "ja"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

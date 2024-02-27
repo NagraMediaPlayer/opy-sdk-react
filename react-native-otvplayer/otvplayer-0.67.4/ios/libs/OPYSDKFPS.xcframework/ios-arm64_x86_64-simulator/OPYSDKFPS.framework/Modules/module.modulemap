@@ -1,0 +1,11 @@
+framework module OPYSDKFPS {
+  umbrella header "OPYSDKFPS.h"
+  export *
+
+  module * { export * }
+}
+
+module OPYSDKFPS.Swift {
+  header "OPYSDKFPS-Swift.h"
+  requires objc
+}

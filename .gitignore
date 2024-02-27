@@ -1,0 +1,8 @@
+buildScripts/helpers/.gradle/*
+.vscode
+exportFolder/
+**/debug.log
+.DS_Store
+node_modules
+.gradle
+react-native-otvplayer/tests/web/reports

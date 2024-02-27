@@ -1,0 +1,2 @@
+rootProject.name = 'OPY React Native'
+include 'react-native-otvplayer', 'refAppCommon'

@@ -1,0 +1,772 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C08F71829B5ED07003520E7 /* OTVThumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F71729B5ED07003520E7 /* OTVThumbnails.swift */; };
+		5C08F71929B5ED07003520E7 /* OTVThumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F71729B5ED07003520E7 /* OTVThumbnails.swift */; };
+		5C08F71B29B5ED3F003520E7 /* OTVThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F71A29B5ED3E003520E7 /* OTVThumbnailModel.swift */; };
+		5C08F71C29B5ED3F003520E7 /* OTVThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F71A29B5ED3E003520E7 /* OTVThumbnailModel.swift */; };
+		5C08F72229B5ED90003520E7 /* OTVDRMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72129B5ED90003520E7 /* OTVDRMHelper.m */; };
+		5C08F72329B5ED90003520E7 /* OTVDRMHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72129B5ED90003520E7 /* OTVDRMHelper.m */; };
+		5C08F72A29B5EDCF003520E7 /* RCTOTVPlayerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72929B5EDCF003520E7 /* RCTOTVPlayerViewManager.m */; };
+		5C08F72B29B5EDCF003520E7 /* RCTOTVPlayerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72929B5EDCF003520E7 /* RCTOTVPlayerViewManager.m */; };
+		5C08F72D29B5EDF0003520E7 /* RCTOTVSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72C29B5EDF0003520E7 /* RCTOTVSDKManager.m */; };
+		5C08F72E29B5EDF0003520E7 /* RCTOTVSDKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72C29B5EDF0003520E7 /* RCTOTVSDKManager.m */; };
+		5C08F73029B5EDFF003520E7 /* RCTOTVSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72F29B5EDFE003520E7 /* RCTOTVSDKManager.swift */; };
+		5C08F73129B5EDFF003520E7 /* RCTOTVSDKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72F29B5EDFE003520E7 /* RCTOTVSDKManager.swift */; };
+		5C08F73729B5EE2F003520E7 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F73629B5EE2F003520E7 /* EventEmitter.m */; };
+		5C08F73829B5EE2F003520E7 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F73629B5EE2F003520E7 /* EventEmitter.m */; };
+		5C08F74129B5F086003520E7 /* OTVDRMHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72029B5ED82003520E7 /* OTVDRMHelper.h */; };
+		5C08F74329B5F0BD003520E7 /* RCTOTVPlayerView.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72429B5EDA0003520E7 /* RCTOTVPlayerView.h */; };
+		5C29CB912A42C393005532BC /* OPYSDKFPS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C29CB902A42C393005532BC /* OPYSDKFPS.xcframework */; };
+		5C29CB922A42C39E005532BC /* OPYSDKFPS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C29CB902A42C393005532BC /* OPYSDKFPS.xcframework */; };
+		5CA4E32429B9A98B00332D2D /* RNOTVPlayer-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32329B9A48A00332D2D /* RNOTVPlayer-Bridging-Header.h */; };
+		5CA4E32929B9AA5F00332D2D /* OTVSSMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32529B9AA5F00332D2D /* OTVSSMService.swift */; };
+		5CA4E32A29B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32629B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift */; };
+		5CA4E32B29B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32729B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift */; };
+		5CA4E32C29B9AA5F00332D2D /* OTVDRMNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32829B9AA5F00332D2D /* OTVDRMNetworkHandler.swift */; };
+		5CA4E33029B9AFAB00332D2D /* OTVReactCommonLicenseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32629B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift */; };
+		5CA4E33129B9AFAB00332D2D /* OTVReactNativeLicenseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32729B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift */; };
+		5CA4E33229B9AFAB00332D2D /* OTVSSMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32529B9AA5F00332D2D /* OTVSSMService.swift */; };
+		5CA4E33329B9AFAB00332D2D /* OTVDRMNetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32829B9AA5F00332D2D /* OTVDRMNetworkHandler.swift */; };
+		5CA4E33429B9AFCC00332D2D /* RNOTVPlayer-tvOS-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E32F29B9AE7000332D2D /* RNOTVPlayer-tvOS-Bridging-Header.h */; };
+		5CA4E33529B9B03800332D2D /* OTVDRMHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72029B5ED82003520E7 /* OTVDRMHelper.h */; };
+		5CA4E34029B9BC2E00332D2D /* RCTOTVPlayerViewManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E33E29B9BC2E00332D2D /* RCTOTVPlayerViewManager.h */; };
+		5CA4E34129B9BC2E00332D2D /* RCTOTVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E33F29B9BC2E00332D2D /* RCTOTVPlayerView.m */; };
+		5CA4E34229B9BC3F00332D2D /* RCTOTVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E33F29B9BC2E00332D2D /* RCTOTVPlayerView.m */; };
+		5CA4E34329B9BC3F00332D2D /* RCTOTVPlayerViewManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CA4E33E29B9BC2E00332D2D /* RCTOTVPlayerViewManager.h */; };
+		5CA4E34429B9BC7000332D2D /* RCTOTVPlayerView.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F72429B5EDA0003520E7 /* RCTOTVPlayerView.h */; };
+		5CBED73B29D307A700B1337A /* RCTOTVLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73A29D307A700B1337A /* RCTOTVLog.m */; };
+		5CBED73C29D307A700B1337A /* RCTOTVLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73A29D307A700B1337A /* RCTOTVLog.m */; };
+		5CBED73F29D307BE00B1337A /* RCTOTVILogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73D29D307BD00B1337A /* RCTOTVILogProvider.swift */; };
+		5CBED74029D307BE00B1337A /* RCTOTVILogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73D29D307BD00B1337A /* RCTOTVILogProvider.swift */; };
+		5CBED74129D307BE00B1337A /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73E29D307BD00B1337A /* LogFormatter.swift */; };
+		5CBED74229D307BE00B1337A /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73E29D307BD00B1337A /* LogFormatter.swift */; };
+		5CBED74629D307CE00B1337A /* RCTOTVLogImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74329D307CE00B1337A /* RCTOTVLogImpl.swift */; };
+		5CBED74729D307CE00B1337A /* RCTOTVLogImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74329D307CE00B1337A /* RCTOTVLogImpl.swift */; };
+		5CBED74829D307CE00B1337A /* RCTOTVLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74429D307CE00B1337A /* RCTOTVLog.swift */; };
+		5CBED74929D307CE00B1337A /* RCTOTVLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74429D307CE00B1337A /* RCTOTVLog.swift */; };
+		5CBED74A29D307CE00B1337A /* RCTOTVLogEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74529D307CE00B1337A /* RCTOTVLogEmitter.swift */; };
+		5CBED74B29D307CE00B1337A /* RCTOTVLogEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED74529D307CE00B1337A /* RCTOTVLogEmitter.swift */; };
+		5CBED74C29D3083500B1337A /* RCTOTVLog.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73929D3078500B1337A /* RCTOTVLog.h */; };
+		5CBED74D29D3085300B1337A /* RCTOTVLog.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73929D3078500B1337A /* RCTOTVLog.h */; };
+		5CBED75E29D30E8000B1337A /* EventEmitter.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F73529B5EE23003520E7 /* EventEmitter.h */; };
+		B723110FD7E8A46CCE8DA465 /* libPods-RNOTVPlayer-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C676C45FF3328F423BA4D915 /* libPods-RNOTVPlayer-tvOS.a */; };
+		BB34AB9D7F705E112601C50E /* libPods-RNOTVPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5388B4012672B16E002B5450 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5388B40F2672B18A002B5450 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1649589C260429135BBF76A4 /* Pods-IMAWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMAWrapper.debug.xcconfig"; path = "Target Support Files/Pods-IMAWrapper/Pods-IMAWrapper.debug.xcconfig"; sourceTree = "<group>"; };
+		4967C3B7B21D41C87A46E801 /* Pods-RNOTVPlayer-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer-tvOS/Pods-RNOTVPlayer-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		5C08F71729B5ED07003520E7 /* OTVThumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTVThumbnails.swift; path = ../../src/ios/OTVThumbnails.swift; sourceTree = "<group>"; };
+		5C08F71A29B5ED3E003520E7 /* OTVThumbnailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTVThumbnailModel.swift; path = ../../src/ios/OTVThumbnailModel.swift; sourceTree = "<group>"; };
+		5C08F72029B5ED82003520E7 /* OTVDRMHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OTVDRMHelper.h; path = ../../src/ios/src/OTVDRMHelper.h; sourceTree = "<group>"; };
+		5C08F72129B5ED90003520E7 /* OTVDRMHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OTVDRMHelper.m; path = ../../src/ios/src/OTVDRMHelper.m; sourceTree = "<group>"; };
+		5C08F72429B5EDA0003520E7 /* RCTOTVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTOTVPlayerView.h; path = ../../src/ios/src/RCTOTVPlayerView.h; sourceTree = "<group>"; };
+		5C08F72929B5EDCF003520E7 /* RCTOTVPlayerViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTOTVPlayerViewManager.m; path = ../../src/ios/src/RCTOTVPlayerViewManager.m; sourceTree = "<group>"; };
+		5C08F72C29B5EDF0003520E7 /* RCTOTVSDKManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTOTVSDKManager.m; path = ../../src/ios/src/RCTOTVSDKManager.m; sourceTree = "<group>"; };
+		5C08F72F29B5EDFE003520E7 /* RCTOTVSDKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTOTVSDKManager.swift; path = ../../src/ios/RCTOTVSDKManager.swift; sourceTree = "<group>"; };
+		5C08F73529B5EE23003520E7 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEmitter.h; path = ../../src/ios/EventEmitter.h; sourceTree = "<group>"; };
+		5C08F73629B5EE2F003520E7 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEmitter.m; path = ../../src/ios/EventEmitter.m; sourceTree = "<group>"; };
+		5C29CB902A42C393005532BC /* OPYSDKFPS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OPYSDKFPS.xcframework; path = libs/OPYSDKFPS.xcframework; sourceTree = "<group>"; };
+		5CA4E32329B9A48A00332D2D /* RNOTVPlayer-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNOTVPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
+		5CA4E32529B9AA5F00332D2D /* OTVSSMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OTVSSMService.swift; path = ../../src/ios/src/DRM/OTVSSMService.swift; sourceTree = "<group>"; };
+		5CA4E32629B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OTVReactCommonLicenseDelegate.swift; path = ../../src/ios/src/DRM/OTVReactCommonLicenseDelegate.swift; sourceTree = "<group>"; };
+		5CA4E32729B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OTVReactNativeLicenseDelegate.swift; path = ../../src/ios/src/DRM/OTVReactNativeLicenseDelegate.swift; sourceTree = "<group>"; };
+		5CA4E32829B9AA5F00332D2D /* OTVDRMNetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OTVDRMNetworkHandler.swift; path = ../../src/ios/src/DRM/OTVDRMNetworkHandler.swift; sourceTree = "<group>"; };
+		5CA4E32F29B9AE7000332D2D /* RNOTVPlayer-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNOTVPlayer-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		5CA4E33929B9B66900332D2D /* OPYSDKFPSTv.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OPYSDKFPSTv.framework; path = libs/OPYSDKFPSTv.framework; sourceTree = "<group>"; };
+		5CA4E33C29B9BA9600332D2D /* libPods-RNOTVPlayer-tvOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-RNOTVPlayer-tvOS.a"; path = "../../../../../../../../Library/Developer/Xcode/DerivedData/ReactOtvplayer-fdcmzmdxktfvcqgrrihvdeocnbik/Build/Products/Debug-iphoneos/libPods-RNOTVPlayer-tvOS.a"; sourceTree = "<group>"; };
+		5CA4E33E29B9BC2E00332D2D /* RCTOTVPlayerViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RCTOTVPlayerViewManager.h; path = ../../src/ios/src/RCTOTVPlayerViewManager.h; sourceTree = "<group>"; };
+		5CA4E33F29B9BC2E00332D2D /* RCTOTVPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTOTVPlayerView.m; path = ../../src/ios/src/RCTOTVPlayerView.m; sourceTree = "<group>"; };
+		5CAB9C4C29B9F0D300FD3512 /* OPYSDKFPS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OPYSDKFPS.framework; path = libs/OPYSDKFPS.framework; sourceTree = "<group>"; };
+		5CBED73929D3078500B1337A /* RCTOTVLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTOTVLog.h; path = ../../src/ios/src/Logger/RCTOTVLog.h; sourceTree = "<group>"; };
+		5CBED73A29D307A700B1337A /* RCTOTVLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTOTVLog.m; path = ../../src/ios/src/Logger/RCTOTVLog.m; sourceTree = "<group>"; };
+		5CBED73D29D307BD00B1337A /* RCTOTVILogProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTOTVILogProvider.swift; path = ../../src/ios/src/Logger/RCTOTVILogProvider.swift; sourceTree = "<group>"; };
+		5CBED73E29D307BD00B1337A /* LogFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogFormatter.swift; path = ../../src/ios/src/Logger/LogFormatter.swift; sourceTree = "<group>"; };
+		5CBED74329D307CE00B1337A /* RCTOTVLogImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTOTVLogImpl.swift; path = ../../src/ios/src/Logger/RCTOTVLogImpl.swift; sourceTree = "<group>"; };
+		5CBED74429D307CE00B1337A /* RCTOTVLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTOTVLog.swift; path = ../../src/ios/src/Logger/RCTOTVLog.swift; sourceTree = "<group>"; };
+		5CBED74529D307CE00B1337A /* RCTOTVLogEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RCTOTVLogEmitter.swift; path = ../../src/ios/src/Logger/RCTOTVLogEmitter.swift; sourceTree = "<group>"; };
+		6CDF6B81DA2D17513073E511 /* Pods-OPYIMAWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPYIMAWrapper.debug.xcconfig"; path = "Target Support Files/Pods-OPYIMAWrapper/Pods-OPYIMAWrapper.debug.xcconfig"; sourceTree = "<group>"; };
+		746992471E556FE1E87408B6 /* Pods-RNOTVPlayer-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer-tvOS.release.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer-tvOS/Pods-RNOTVPlayer-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7CB7EAA4574DE05D96571B0B /* Pods-RNOTVPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.debug.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNOTVPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F75B443B8FBF79B1A21DD54 /* Pods-RNOTVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.release.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		ADEA743629659772009D4E9B /* libRNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOTVPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADEA743729659772009D4E9B /* libRNOTVPlayer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNOTVPlayer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B286DFB7B06EBD85CA7DEB37 /* Pods-OPYIMAWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPYIMAWrapper.release.xcconfig"; path = "Target Support Files/Pods-OPYIMAWrapper/Pods-OPYIMAWrapper.release.xcconfig"; sourceTree = "<group>"; };
+		C676C45FF3328F423BA4D915 /* libPods-RNOTVPlayer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNOTVPlayer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E49D365425FCD2E4F43A27B0 /* Pods-IMAWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IMAWrapper.release.xcconfig"; path = "Target Support Files/Pods-IMAWrapper/Pods-IMAWrapper.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5388B4002672B16E002B5450 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C29CB912A42C393005532BC /* OPYSDKFPS.xcframework in Frameworks */,
+				BB34AB9D7F705E112601C50E /* libPods-RNOTVPlayer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5388B40E2672B18A002B5450 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C29CB922A42C39E005532BC /* OPYSDKFPS.xcframework in Frameworks */,
+				B723110FD7E8A46CCE8DA465 /* libPods-RNOTVPlayer-tvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5388B3FB2672AF92002B5450 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C29CB902A42C393005532BC /* OPYSDKFPS.xcframework */,
+				5CAB9C4C29B9F0D300FD3512 /* OPYSDKFPS.framework */,
+				5CA4E33929B9B66900332D2D /* OPYSDKFPSTv.framework */,
+				834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */,
+				5CA4E33C29B9BA9600332D2D /* libPods-RNOTVPlayer-tvOS.a */,
+				C676C45FF3328F423BA4D915 /* libPods-RNOTVPlayer-tvOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				5C08F71729B5ED07003520E7 /* OTVThumbnails.swift */,
+				5C08F71A29B5ED3E003520E7 /* OTVThumbnailModel.swift */,
+				5C08F72029B5ED82003520E7 /* OTVDRMHelper.h */,
+				5C08F72129B5ED90003520E7 /* OTVDRMHelper.m */,
+				5C08F72429B5EDA0003520E7 /* RCTOTVPlayerView.h */,
+				5CA4E33F29B9BC2E00332D2D /* RCTOTVPlayerView.m */,
+				5CA4E33E29B9BC2E00332D2D /* RCTOTVPlayerViewManager.h */,
+				5C08F72929B5EDCF003520E7 /* RCTOTVPlayerViewManager.m */,
+				5C08F72C29B5EDF0003520E7 /* RCTOTVSDKManager.m */,
+				5C08F72F29B5EDFE003520E7 /* RCTOTVSDKManager.swift */,
+				5C08F73529B5EE23003520E7 /* EventEmitter.h */,
+				5C08F73629B5EE2F003520E7 /* EventEmitter.m */,
+				5CA4E32329B9A48A00332D2D /* RNOTVPlayer-Bridging-Header.h */,
+				5CA4E32F29B9AE7000332D2D /* RNOTVPlayer-tvOS-Bridging-Header.h */,
+				5CBED73829D3073100B1337A /* Logger */,
+				5CA4E32E29B9AB4500332D2D /* DRM */,
+				134814211AA4EA7D00B7C361 /* Products */,
+				5388B3FB2672AF92002B5450 /* Frameworks */,
+				E4CD62A3ACB4BABE831817B0 /* Pods */,
+				ADEA743629659772009D4E9B /* libRNOTVPlayer.a */,
+				ADEA743729659772009D4E9B /* libRNOTVPlayer-tvOS.a */,
+			);
+			sourceTree = "<group>";
+		};
+		5CA4E32E29B9AB4500332D2D /* DRM */ = {
+			isa = PBXGroup;
+			children = (
+				5CA4E32629B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift */,
+				5CA4E32729B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift */,
+				5CA4E32529B9AA5F00332D2D /* OTVSSMService.swift */,
+				5CA4E32829B9AA5F00332D2D /* OTVDRMNetworkHandler.swift */,
+			);
+			name = DRM;
+			sourceTree = "<group>";
+		};
+		5CBED73829D3073100B1337A /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				5CBED73929D3078500B1337A /* RCTOTVLog.h */,
+				5CBED73A29D307A700B1337A /* RCTOTVLog.m */,
+				5CBED74429D307CE00B1337A /* RCTOTVLog.swift */,
+				5CBED74329D307CE00B1337A /* RCTOTVLogImpl.swift */,
+				5CBED73D29D307BD00B1337A /* RCTOTVILogProvider.swift */,
+				5CBED73E29D307BD00B1337A /* LogFormatter.swift */,
+				5CBED74529D307CE00B1337A /* RCTOTVLogEmitter.swift */,
+			);
+			name = Logger;
+			sourceTree = "<group>";
+		};
+		E4CD62A3ACB4BABE831817B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CB7EAA4574DE05D96571B0B /* Pods-RNOTVPlayer.debug.xcconfig */,
+				8F75B443B8FBF79B1A21DD54 /* Pods-RNOTVPlayer.release.xcconfig */,
+				1649589C260429135BBF76A4 /* Pods-IMAWrapper.debug.xcconfig */,
+				E49D365425FCD2E4F43A27B0 /* Pods-IMAWrapper.release.xcconfig */,
+				6CDF6B81DA2D17513073E511 /* Pods-OPYIMAWrapper.debug.xcconfig */,
+				B286DFB7B06EBD85CA7DEB37 /* Pods-OPYIMAWrapper.release.xcconfig */,
+				4967C3B7B21D41C87A46E801 /* Pods-RNOTVPlayer-tvOS.debug.xcconfig */,
+				746992471E556FE1E87408B6 /* Pods-RNOTVPlayer-tvOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5388B4022672B16E002B5450 /* RNOTVPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5388B4092672B16E002B5450 /* Build configuration list for PBXNativeTarget "RNOTVPlayer" */;
+			buildPhases = (
+				18C5F020B7D394C03EDF950B /* [CP] Check Pods Manifest.lock */,
+				5388B3FF2672B16E002B5450 /* Sources */,
+				5388B4002672B16E002B5450 /* Frameworks */,
+				5388B4012672B16E002B5450 /* CopyFiles */,
+				5388B4CC2672B8EB002B5450 /* Run Script - Copy librray */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNOTVPlayer;
+			productName = RNOTVPlayer;
+			productReference = ADEA743629659772009D4E9B /* libRNOTVPlayer.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5388B4102672B18A002B5450 /* RNOTVPlayer-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5388B4172672B18B002B5450 /* Build configuration list for PBXNativeTarget "RNOTVPlayer-tvOS" */;
+			buildPhases = (
+				8169BAEBC81531673C186E5E /* [CP] Check Pods Manifest.lock */,
+				5388B40D2672B18A002B5450 /* Sources */,
+				5388B40E2672B18A002B5450 /* Frameworks */,
+				5388B40F2672B18A002B5450 /* CopyFiles */,
+				5388B4D12672B988002B5450 /* Run Script - Copy librray */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RNOTVPlayer-tvOS";
+			productName = "RNOTVPlayer-tvOS";
+			productReference = ADEA743729659772009D4E9B /* libRNOTVPlayer-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					5388B4022672B16E002B5450 = {
+						CreatedOnToolsVersion = 12.4;
+						DevelopmentTeam = QK7L23LPTC;
+						LastSwiftMigration = 1400;
+						ProvisioningStyle = Automatic;
+					};
+					5388B4102672B18A002B5450 = {
+						CreatedOnToolsVersion = 12.4;
+						DevelopmentTeam = QK7L23LPTC;
+						LastSwiftMigration = 1400;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "ReactOtvplayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5388B4022672B16E002B5450 /* RNOTVPlayer */,
+				5388B4102672B18A002B5450 /* RNOTVPlayer-tvOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18C5F020B7D394C03EDF950B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RNOTVPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5388B4CC2672B8EB002B5450 /* Run Script - Copy librray */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Copy librray";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -r ${TARGET_BUILD_DIR}/lib${PRODUCT_NAME}.a ${PROJECT_DIR}/libs\n";
+		};
+		5388B4D12672B988002B5450 /* Run Script - Copy librray */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script - Copy librray";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -r ${TARGET_BUILD_DIR}/lib${PRODUCT_NAME}.a ${PROJECT_DIR}/libs\n";
+		};
+		8169BAEBC81531673C186E5E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RNOTVPlayer-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5388B3FF2672B16E002B5450 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CBED74C29D3083500B1337A /* RCTOTVLog.h in Sources */,
+				5CA4E32929B9AA5F00332D2D /* OTVSSMService.swift in Sources */,
+				5CA4E32429B9A98B00332D2D /* RNOTVPlayer-Bridging-Header.h in Sources */,
+				5CA4E32A29B9AA5F00332D2D /* OTVReactCommonLicenseDelegate.swift in Sources */,
+				5CBED73F29D307BE00B1337A /* RCTOTVILogProvider.swift in Sources */,
+				5CA4E32B29B9AA5F00332D2D /* OTVReactNativeLicenseDelegate.swift in Sources */,
+				5CA4E32C29B9AA5F00332D2D /* OTVDRMNetworkHandler.swift in Sources */,
+				5C08F71829B5ED07003520E7 /* OTVThumbnails.swift in Sources */,
+				5C08F71B29B5ED3F003520E7 /* OTVThumbnailModel.swift in Sources */,
+				5C08F74129B5F086003520E7 /* OTVDRMHelper.h in Sources */,
+				5CBED74A29D307CE00B1337A /* RCTOTVLogEmitter.swift in Sources */,
+				5C08F72229B5ED90003520E7 /* OTVDRMHelper.m in Sources */,
+				5C08F74329B5F0BD003520E7 /* RCTOTVPlayerView.h in Sources */,
+				5CA4E34129B9BC2E00332D2D /* RCTOTVPlayerView.m in Sources */,
+				5CBED74829D307CE00B1337A /* RCTOTVLog.swift in Sources */,
+				5CBED73B29D307A700B1337A /* RCTOTVLog.m in Sources */,
+				5CBED74129D307BE00B1337A /* LogFormatter.swift in Sources */,
+				5C08F73729B5EE2F003520E7 /* EventEmitter.m in Sources */,
+				5C08F73029B5EDFF003520E7 /* RCTOTVSDKManager.swift in Sources */,
+				5CBED74629D307CE00B1337A /* RCTOTVLogImpl.swift in Sources */,
+				5C08F72D29B5EDF0003520E7 /* RCTOTVSDKManager.m in Sources */,
+				5CA4E34029B9BC2E00332D2D /* RCTOTVPlayerViewManager.h in Sources */,
+				5C08F72A29B5EDCF003520E7 /* RCTOTVPlayerViewManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5388B40D2672B18A002B5450 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CBED75E29D30E8000B1337A /* EventEmitter.h in Sources */,
+				5CBED74D29D3085300B1337A /* RCTOTVLog.h in Sources */,
+				5CA4E33429B9AFCC00332D2D /* RNOTVPlayer-tvOS-Bridging-Header.h in Sources */,
+				5CA4E33029B9AFAB00332D2D /* OTVReactCommonLicenseDelegate.swift in Sources */,
+				5CA4E33129B9AFAB00332D2D /* OTVReactNativeLicenseDelegate.swift in Sources */,
+				5CBED74029D307BE00B1337A /* RCTOTVILogProvider.swift in Sources */,
+				5CA4E33229B9AFAB00332D2D /* OTVSSMService.swift in Sources */,
+				5CA4E33329B9AFAB00332D2D /* OTVDRMNetworkHandler.swift in Sources */,
+				5C08F71929B5ED07003520E7 /* OTVThumbnails.swift in Sources */,
+				5C08F71C29B5ED3F003520E7 /* OTVThumbnailModel.swift in Sources */,
+				5CA4E33529B9B03800332D2D /* OTVDRMHelper.h in Sources */,
+				5CBED74B29D307CE00B1337A /* RCTOTVLogEmitter.swift in Sources */,
+				5C08F72329B5ED90003520E7 /* OTVDRMHelper.m in Sources */,
+				5CA4E34429B9BC7000332D2D /* RCTOTVPlayerView.h in Sources */,
+				5CA4E34229B9BC3F00332D2D /* RCTOTVPlayerView.m in Sources */,
+				5CBED74929D307CE00B1337A /* RCTOTVLog.swift in Sources */,
+				5CBED73C29D307A700B1337A /* RCTOTVLog.m in Sources */,
+				5CBED74229D307BE00B1337A /* LogFormatter.swift in Sources */,
+				5C08F73829B5EE2F003520E7 /* EventEmitter.m in Sources */,
+				5C08F73129B5EDFF003520E7 /* RCTOTVSDKManager.swift in Sources */,
+				5CBED74729D307CE00B1337A /* RCTOTVLogImpl.swift in Sources */,
+				5C08F72E29B5EDF0003520E7 /* RCTOTVSDKManager.m in Sources */,
+				5CA4E34329B9BC3F00332D2D /* RCTOTVPlayerViewManager.h in Sources */,
+				5C08F72B29B5EDCF003520E7 /* RCTOTVPlayerViewManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5388B40A2672B16E002B5450 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CB7EAA4574DE05D96571B0B /* Pods-RNOTVPlayer.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = QK7L23LPTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../dist/0.63.4/ios",
+					"$(PROJECT_DIR)/Pods/GoogleAds-IMA-iOS-SDK",
+					"$(PROJECT_DIR)/../../../dependencies/ios",
+					"$(PROJECT_DIR)/libs",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNOTVPlayer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5388B40B2672B16E002B5450 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F75B443B8FBF79B1A21DD54 /* Pods-RNOTVPlayer.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(EMBEDDED_CONTENT_CONTAINS_SWIFT)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QK7L23LPTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../dist/0.63.4/ios",
+					"$(PROJECT_DIR)/Pods/GoogleAds-IMA-iOS-SDK",
+					"$(PROJECT_DIR)/../../../dependencies/ios",
+					"$(PROJECT_DIR)/libs",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNOTVPlayer-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5388B4182672B18B002B5450 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4967C3B7B21D41C87A46E801 /* Pods-RNOTVPlayer-tvOS.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = QK7L23LPTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../dist/0.63.4/tvos",
+					"$(PROJECT_DIR)/../../../dependencies/tvos",
+					"$(PROJECT_DIR)/libs",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNOTVPlayer-tvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Debug;
+		};
+		5388B4192672B18B002B5450 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 746992471E556FE1E87408B6 /* Pods-RNOTVPlayer-tvOS.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QK7L23LPTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../dist/0.63.4/tvos",
+					"$(PROJECT_DIR)/../../../dependencies/tvos",
+					"$(PROJECT_DIR)/libs",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNOTVPlayer-tvOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
+			};
+			name = Release;
+		};
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5388B4092672B16E002B5450 /* Build configuration list for PBXNativeTarget "RNOTVPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5388B40A2672B16E002B5450 /* Debug */,
+				5388B40B2672B16E002B5450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5388B4172672B18B002B5450 /* Build configuration list for PBXNativeTarget "RNOTVPlayer-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5388B4182672B18B002B5450 /* Debug */,
+				5388B4192672B18B002B5450 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "ReactOtvplayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}

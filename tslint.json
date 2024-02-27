@@ -1,0 +1,131 @@
+{
+	/*
+	 * Possible values:
+	 * - the name of a built-in config
+	 * - the name of an NPM module which has a "main" file that exports a config object
+	 * - a relative path to a JSON file
+	 */
+	"extends": "tslint:recommended",
+	"rules": {
+		// Change rules from recommended
+		"indent": [
+			true,
+			"tabs"
+		],
+		"variable-name": [
+			true,
+			"ban-keywords",
+			"check-format",
+			"allow-leading-underscore",
+			"allow-pascal-case"
+		],
+		"space-before-function-paren": [
+			true,
+			{
+				"anonymous": "always",
+				"named": "never",
+				"asyncArrow": "always"
+			}
+		],
+		// Remove rules from recommended
+		"max-line-length": [
+			false
+		],
+		"member-ordering": [
+			false
+		],
+		"ordered-imports": [
+			false
+		],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "never",
+				"singleline": "never"
+			}
+		],
+		"object-literal-sort-keys": false,
+		"comment-format": [
+			false
+		],
+		"interface-name": [
+			true,
+			"never-prefix"
+		],
+		"quotemark": [
+			true,
+			"double",
+			"jsx-double"
+		],
+		// Resulting from an upgrade from tslint 4 to 5
+		// TODO: review
+		"no-unused-expression": false,
+		"interface-over-type-literal": false,
+		"no-empty-interface": false,
+		"prefer-const": false,
+		"object-literal-key-quotes": [
+			false
+		],
+		//
+		// Rules from eslint follow:
+		//
+		"no-constant-condition": true,
+		"no-control-regex": true,
+		"no-debugger": true,
+		"no-duplicate-case": true,
+		"no-empty-character-class": true,
+		"no-ex-assign": true,
+		"no-extra-boolean-cast": true,
+		"no-extra-semi": true,
+		"no-irregular-whitespace": true,
+		"no-sparse-arrays": true,
+		"no-unexpected-multiline": true,
+		"valid-typeof": true,
+		"no-multi-spaces": true,
+		"brace-style": [
+			true,
+			"1tbs"
+		],
+		// "ter-arrow-body-style": [
+		// 	true,
+		// 	"as-needed",
+		// 	{
+		// 		"requireReturnForObjectLiteral": false
+		// 	}
+		// ],
+		//
+		// Additional rules
+		//
+		"no-unused-variable": [
+			true,
+			"react"
+		],
+		"member-access": [
+			true,
+			"check-accessor",
+			"check-constructor"
+		],
+		"no-default-export": true,
+		"only-arrow-functions": [
+			true
+		],
+		"no-angle-bracket-type-assertion": true,
+		"no-internal-module": true,
+		"no-namespace": true,
+		"no-reference": true,
+		"no-var-requires": true,
+		"prefer-for-of": true
+		// JK - ask team about this one!
+		// "typedef": [
+		// 	true,
+		// 	"arrow-call-signature"
+		// ]
+	},
+	"rulesDirectory": [
+		/*
+		 * A list of relative or absolute paths to directories that contain custom rules.
+		 * See the Custom Rules documentation below for more details.
+		 */
+		"node_modules/tslint-eslint-rules/dist/rules"
+	]
+}

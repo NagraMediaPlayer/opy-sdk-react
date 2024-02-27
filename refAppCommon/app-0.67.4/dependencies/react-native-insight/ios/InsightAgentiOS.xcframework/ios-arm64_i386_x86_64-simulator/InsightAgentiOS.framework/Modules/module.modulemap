@@ -1,0 +1,4 @@
+framework module InsightAgentiOS {
+  header "InsightAgentiOS-Swift.h"
+  requires objc
+}

@@ -1,0 +1,13 @@
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property 'sonar.sources', '.'
+        property 'sonar.swift.file.suffixes', '.swift'
+        property 'sonar.c.file.suffixes', '-'
+        property 'sonar.objc.file.suffixes', '-'
+        property 'sonar.cpp.file.suffixes', '-'
+        property 'sonar.exclusions', 'build/**,docs/**,Pods/**,node_modules/**,*.framework/**,src/android/**,src/constants/*'
+        property 'sonar.coverage.exclusions', '**'
+    }
+}

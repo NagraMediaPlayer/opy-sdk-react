@@ -1,0 +1,38 @@
+diff --git a/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.cpp b/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.cpp
+index 2c68674..ea95e40 100644
+--- a/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.cpp
++++ b/node_modules/react-native/ReactCommon/yoga/yoga/Yoga.cpp
+@@ -2229,7 +2229,7 @@ static float YGDistributeFreeSpaceSecondPass(
+         depth,
+         generationCount);
+     node->setLayoutHadOverflow(
+-        node->getLayout().hadOverflow() |
++        node->getLayout().hadOverflow() ||
+         currentRelativeChild->getLayout().hadOverflow());
+   }
+   return deltaFreeSpace;
+diff --git a/node_modules/react-native/scripts/react_native_pods.rb b/node_modules/react-native/scripts/react_native_pods.rb
+index 1b8a078..21d8504 100644
+--- a/node_modules/react-native/scripts/react_native_pods.rb
++++ b/node_modules/react-native/scripts/react_native_pods.rb
+@@ -289,12 +289,18 @@ else
+ fi
+ 
+ find_node () {
+-  source "$RN_DIR/scripts/find-node.sh"
++  # source "$RN_DIR/scripts/find-node.sh"
+ 
+   NODE_BINARY="${NODE_BINARY:-$(command -v node || true)}"
++  echo "react_native_pods.rb: NODE_BINARY: ${NODE_BINARY}"
++  
+   if [ -z "$NODE_BINARY" ]; then
+     echo "error: Could not find node. Make sure it is in bash PATH or set the NODE_BINARY environment variable." >> "${SCRIPT_OUTPUT_FILE_0}" 2>&1
+-    exit 1
++    # exit 1
++  else
++    echo "react_native_pods.rb: NODE_VERSION: ${NODE_VERSION}"
++    NODE_BINARY="$HOME/.nvm/versions/node/v${NODE_VERSION}/bin/node"
++    echo "react_native_pods.rb: NODE_BINARY: ${NODE_BINARY}"
+   fi
+ }
+ 

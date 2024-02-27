@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+    <link rel="shortcut icon" href="#" />
+  </head>
+
+  <body style="background: black; color: white">
+    <object
+      id="appmgr"
+      type="application/oipfApplicationManager"
+      style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px"
+    >
+      &nbsp;
+    </object>
+    <div
+      style="
+        width: 100%;
+        height: auto;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        outline: transparent;
+        -ant-user-input: disabled;
+        -ant-highlight-colour: transparent;
+      "
+    >
+      <div
+        id="root"
+        style="
+          position: relative;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: auto;
+          background-color: black;
+          color: white;
+        "
+      ></div>
+    </div>
+
+    <script>
+      var hbbTvApp;
+      try {
+        if (typeof oipfObjectFactory !== "undefined") {
+          window._samsung_console_log_enabled = 1;
+          hbbTvApp = document
+            .getElementById("appmgr")
+            .getOwnerApplication(document);
+          hbbTvApp.privateData.keyset.setValue(
+            0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x20 + 0x400
+          );
+          hbbTvApp.privateData.keyset.setValue(0xffff, [
+            KeyEvent.VK_INFO,
+            KeyEvent.VK_GUIDE,
+            KeyEvent.VK_CHANNEL_UP,
+            KeyEvent.VK_CHANNEL_DOWN,
+            KeyEvent.VK_MENU,
+            KeyEvent.VK_RETURN,
+            KeyEvent.VK_PLAY,
+            KeyEvent.VK_PAUSE,
+            KeyEvent.VK_STOP,
+            KeyEvent.VK_PLAY_PAUSE,
+            KeyEvent.VK_FAST_FWD,
+            KeyEvent.VK_REWIND,
+            KeyEvent.VK_CHANNELS,
+            KeyEvent.VK_VOLUME_UP,
+            KeyEvent.VK_VOLUME_DOWN,
+            KeyEvent.VK_MUTE,
+          ]);
+          hbbTvApp.opAppRequestForeground();
+        }
+      } catch (e) {
+        console.log("ERROR " + e);
+      }
+    </script>
+  </body>
+</html>
