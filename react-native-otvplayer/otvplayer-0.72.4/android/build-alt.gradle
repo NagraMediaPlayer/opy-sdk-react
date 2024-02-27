@@ -1,0 +1,110 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        // TODO remove all references to jcenter, and make sure all native dependancies have moved away from jcenter,
+        // then remove this block
+        all { ArtifactRepository repo ->
+            if (repo.url.toString().startsWith("https://jcenter.bintray.com/")) {
+                remove repo
+                project.logger.warn "Repository ${repo.url} removed."
+            }
+        }
+
+        maven {
+            url "https://maven.google.com/"
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "https://repo1.maven.org/maven2/"
+            allowInsecureProtocol = true
+        }
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('com.android.tools.build:gradle:7.0.4')
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+apply plugin: 'com.android.library'
+def safeExtGet(prop, fallback) {
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+}
+
+android {
+    compileSdkVersion safeExtGet("compileSdkVersion", 31)
+
+    defaultConfig {
+        minSdkVersion safeExtGet('minSdkVersion', 21)
+        targetSdkVersion safeExtGet('targetSdkVersion', 30)
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+}
+
+dependencies {
+    //noinspection GradleDynamicVersion
+    implementation 'com.facebook.react:react-native:+'
+    implementation 'com.google.ads.interactivemedia.v3:interactivemedia:3.20.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation ("com.google.guava:guava:31.0.1-android") {
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'org.checkerframework', module: 'checker-compat-qual'
+        exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+        exclude group: 'com.google.j2objc', module: 'j2objc-annotations'
+        exclude group: 'org.codehaus.mojo', module: 'animal-sniffer-annotations'
+    }
+    implementation project(':libs')
+    // debugImplementation fileTree(dir: 'libs', include:['react-otvplayer-debug.aar'])
+    // releaseImplementation fileTree(dir: 'libs', include:['react-otvplayer-release.aar'])
+
+}
+
+allprojects {
+
+    repositories {
+        // TODO remove all references to jcenter, and make sure all native dependancies have moved away from jcenter,
+        // then remove this block
+        all { ArtifactRepository repo ->
+            if (repo.url.toString().startsWith("https://jcenter.bintray.com/")) {
+                remove repo
+                project.logger.warn "Repository ${repo.url} removed."
+            }
+        }
+
+        gradlePluginPortal() // add this if you get further errors
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+
+        maven { url 'https://jitpack.io' }
+
+        maven {
+            url "https://maven.google.com/"
+            allowInsecureProtocol = true
+        }
+        maven {
+            url "https://repo1.maven.org/maven2/"
+            allowInsecureProtocol = true
+        }
+        google()
+        mavenCentral()
+    }
+}

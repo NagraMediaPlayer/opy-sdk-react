@@ -1,0 +1,574 @@
+{
+  "streams": {
+    "VOD Clear": {
+      "url": "https://replacemewithyourown.com/demo/content/cd_sintel_1080p/sintel.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "maxBitrate": null,
+        "maxResolution": null
+      },
+      "expectedOutput": {
+        "duration": 888.125,
+        "availableBitrates": [
+          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+        ],
+        "tracks": {
+          "textTracks": [
+            {
+              "language": "en",
+              "encodeType": 6,
+              "title": "en[WEBVTT]",
+              "characteristics": []
+            },
+            {
+              "language": "fr",
+              "encodeType": 6,
+              "title": "fr[WEBVTT]",
+              "characteristics": []
+            },
+            {
+              "language": "de",
+              "encodeType": 6,
+              "title": "de[WEBVTT]",
+              "characteristics": []
+            }
+          ],
+          "audioTracks": [
+            {
+              "language": "und",
+              "encodeType": 0,
+              "title": "und[AAC]"
+            }
+          ]
+        }
+      }
+    },
+    "LIVE Clear": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash/Live/Channel(bbc1)/manifest.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "maxBitrate": null,
+        "maxResolution": null
+      },
+      "expectedOutput": {
+        "duration": -1,
+        "availableBitrates": [432000, 648000, 864000, 1404000],
+        "tracks": {
+          "textTracks": [],
+          "audioTracks": [
+            {
+              "language": "en",
+              "encodeType": 0,
+              "title": "en[AAC]"
+            }
+          ]
+        }
+      }
+    },
+    "VOD Clear Statistics": {
+      "url": "https://replacemewithyourown.com/demo/content/cd_sintel_1080p/sintel.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "maxBitrate": null,
+        "maxResolution": null
+      },
+      "expectedOutput": {
+        "statistics": [
+          "availableBitrates",
+          "selectedBitrate",
+          "bitrateSwitches",
+          "bitrateDowngrades",
+          "averageBitrate",
+          "downloadBitrate",
+          "downloadBitrateAverage",
+          "url",
+          "bytesDownloaded",
+          "frameDrops",
+          "framesPerSecond",
+          "frameDropsPerSecond",
+          "framesPerSecondNominal",
+          "bufferedDuration",
+          "resolutionHeight",
+          "resolutionWidth",
+          "streamBitrate"
+        ],
+        "statisticsRendering": [
+          "frameDrops",
+          "framesPerSecond",
+          "frameDropsPerSecond",
+          "framesPerSecondNominal"
+        ],
+        "StatisticsNetwork": [
+          "availableBitrates",
+          "selectedBitrate",
+          "bitrateSwitches",
+          "bitrateDowngrades",
+          "averageBitrate",
+          "downloadBitrate",
+          "downloadBitrateAverage",
+          "url",
+          "bytesDownloaded"
+        ],
+        "statisticsPlayback": [
+          "bufferedDuration",
+          "resolutionHeight",
+          "resolutionWidth",
+          "streamBitrate"
+        ]
+      }
+    },
+    "VOD Zap Stream": {
+      "url": "https://d3bqrzf9w11pn3.cloudfront.net/basic_dash_bbb_clear/bbb_public.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH Big Buck Bunny Clear": {
+      "url": "https://d3bqrzf9w11pn3.cloudfront.net/basic_dash_bbb_clear/bbb_public.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "NO ThumbNail Content": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH BBB Thumbs Clear": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_4_tiles_thumbnails.mpd",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "ThumbNail Content": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "ThumbNail Content with display true": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "display": true,
+          "style": {
+            "top": 10,
+            "left": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content With Style PropMissing": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "left": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ffd700"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content left Style Missing": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 10,
+            "width": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#ff0000"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content width Style Missing": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 10,
+            "left": 100,
+            "height": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#0000ff"
+          }
+        }
+      }
+    },
+    "THUMBNAIL Content height Style Missing": {
+      "url": "http://dash.edgesuite.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd",
+      "mimeType": "application/dash+xml",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "thumbnail": {
+          "style": {
+            "top": 10,
+            "left": 100,
+            "width": 100,
+            "borderWidth": 5.0,
+            "borderColor": "#00ff00"
+          }
+        }
+      }
+    },
+    "HLS BBB Thumbs Clear": {
+      "mimeType": "application/x-mpegURL",
+      "url": "https://replacemewithyourown.com/vod/hls6/clear/bbb_sunflower_1080p_thumbnail_negative_testing/master.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS Bip Bop Clear": {
+      "url": "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS LIVE": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-harmonic/hls/clear/bbc1clear/index.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "VOD Encrypted": {
+      "url": "https://replacemewithyourown.com/demo/content/ed_sintel_1080p/sintel.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNGRkNjcwZGYtYjg0OC00NzZiLWE4NjItNjMyMWM3YWU3ZmQ1Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19zaW50ZWxfNGsiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.RE5W1q44m5Po-gdcfrn7sK-CdFzrEq44KiFo0KK7Kx0,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..G9PbDGQNz8VOX7NXoePFtQ.eDmP659_5ZQHfCxjrwD5lCiiP1oZqxp3dQKWx1sMpeAau1cJKFl9QuO3Iy-1N9_SzLB3SmCVoQCGWVF9obv5np-RU5nsZshCODtfVI4RqFZNSk5_31sGcFOQAe5qxNYrzQ0auCr9gfNNCZDYuqgLAHPXQMWOGkxf9cxNKHI3Ook.Po0ergXEvtoq35Tss0tNRQ",
+      "drmServerId": "WV-TENANTNAME",
+      "certificateURL": "",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "drm": "widevine,playready",
+      "drm_key_request_properties": {
+        "Accept": "application/octet-stream",
+        "Content-Type": "application/octet-stream",
+        "nv-tenant-id": "TENANTNAME"
+      },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "duration": 888.125,
+        "availableBitrates": [
+          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+        ],
+        "tracks": {
+          "textTracks": [
+            {
+              "language": "en",
+              "encodeType": 6,
+              "title": "en[WEBVTT]",
+              "characteristics": []
+            },
+            {
+              "language": "fr",
+              "encodeType": 6,
+              "title": "fr[WEBVTT]",
+              "characteristics": []
+            },
+            {
+              "language": "de",
+              "encodeType": 6,
+              "title": "de[WEBVTT]",
+              "characteristics": []
+            }
+          ],
+          "audioTracks": [
+            {
+              "language": "und",
+              "encodeType": 0,
+              "title": "und[AAC]"
+            }
+          ]
+        }
+      }
+    },
+    "DASH Big Buck Bunny Encrypted": {
+      "url": "https://d3bqrzf9w11pn3.cloudfront.net/basic_dash_bbb_encrypted/bbb_public.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiI4MTI0MjUiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkdXJhdGlvbiI6NzIwMCwiZGVmYXVsdEtjSWRzIjpbIjAyMDgxMTNlLWU2ZTgtNDI0Mi04NjdjLWQ5NjNmNWQ3ODkyMyJdLCJjb250ZW50SWQiOiI0NjgyZjFkNi05ODIwLTQwNmEtOWJhMC03YzAzZGJjZjE5NmMiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsIndhdGVybWFya2luZ0VuYWJsZWQiOnRydWUsImltYWdlQ29uc3RyYWludCI6dHJ1ZSwiaGRjcFR5cGUiOiJUWVBFXzEiLCJ1bmNvbXByZXNzZWREaWdpdGFsQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJ1bnByb3RlY3RlZEFuYWxvZ091dHB1dCI6dHJ1ZSwiYW5hbG9nQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJoZGNwIjp0cnVlLCJkZXZpY2VDYXBwaW5nUmVzb2x1dGlvbiI6Ik5PX1JFU1RSSUNUSU9OUyIsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.fZpotjTjiddueE_nPVcON0FnJwBO4FecTcYIoMmocnw,eyJrY0lkcyI6WyIwMjA4MTEzZS1lNmU4LTQyNDItODY3Yy1kOTYzZjVkNzg5MjMiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjgxMjQyNSJ9..ntJUOAc-g8sXrGLjZhx-MQ.nHnm-aciNeCz6kwUZEjOQgg-1PsLN1Uc8eYihUv_OUK8EaBoFH7JcdIyB9igEFfR9Cufau_5H-EvTdrmws20_ViWKjUTOZmUn7xPQOmwSftb99-rgd3g4QZO0quHIDB5qiBoKmksts8qDbcMZbr_aKMFIOlzNUUcBwiOvmrGyzo.-zTh5sY7tmbe7Ow94EQT9A",
+      "drmServerId": "WV-VSD02FY1",
+      "licenseURL": "https://vsd02fy1.anycast.nagra.com/VSD02FY1/wvls/contentlicenseservice/v1/licenses",
+      "drm": "Widevine",
+      "certificateURL": "",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH Encrypted - Channel 4 Live (SSP Cloud)": {
+      "url": "https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash_7_cenc_ssp/Live/Channel(Channel4)/manifest.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJjaGFubmVsNF9kYXNoX3VleDNYajBpIiwic3RvcmFibGUiOnRydWUsImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.2bpnSJjyUCGl7eYG1dgD7PC-zNJIp5H4rD9pltspeMo",
+      "drmServerId": "WV-TENANTNAME",
+      "certificateURL": "",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "drm": "widevine,playready",
+      "drm_key_request_properties": {
+        "Accept": "application/octet-stream",
+        "Content-Type": "application/octet-stream",
+        "nv-tenant-id": "TENANTNAME"
+      },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH SSM Big Buck Bunny WV Encrypted": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd?SSM1KBig Buck Bunny",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaHRtbDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.fOHrdSlUn2tEMGq9dzeW9oM_x0zTCN4bXvLss1PA7-U,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..oFKeKIrHEWZUgYzCXNsA_w.sUjV6JcA80TptH-qmy6vAuLRBVWX_omdwxengBIM7jJwz3O9K3hn2hz6of5iv1ZEQ_Jk6FCoVsuZMpJHkUxJVofjaSlTEd76K2htJBo0kBmwlxlcu_fBihBgvGY6v0GMwHYucVeTakhgwDWcrvuRtXL7v7B8yoPlgFXwhpkv0so.Rv_Hvo0gCqwnK7_kvriUmw",
+      "drmServerId": "WV-TENANTNAME-SSM",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
+      "drm": "Widevine",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM PR Encrypted VOD": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd?SSM1KBig Buck Bunny",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaHRtbDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.fOHrdSlUn2tEMGq9dzeW9oM_x0zTCN4bXvLss1PA7-U,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..oFKeKIrHEWZUgYzCXNsA_w.sUjV6JcA80TptH-qmy6vAuLRBVWX_omdwxengBIM7jJwz3O9K3hn2hz6of5iv1ZEQ_Jk6FCoVsuZMpJHkUxJVofjaSlTEd76K2htJBo0kBmwlxlcu_fBihBgvGY6v0GMwHYucVeTakhgwDWcrvuRtXL7v7B8yoPlgFXwhpkv0so.Rv_Hvo0gCqwnK7_kvriUmw",
+      "drmServerId": "PR-TENANTNAME-SSM",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/prls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
+      "drm": "Playready",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH SSM Big Buck Bunny PR Encrypted BAD": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd?SSM1KBig Buck Bunny",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaHRtbDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.fOHrdSlUn2tEMGq9dzeW9oM_x0zTCN4bXvLss1PA7-U,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..oFKeKIrHEWZUgYzCXNsA_w.sUjV6JcA80TptH-qmy6vAuLRBVWX_omdwxengBIM7jJwz3O9K3hn2hz6of5iv1ZEQ_Jk6FCoVsuZMpJHkUxJVofjaSlTEd76K2htJBo0kBmwlxlcu_fBihBgvGY6v0GMwHYucVeTakhgwDWcrvuRtXL7v7B8yoPlgFXwhpkv0so.Rv_Hvo0gCqwnK7_kvriUmw",
+      "drmServerId": "PR-TENANTNAME-SSM-BAD",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/prls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/notValid",
+      "drm": "Playready",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM Encrypted BAD": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd?SSM1KBig Buck Bunny",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaHRtbDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.fOHrdSlUn2tEMGq9dzeW9oM_x0zTCN4bXvLss1PA7-U,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..oFKeKIrHEWZUgYzCXNsA_w.sUjV6JcA80TptH-qmy6vAuLRBVWX_omdwxengBIM7jJwz3O9K3hn2hz6of5iv1ZEQ_Jk6FCoVsuZMpJHkUxJVofjaSlTEd76K2htJBo0kBmwlxlcu_fBihBgvGY6v0GMwHYucVeTakhgwDWcrvuRtXL7v7B8yoPlgFXwhpkv0so.Rv_Hvo0gCqwnK7_kvriUmw",
+      "drmServerId": "WV-TENANTNAME-SSM-BAD",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/notValid",
+      "drm": "Widevine",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM Encrypted VOD": {
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjIsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.e0vnBXLcms1RhVewSfaDHezeyzHrBIbWO0ilkXNeeyk,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..kOcUUDjPTXu8L-EI7NAoVw.4KcRxOA5BgJ5cKMTEkSK1eH847gPw3Dq8-Det1e-Nmgdn358xbnU8oQivDGsMNjKUWtUOe-X4NLrRJ0VevkDacNn27K3pYozFSvLD9fGI0i8VOGpqx9B47ymnR5R9jpldUXoLO9gF4o0id_WVNIK4xAy00dWzz7UFngl4ZobxHY.q970zMGD6K-cm4rZ6bqc2A",
+      "certificateURL": "",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
+      "drm": "widevine",
+      "drm_key_request_properties": {
+        "Accept": "application/octet-stream",
+        "Content-Type": "application/octet-stream",
+        "nv-tenant-id": "TENANTNAME"
+      },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      },
+      "expectedOutput": {
+        "duration": 596,
+        "availableBitrates": [
+          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+        ],
+        "tracks": {
+          "textTracks": [],
+          "audioTracks": [
+            {
+              "language": "und",
+              "encodeType": 0,
+              "title": "und[AAC]"
+            }
+          ]
+        }
+      }
+    },
+    "SSM PlayReady Encrypted VOD": {
+      "url": "https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjIsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.e0vnBXLcms1RhVewSfaDHezeyzHrBIbWO0ilkXNeeyk,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..kOcUUDjPTXu8L-EI7NAoVw.4KcRxOA5BgJ5cKMTEkSK1eH847gPw3Dq8-Det1e-Nmgdn358xbnU8oQivDGsMNjKUWtUOe-X4NLrRJ0VevkDacNn27K3pYozFSvLD9fGI0i8VOGpqx9B47ymnR5R9jpldUXoLO9gF4o0id_WVNIK4xAy00dWzz7UFngl4ZobxHY.q970zMGD6K-cm4rZ6bqc2A",
+      "certificateURL": "",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/prls/contentlicenseservice/v1/licenses",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
+      "drm": "playready",
+      "drm_key_request_properties": {
+        "Accept": "application/octet-stream",
+        "Content-Type": "application/octet-stream",
+        "nv-tenant-id": "TENANTNAME"
+      },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "Multi Track Content": {
+      "url": "https://replacemewithyourown.com/vod/dash/clear/harmonic/s4c-multisubs_TTML/manifest.mpd",
+      "mimeType": "application/dash+xml",
+      "expectedOutput": {
+        "eventsExpected": [
+          {
+            "event": "onAudioTrackSelected",
+            "payload": {
+              "index": 1
+            }
+          },
+          {
+            "event": "onTracksChanged",
+            "payload": {
+              "textTracks": [
+                {
+                  "language": "en",
+                  "encodeType": 4,
+                  "title": "en[SMPTE]",
+                  "characteristics": []
+                },
+                {
+                  "language": "cy",
+                  "encodeType": 4,
+                  "title": "cy[SMPTE]",
+                  "characteristics": []
+                }
+              ],
+              "audioTracks": [
+                {
+                  "language": "nar",
+                  "encodeType": 0,
+                  "title": "nar[AAC]"
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]"
+                },
+                {
+                  "language": "cy",
+                  "encodeType": 0,
+                  "title": "cy[AAC]"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "VOD Long Play": {
+      "url": "https://replacemewithyourown.com/vod/dash/scramble/planetearth-jungle_25fps_5mbps_4hr/planetearth-jungle_1.mpd",
+      "mimeType": "application/dash+xml",
+      "token": "eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMGMyOGYyNzEtMGI1Zi00MWRiLTk1NTItODJiMDBmYzYzZDZlIl0sImNvbnRlbnRJZCI6InBsYW5ldGVhcnRoLWp1bmdsZSIsInN0b3JhYmxlIjp0cnVlLCJlbmNyeXB0aW9uTWV0aG9kIjoiUkFXX0FFU18xMjhfQ1RSX0NFTkMiLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.csMCk4sGTntUGzJL-MkscgBWUz3tj8Vsr5EXJ4o38_U,eyJrY0lkcyI6WyIwYzI4ZjI3MS0wYjVmLTQxZGItOTU1Mi04MmIwMGZjNjNkNmUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..bLg-oHUm9H2vnaIRFYXWwg.9-iWXMN8btmgN0vzzNwLfkuguAsqa_c_K3_RSIkK-uFgpfDmazyZiufUBFERMR1-Jy2uqC_b_Zlot-l0v62vgp7fvPDqLIOoQEDwHBJ0lZvxK3DgyAWf6kV1RAJSDzvcR9zKOPNyRQ25r5I03vRTbU0BfbGkwV0M_nkQsYrtMwY.VCZhDtRypyPQWASFa_aXTA",
+      "drmServerId": "WV-TENANTNAME",
+      "certificateURL": "",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "drm": "widevine,playready",
+      "drm_key_request_properties": {
+        "Accept": "application/octet-stream",
+        "Content-Type": "application/octet-stream",
+        "nv-tenant-id": "TENANTNAME"
+      },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "SSM DASH Killable": {
+      "mimeType": "application/dash+xml",
+      "url": "https://replacemewithyourown.com/demo/content/ed_big_buck_bunny_1080p/big_buck_bunny_wv_only.mpd",
+      "licenseURL": "https://tenantname.anycast.nagra.com/TENANTNAME/wvls/contentlicenseservice/v1/licenses",
+      "certificateURL": "",
+      "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
+      "killServer": "https://tenantname-op.anycast.nagra.com/TENANTNAME/ssm/v1/sessions/killAccountSessions",
+      "drm": "Widevine",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    }
+  }
+}

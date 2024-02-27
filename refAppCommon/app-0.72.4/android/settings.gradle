@@ -1,0 +1,6 @@
+rootProject.name = 'App072'
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')
+include ':libs'
+project(':libs').projectDir = new File('../node_modules/@nagra/react-otvplayer/android/libs')

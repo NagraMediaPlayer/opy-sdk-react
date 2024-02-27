@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./temp",
+    "paths": {
+      "*": [
+        "*",
+        "node_modules/*",
+        "../otvplayer-0.67.4/node_modules/*"
+      ]
+    },
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "lib": [
+      "es2015",
+      "dom",
+      "es2017",
+      "es6",
+      "es2018"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": false,
+    "noEmit": false,
+    "strict": false,
+    "downlevelIteration": true,
+    "types": [
+      "react",
+    ]
+  },
+  "files": [
+    "../src/OTVPlayer.handheld.tsx",
+    "../src/common/enums.ts"
+  ]
+}

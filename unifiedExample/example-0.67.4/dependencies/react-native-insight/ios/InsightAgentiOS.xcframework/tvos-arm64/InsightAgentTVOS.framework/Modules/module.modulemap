@@ -1,0 +1,11 @@
+framework module InsightAgentTVOS {
+  umbrella header "InsightAgentTVOS.h"
+
+  export *
+  module * { export * }
+}
+
+module InsightAgentTVOS.Swift {
+    header "InsightAgentTVOS-Swift.h"
+    requires objc
+}

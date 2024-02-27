@@ -1,0 +1,114 @@
+diff --git a/unifiedExample/src/Menu.tsx b/unifiedExample/src/Menu.tsx
+index e87c7400..6f563dfc 100644
+--- a/unifiedExample/src/Menu.tsx
++++ b/unifiedExample/src/Menu.tsx
+@@ -4,15 +4,15 @@ import EncryptedPlayback from "./EncryptedPlayback";
+ import TrackSelection from "./TrackSelection";
+ import ResolutionAndBitRateCapping from "./ResolutionAndBitRateCapping";
+ import Startover from "./Startover";
+-import Stop from "./Stop";
++// import Stop from "./Stop";
+ import TVKCloud from "./TVKCloud";
+ import TVKUEX3 from "./TVKUEX3";
+ import Statistics from "./Statistics";
+-import Insight from "./Insight";
++// import Insight from "./Insight";
+ import SSMWidevine from "./SSMWidevine";
+ import SSMPlayReady from "./SSMPlayReady";
+ import SSMFairPlay from "./SSMFairPlay";
+-import SSMTVKey from "./SSMTVKey";
++// import SSMTVKey from "./SSMTVKey";
+ import PreferredAudioLanguage from "./PreferredAudioLanguage";
+ import { View, Button, Text, TouchableOpacity, Platform } from "react-native";
+ import React, { useEffect, useReducer } from "react";
+@@ -171,13 +171,13 @@ function HomeScreen({ navigation }) {
+           registrationCallback={onRegistration}
+         />)}
+ 
+-      <ExampleButton
++      {/* <ExampleButton
+         navigation={navigation}
+         buttonText="Stop"
+         focusLabel={state.current}
+         setFocusLabel={setFocusedIndex}
+         registrationCallback={onRegistration}
+-      />
++      /> */}
+ 
+       {!isSafari() && <ExampleButton
+         navigation={navigation}
+@@ -212,14 +212,14 @@ function HomeScreen({ navigation }) {
+           registrationCallback={onRegistration}
+         />)}
+ 
+-      {isTVKeyCapable() && (
++      {/* {isTVKeyCapable() && (
+         <ExampleButton
+           navigation={navigation}
+           buttonText="SSM TVKey"
+           focusLabel={state.current}
+           setFocusLabel={setFocusedIndex}
+           registrationCallback={onRegistration}
+-        />)}
++        />)} */}
+ 
+       <ExampleButton
+         navigation={navigation}
+@@ -229,13 +229,13 @@ function HomeScreen({ navigation }) {
+         registrationCallback={onRegistration}
+       />
+ 
+-      <ExampleButton
++      {/* <ExampleButton
+         navigation={navigation}
+         buttonText="Insight"
+         focusLabel={state.current}
+         setFocusLabel={setFocusedIndex}
+         registrationCallback={onRegistration}
+-      />
++      /> */}
+       <ExampleButton
+         navigation={navigation}
+         buttonText="Thumbnails"
+@@ -319,11 +319,11 @@ function Menu() {
+           component={Statistics}
+           options={{ title: "Statistics" }}
+         />
+-        <Stack.Screen
++        {/* <Stack.Screen
+           name="Insight"
+           component={Insight}
+           options={{ title: "Insight" }}
+-        />
++        /> */}
+         <Stack.Screen
+           name="SSM PlayReady"
+           component={SSMPlayReady}
+@@ -339,11 +339,11 @@ function Menu() {
+           component={TVKCloud}
+           options={{ title: "TVKCloud" }}
+         />
+-        <Stack.Screen
++        {/* <Stack.Screen
+           name="Stop"
+           component={Stop}
+           options={{ title: "Stop" }}
+-        />
++        /> */}
+         <Stack.Screen
+           name="Startover"
+           component={Startover}
+@@ -364,11 +364,11 @@ function Menu() {
+           component={SSMFairPlay}
+           options={{ title: "SSM FairPlay" }}
+         />
+-        <Stack.Screen
++        {/* <Stack.Screen
+           name="SSM TVKey"
+           component={SSMTVKey}
+           options={{ title: "SSM TVKey" }}
+-        />
++        /> */}
+         <Stack.Screen
+           name="Encrypted Playback"
+           component={EncryptedPlayback}

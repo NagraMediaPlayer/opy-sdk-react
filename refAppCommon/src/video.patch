@@ -1,0 +1,840 @@
+diff --git a/refAppCommon/src/components/Video.tsx b/refAppCommon/src/components/Video.tsx
+index d1bb9130..51a59ea6 100644
+--- a/refAppCommon/src/components/Video.tsx
++++ b/refAppCommon/src/components/Video.tsx
+@@ -40,7 +40,6 @@ import StatisticsLogging from './StatisticsLogging';
+ import ActionButton from './common/ActionButton';
+ import assets from '../constants/assets';
+ import { Slider } from 'react-native-elements';
+-import RNInsight from '@nagra/react-native-insight';
+ 
+ import {
+   CONTENT_TYPE,
+@@ -236,13 +235,7 @@ const Video = () => { //NOSONAR
+   const toggleStatisticsButton = () =>
+     setStatisticsEnabled((previousState) => !previousState);
+   const toggleInsightButton = () => {
+-    // Close down if it was on and now turned of
+-    isInsightEnabled && RNInsight.terminate();
+ 
+-    // But re-init if its the other direction
+-    initializeRNInsight(!isInsightEnabled);
+-
+-    setInsightEnabled((previousState) => !previousState);
+   };
+ 
+   const toggleInfo = () => {
+@@ -297,9 +290,6 @@ const Video = () => { //NOSONAR
+         break;
+ 
+       case 'Seek Back':
+-        if (Platform.OS !== 'web') {
+-          isInsightEnabled && RNInsight.seeking();
+-        }
+         // @ts-ignore
+         otvplayerInstance.current.seek(
+           Math.max(0, currentPos - seekTime),
+@@ -307,9 +297,6 @@ const Video = () => { //NOSONAR
+         break;
+ 
+       case 'Seek Fwd':
+-        if (Platform.OS !== 'web') {
+-          isInsightEnabled && RNInsight.seeking();
+-        }
+         // @ts-ignore
+         otvplayerInstance.current.seek(currentPos + seekTime);
+         break;
+@@ -503,15 +490,7 @@ const Video = () => { //NOSONAR
+     }
+   };
+ 
+-  const initializeRNInsight = (enabled: boolean) => {
+-    if (Platform.OS === 'web') {
+-      enabled && RNInsight.initialize(insightConfig);
+-      enabled && RNInsight.setUserInfo(userInfo);
+-    } else {
+-      // @ts-ignore
+-      enabled && RNInsight.initialize(insightConfig, userInfo);
+-    }
+-  };
++
+ 
+ 
+   useEffect(() => {
+@@ -521,7 +500,6 @@ const Video = () => { //NOSONAR
+     opVaultDownload();
+     tvEventHandler.enable(null, rcuKeyHandler);
+     AppState.addEventListener('change', handleAppStateChange);
+-    initializeRNInsight(isInsightEnabled);
+ 
+     // Initialising source list index
+     currentSourceListIndex = 0;
+@@ -670,14 +648,12 @@ const Video = () => { //NOSONAR
+         content['type'] = 'LIVE';
+         content['duration'] = 0
+         console.log('Insight content', content);
+-        isInsightEnabled && RNInsight.setLiveContent(content);
+       } else {
+         content['contentId'] = 'VODContentId';
+         content['contentName'] = name;
+         content['type'] = 'VOD';
+         content['duration'] = event.duration;
+         console.log('Insight content', content);
+-        isInsightEnabled && RNInsight.setVodContent(content);
+       }
+     }
+   }, []);
+@@ -696,32 +672,11 @@ const Video = () => { //NOSONAR
+       onLoadStartTimeDifference,
+     );
+     duration = 0;
+-    isInsightEnabled && RNInsight.play();
+   }, []);
+ 
+   const statisticsUpdate = useCallback((event: any) => {
+     console.log('App :: onStatisticsUpdate received::' + JSON.stringify(event));
+ 
+-    /* Report available bitrates to insight only once on playback start */
+-    if (statisticsData?.network.adaptiveStreaming.availableBitrates === undefined) {
+-      isInsightEnabled &&
+-        RNInsight.setAvailableBitrates(event.network.adaptiveStreaming.availableBitrates);
+-    }
+-    /* Report selected bitrate during playback start and when a different bitrate is selected in between playback */
+-    if (
+-      statisticsData?.network.adaptiveStreaming.selectedBitrate === undefined ||
+-      statisticsData?.network.adaptiveStreaming.selectedBitrate != event.network.adaptiveStreaming.selectedBitrate
+-    ) {
+-      isInsightEnabled && RNInsight.setBitrate(event.network.adaptiveStreaming.selectedBitrate);
+-    }
+-    /* Report frame Drops during start and if frame Drops changes */
+-    if (
+-      statisticsData?.rendering.frameDrops === undefined ||
+-      statisticsData?.rendering.frameDrops != event.rendering.frameDrops
+-    ) {
+-      isInsightEnabled && RNInsight.setFrameDrops(event.rendering.frameDrops);
+-    }
+-
+     handleEvent('onStatisticsUpdate received');
+     statisticsData = event;
+   }, []);
+@@ -746,14 +701,12 @@ const Video = () => { //NOSONAR
+         console.log('OTT :: onPlaying :: Difference(in seconds) ' + onAutoplay);
+       }
+     }
+-    isInsightEnabled && RNInsight.playing();
+   }, []);
+ 
+   const pauseEventReceived = useCallback(() => {
+     setPlaying(false);
+     console.log('onPaused in App');
+     handleEvent('onPaused received');
+-    isInsightEnabled && RNInsight.pause();
+   }, []);
+ 
+   const seekEventReceived = useCallback((event: OnSeekParam) => {
+@@ -763,19 +716,16 @@ const Video = () => { //NOSONAR
+     handleEvent('onSeek position :: ' + seekPos);
+     currentPos = currentPlaybackPos;
+     setProgressPosition(currentPlaybackPos);
+-    isInsightEnabled && RNInsight.seekTo(event.seekPosition);
+   }, []);
+ 
+   const waitingEventReceived = useCallback(() => {
+     console.log('onWaiting in App');
+     handleEvent('onWaiting received');
+-    isInsightEnabled && RNInsight.buffering();
+   }, []);
+ 
+   const endEventReceived = useCallback(() => {
+     console.log('onEnd in App');
+     handleEvent('onEnd received');
+-    isInsightEnabled && RNInsight.stop();
+   }, []);
+ 
+   const audioTrackSelection = useCallback((event: OnAudioTrackSelectedParam) => {
+@@ -788,7 +738,6 @@ const Video = () => { //NOSONAR
+       mediaTracks.audioTracks[selectedAudioTrackIndex]
+     ) {
+       lang = mediaTracks.audioTracks[selectedAudioTrackIndex].language;
+-      isInsightEnabled && RNInsight.setAudioLanguage(lang);
+     }
+     console.log('onAudioTrackSelected in App::::' + lang);
+     handleEvent('onAudioTrackSelected received :: audioLanguage :: ' + lang);
+@@ -802,9 +751,7 @@ const Video = () => { //NOSONAR
+         ? //@ts-ignore
+         mediaTracks.textTracks[selectedTextTrackIndex].language
+         : 'text track disabled';
+-    if (selectedTextTrackIndex !== -1) {
+-      isInsightEnabled && RNInsight.setSubtitleLanguage(lang);
+-    }
++
+     console.log('onTextTrackSelected in App::::' + lang);
+     handleEvent('onTextTrackSelected received :: textLanguage :: ' + lang);
+   }, []);
+@@ -863,18 +810,12 @@ const Video = () => { //NOSONAR
+       paused = true;
+     }
+ 
+-    isInsightEnabled &&
+-      RNInsight.addErrorEvent(
+-        event.code.toString(),
+-        ' Error: ' + event.nativeError.details.errorMessage,
+-      );
+   }, []);
+ 
+   const stoppedEventReceived = useCallback(() => {
+     setPlaying(false);
+     console.log('onStopped in App');
+     handleEvent('onStopped received');
+-    isInsightEnabled && RNInsight.stop();
+   }, []);
+ 
+   const setVideoContent = (itemIndex: number) => {
+@@ -911,7 +852,6 @@ const Video = () => { //NOSONAR
+     selectedStreamData.current = theStream;
+     statisticsData = undefined;
+ 
+-    isInsightEnabled && RNInsight.stop();
+     //Reset the contentTokenTimer and isTimerOn flag on every zap
+     console.log("Reset and Restart content token timer");
+     clearTimeout(tokenRequestTimer);
+@@ -1120,339 +1060,338 @@ const Video = () => { //NOSONAR
+   return (
+     <>
+       <Header toggleInfo={toggleInfo} infoEnabled={infoEnabled} focusedControl={focusedControl} setFocusedControl={setFocusedControl} infoLabel={"Info"} />
+-      <View style={videoContainerStyle}>
+-        <View
+-          style={[
+-            videoStyles.videoSubHeader,
+-            {
+-              flexDirection: 'row',
+-              flexWrap: 'wrap',
+-              justifyContent: 'space-around',
+-              alignItems: 'center',
+-              paddingLeft: 5,
+-              paddingRight: 5,
+-            },
+-          ]}
+-          focusable={false}>
+-          {Platform.OS !== 'web' && (
+-            <Text style={commonStyles.whiteBoldText}>
+-              SERVER : {selectedServer === -1 ? 'none' : serverList[selectedServer].name}
+-            </Text>
+-          )}
+-          <Text style={commonStyles.whiteBoldText}>
+-            PLAYING : {selectedStream.name}
+-          </Text>
+-          {Platform.OS !== 'web' && selectedServer !== -1
+-            && (serverList[selectedServer].name === "OPY_MDRM_SSM_Cloud" ||
+-              serverList[selectedServer].name === "OPY_FPS_SSP_SSM")
+-            && (selectedStream.name.includes('Encrypted') ||
+-              selectedStream.name.includes('SSM')) && (
++      {//@ts-ignore
++        <View style={videoContainerStyle}>
++          <View
++            style={[
++              videoStyles.videoSubHeader,
++              {
++                flexDirection: 'row',
++                flexWrap: 'wrap',
++                justifyContent: 'space-around',
++                alignItems: 'center',
++                paddingLeft: 5,
++                paddingRight: 5,
++              },
++            ]}
++            focusable={false}>
++            {Platform.OS !== 'web' && (
+               <Text style={commonStyles.whiteBoldText}>
+-                TokenRequestTimeout : {contentTokenTimeout}
++                SERVER : {selectedServer === -1 ? 'none' : serverList[selectedServer].name}
+               </Text>
+             )}
+-          <Text style={commonStyles.whiteBoldText}>TYPE: {contentType}</Text>
+-          {selectedPreferredAudio !== "" && (
+             <Text style={commonStyles.whiteBoldText}>
+-              PREFERRED AUDIO: {selectedPreferredAudio}
++              PLAYING : {selectedStream.name}
+             </Text>
+-          )}
+-          {audioTracks && audioTracks.length > 0 && (
+-            <Text style={commonStyles.whiteBoldText}>
+-              AUDIO: {audioTracks[selectedAudio].title}
+-            </Text>
+-          )}
+-          {textTracks && textTracks.length > 0 && (
+-            <Text style={commonStyles.whiteBoldText}>
+-              SUBTITLE:{' '}
+-              {selectedTextTrack === -1
+-                ? 'Disabled'
+-                : textTracks[selectedTextTrack].title}
+-            </Text>
+-          )}
+-        </View>
+-        <View
+-          style={
+-            isFullscreenEnabled && (Platform.OS !== 'web' || !Platform.isTV)
+-              ? (isLandscape()
+-                ? videoStyles.fullscreenModeLandscape
+-                : videoStyles.fullscreenMode)
+-              : ((Platform.isTV || Platform.OS === 'web') ? videoStyles.contentWebAndTVStyle : videoStyles.contentStyle)
+-          }
+-          focusable={false}>
+-          <OTVPlayer
+-            style={{
+-              top: 0,
+-              left: 0,
+-              width: '100%',
+-              height: '100%',
+-            }}
+-            ref={otvplayerInstance}
+-            source={currentSource}
+-            progressUpdateInterval={1}
+-            autoplay={true}
+-            muted={muted}
+-            volume={volume}
+-            maxBitrate={maxBitrate}
+-            maxResolution={selectedResolution}
+-            thumbnail={thumbnailInfo}
+-            onLoad={loadEventReceived}
+-            onLoadStart={loadStartEventReceived}
+-            onStatisticsUpdate={statisticsUpdate}
+-            onPlay={playEventReceived}
+-            onPlaying={playingEventReceived}
+-            onPaused={pauseEventReceived}
+-            onProgress={onVideoProgress}
+-            onSeek={seekEventReceived}
+-            onEnd={endEventReceived}
+-            onWaiting={waitingEventReceived}
+-            onTracksChanged={tracksChanged}
+-            onBitratesAvailable={bitratesAvailable}
+-            onSelectedBitrateChanged={onSelectedBitrateChanged}
+-            onDownloadResChanged={resolutionChanged}
+-            onAudioTrackSelected={audioTrackSelection}
+-            onTextTrackSelected={textTrackSelection}
+-            onError={errorEventReceived}
+-            onStopped={stoppedEventReceived}
+-            onThumbnailAvailable={onThumbnailAvailable}
+-            {...(selectedStream.callbackMode ? { onLicenseRequest: getDRMLicense } : {})}
+-          />
+-        </View>
+-        <View style={videoStyles.videoControlsBanner}>
+-
+-          <VideoControls
+-            playing={playing}
+-            playContent={playContent}
+-            pauseContent={pauseContent}
+-            position={progressPosition}
+-            onSeekBack={onSeekBack}
+-            onSeekForward={onSeekForward}
+-            stopContent={stopContent}
+-            duration={duration}
+-            toggleFullscreenButton={toggleFullscreenButton}
+-            isFullscreenEnabled={isFullscreenEnabled}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-          />
+-          <Slider
+-            minimumValue={0}
+-            maximumValue={1}
+-            value={sliderValue}
+-            onValueChange={(value) => {
+-              if (isThumbnailAvailable) {
+-                setThumbnailInfo({ ...thumbnailInfo, positionInSeconds: value * duration, display: true })
+-              }
+-            }}
+-            onSlidingStart={() => {
+-              if (!paused) {
+-                //@ts-ignore
+-                otvplayerInstance.current.pause();
+-              }
+-              if (Platform.OS !== 'web') {
+-                isInsightEnabled && RNInsight.seeking();
+-              }
+-            }}
+-            onSlidingComplete={(value) => {
+-              if (isThumbnailAvailable) {
+-                setThumbnailInfo({ ...thumbnailInfo, positionInSeconds: value * duration, display: true });
+-              }
+-              //@ts-ignore
+-              otvplayerInstance.current.seek(value * duration);
+-              if (!paused) {
+-                //@ts-ignore
+-                otvplayerInstance.current.play();
+-              }
+-              if (isThumbnailAvailable) {
+-                setTimeout(() => {
+-                  setThumbnailInfo({ ...thumbnailInfo, display: false });
+-                }, 2000);
+-              }
+-
+-              console.log('Sliding  ' + value + 'Duration ' + duration);
+-            }}
+-            thumbStyle={{ height: 15, width: 15 }}
+-            thumbTintColor={'#343434'}
+-            style={{ width: (isHandheld || isMobileWeb()) ? '90%' : '20%' }}></Slider>
+-
+-          <VolumeControl
+-            muted={muted}
+-            volume={volume}
+-            onUp={volumeUp}
+-            onDown={volumeDown}
+-            muteContent={muteContent}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-          />
+-          <View style={videoStyles.rowContainerSmall}>
+-            <ActionButton onPress={toggleLogButton} imgUrl={assets.log} focusedControl={focusedControl} label={'LogLevel'} setFocusedControl={setFocusedControl} />
+-            <ActionButton onPress={toggleEventLogButton} imgUrl={assets.events} focusedControl={focusedControl} label={'events'} setFocusedControl={setFocusedControl} />
+-            <ActionButton
+-              onPress={toggleBitrateButton}
+-              imgUrl={assets.resolution}
++            {Platform.OS !== 'web' && selectedServer !== -1
++              && (serverList[selectedServer].name === "OPY_MDRM_SSM_Cloud" ||
++                serverList[selectedServer].name === "OPY_FPS_SSP_SSM")
++              && (selectedStream.name.includes('Encrypted') ||
++                selectedStream.name.includes('SSM')) && (
++                <Text style={commonStyles.whiteBoldText}>
++                  TokenRequestTimeout : {contentTokenTimeout}
++                </Text>
++              )}
++            <Text style={commonStyles.whiteBoldText}>TYPE: {contentType}</Text>
++            {selectedPreferredAudio !== "" && (
++              <Text style={commonStyles.whiteBoldText}>
++                PREFERRED AUDIO: {selectedPreferredAudio}
++              </Text>
++            )}
++            {audioTracks && audioTracks.length > 0 && (
++              <Text style={commonStyles.whiteBoldText}>
++                AUDIO: {audioTracks[selectedAudio].title}
++              </Text>
++            )}
++            {textTracks && textTracks.length > 0 && (
++              <Text style={commonStyles.whiteBoldText}>
++                SUBTITLE:{' '}
++                {selectedTextTrack === -1
++                  ? 'Disabled'
++                  : textTracks[selectedTextTrack].title}
++              </Text>
++            )}
++          </View>
++          <View
++            style={
++              isFullscreenEnabled && (Platform.OS !== 'web' || !Platform.isTV)
++                ? (isLandscape()
++                  ? videoStyles.fullscreenModeLandscape
++                  : videoStyles.fullscreenMode)
++                : ((Platform.isTV || Platform.OS === 'web') ? videoStyles.contentWebAndTVStyle : videoStyles.contentStyle)
++            }
++            focusable={false}>
++            <OTVPlayer
++              style={{
++                top: 0,
++                left: 0,
++                width: '100%',
++                height: '100%',
++              }}
++              ref={otvplayerInstance}
++              source={currentSource}
++              progressUpdateInterval={1}
++              autoplay={true}
++              muted={muted}
++              volume={volume}
++              maxBitrate={maxBitrate}
++              maxResolution={selectedResolution}
++              thumbnail={thumbnailInfo}
++              onLoad={loadEventReceived}
++              onLoadStart={loadStartEventReceived}
++              onStatisticsUpdate={statisticsUpdate}
++              onPlay={playEventReceived}
++              onPlaying={playingEventReceived}
++              onPaused={pauseEventReceived}
++              onProgress={onVideoProgress}
++              onSeek={seekEventReceived}
++              onEnd={endEventReceived}
++              onWaiting={waitingEventReceived}
++              onTracksChanged={tracksChanged}
++              onBitratesAvailable={bitratesAvailable}
++              onSelectedBitrateChanged={onSelectedBitrateChanged}
++              onDownloadResChanged={resolutionChanged}
++              onAudioTrackSelected={audioTrackSelection}
++              onTextTrackSelected={textTrackSelection}
++              onError={errorEventReceived}
++              onStopped={stoppedEventReceived}
++              onThumbnailAvailable={onThumbnailAvailable}
++              {...(selectedStream.callbackMode ? { onLicenseRequest: getDRMLicense } : {})}
++            />
++          </View>
++          <View style={videoStyles.videoControlsBanner}>
++
++            <VideoControls
++              playing={playing}
++              playContent={playContent}
++              pauseContent={pauseContent}
++              position={progressPosition}
++              onSeekBack={onSeekBack}
++              onSeekForward={onSeekForward}
++              stopContent={stopContent}
++              duration={duration}
++              toggleFullscreenButton={toggleFullscreenButton}
++              isFullscreenEnabled={isFullscreenEnabled}
+               focusedControl={focusedControl}
+-              label={'Bitrate'}
+               setFocusedControl={setFocusedControl}
+             />
+-            <ActionButton
+-              onPress={toggleStatisticsButton}
+-              imgUrl={assets.statistics}
++            <Slider
++              minimumValue={0}
++              maximumValue={1}
++              value={sliderValue}
++              onValueChange={(value) => {
++                if (isThumbnailAvailable) {
++                  setThumbnailInfo({ ...thumbnailInfo, positionInSeconds: value * duration, display: true })
++                }
++              }}
++              onSlidingStart={() => {
++                if (!paused) {
++                  //@ts-ignore
++                  otvplayerInstance.current.pause();
++                }
++
++              }}
++              onSlidingComplete={(value) => {
++                if (isThumbnailAvailable) {
++                  setThumbnailInfo({ ...thumbnailInfo, positionInSeconds: value * duration, display: true });
++                }
++                //@ts-ignore
++                otvplayerInstance.current.seek(value * duration);
++                if (!paused) {
++                  //@ts-ignore
++                  otvplayerInstance.current.play();
++                }
++                if (isThumbnailAvailable) {
++                  setTimeout(() => {
++                    setThumbnailInfo({ ...thumbnailInfo, display: false });
++                  }, 2000);
++                }
++
++                console.log('Sliding  ' + value + 'Duration ' + duration);
++              }}
++              thumbStyle={{ height: 15, width: 15 }}
++              thumbTintColor={'#343434'}
++              style={{ width: (isHandheld || isMobileWeb()) ? '90%' : '20%' }}></Slider>
++
++            <VolumeControl
++              muted={muted}
++              volume={volume}
++              onUp={volumeUp}
++              onDown={volumeDown}
++              muteContent={muteContent}
+               focusedControl={focusedControl}
+-              label={'Stats'}
+               setFocusedControl={setFocusedControl}
+             />
+-            {(Platform.OS === 'web' || Platform.isTV) && (
+-              <>
++            <View style={videoStyles.rowContainerSmall}>
++              <ActionButton onPress={toggleLogButton} imgUrl={assets.log} focusedControl={focusedControl} label={'LogLevel'} setFocusedControl={setFocusedControl} />
++              <ActionButton onPress={toggleEventLogButton} imgUrl={assets.events} focusedControl={focusedControl} label={'events'} setFocusedControl={setFocusedControl} />
++              <ActionButton
++                onPress={toggleBitrateButton}
++                imgUrl={assets.resolution}
++                focusedControl={focusedControl}
++                label={'Bitrate'}
++                setFocusedControl={setFocusedControl}
++              />
++              <ActionButton
++                onPress={toggleStatisticsButton}
++                imgUrl={assets.statistics}
++                focusedControl={focusedControl}
++                label={'Stats'}
++                setFocusedControl={setFocusedControl}
++              />
++              {(Platform.OS === 'web' || Platform.isTV) && (
++                <>
++                  <ActionButton
++                    onPress={toggleKeyMapsButton}
++                    imgUrl={assets.keypad}
++                    focusedControl={focusedControl}
++                    label={'KeyHints'}
++                    setFocusedControl={setFocusedControl}
++                  />
++                </>
++              )}
++              <ActionButton
++                onPress={toggleInsightButton}
++                imgUrl={isInsightEnabled ? assets.insightOn : assets.insightOff}
++                focusedControl={focusedControl}
++                label={'InsightInfo'}
++                setFocusedControl={setFocusedControl}
++              />
++              {!isHandheld && (
+                 <ActionButton
+-                  onPress={toggleKeyMapsButton}
+-                  imgUrl={assets.keypad}
++                  onPress={() => rcuKeyHandler(null, { eventType: "Show TN" })}
++                  imgUrl={thumbnailInfo.display ? assets.thumbnailOn : assets.thumbnailOff}
+                   focusedControl={focusedControl}
+-                  label={'KeyHints'}
++                  label={'Show TN'}
+                   setFocusedControl={setFocusedControl}
+                 />
+-              </>
+-            )}
+-            <ActionButton
+-              onPress={toggleInsightButton}
+-              imgUrl={isInsightEnabled ? assets.insightOn : assets.insightOff}
++              )}
++            </View>
++
++            <View style={videoStyles.rowContainerSmall}>
++              <Text style={videoStyles.contentType}>Set Seek Time</Text>
++              <SeekTimeControl
++                seekTime={seekTime}
++                onDown={seekTimeDown}
++                onUp={seekTimeUp}
++                focusedControl={focusedControl}
++                setFocusedControl={setFocusedControl}
++              />
++            </View>
++
++            <VideoPicker
++              setVideoContent={setVideoContent}
++              sourceList={
++                Platform.OS === 'web' ? sourceList : updatedStreamList.current
++              }
++              selectedStream={{ selectedStream }}
+               focusedControl={focusedControl}
+-              label={'InsightInfo'}
+               setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
+             />
+-            {!isHandheld && (
+-              <ActionButton
+-                onPress={() => rcuKeyHandler(null, { eventType: "Show TN" })}
+-                imgUrl={thumbnailInfo.display ? assets.thumbnailOn : assets.thumbnailOff}
++            {Platform.OS !== 'web' && (
++              <ServerPicker
++                serverList={serverList}
++                selectedServer={selectedServer}
++                onSelect={selectServer}
++              />
++            )}
++            {!isSafari() && (
++              <PreferredAudioPicker
++                preferredAudioTracks={preferredAudioTracks}
++                selectedPreferredAudio={selectedPreferredAudio}
++                onPreferredAudioChange={setPreferredAudioTrack}
+                 focusedControl={focusedControl}
+-                label={'Show TN'}
+                 setFocusedControl={setFocusedControl}
++                focusOnEnter={focusOnEnter}
++                setFocusOnEnter={setFocusOnEnter}
+               />
+             )}
+-          </View>
+-
+-          <View style={videoStyles.rowContainerSmall}>
+-            <Text style={videoStyles.contentType}>Set Seek Time</Text>
+-            <SeekTimeControl
+-              seekTime={seekTime}
+-              onDown={seekTimeDown}
+-              onUp={seekTimeUp}
++            <AudioPicker
++              audioTracks={audioTracks}
++              selectedAudio={selectedAudio}
++              onAudioChange={selectAudioTrack}
+               focusedControl={focusedControl}
+               setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
+             />
+-          </View>
+-
+-          <VideoPicker
+-            setVideoContent={setVideoContent}
+-            sourceList={
+-              Platform.OS === 'web' ? sourceList : updatedStreamList.current
+-            }
+-            selectedStream={{ selectedStream }}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          {Platform.OS !== 'web' && (
+-            <ServerPicker
+-              serverList={serverList}
+-              selectedServer={selectedServer}
+-              onSelect={selectServer}
++            <SubtitlePicker
++              textTracks={textTracks}
++              selectedTextTrack={selectedTextTrack}
++              onTextTrackChange={selectTextTrack}
++              focusedControl={focusedControl}
++              setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
+             />
+-          )}
+-          {!isSafari() && (
+-            <PreferredAudioPicker
+-              preferredAudioTracks={preferredAudioTracks}
+-              selectedPreferredAudio={selectedPreferredAudio}
+-              onPreferredAudioChange={setPreferredAudioTrack}
++            <ResolutionPicker
++              resolutions={AVAILABLE_RESOLUTION}
++              selectedResolution={selectedResolutionIndex}
++              selectResolution={selectResolution}
+               focusedControl={focusedControl}
+               setFocusedControl={setFocusedControl}
+               focusOnEnter={focusOnEnter}
+               setFocusOnEnter={setFocusOnEnter}
+             />
+-          )}
+-          <AudioPicker
+-            audioTracks={audioTracks}
+-            selectedAudio={selectedAudio}
+-            onAudioChange={selectAudioTrack}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <SubtitlePicker
+-            textTracks={textTracks}
+-            selectedTextTrack={selectedTextTrack}
+-            onTextTrackChange={selectTextTrack}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <ResolutionPicker
+-            resolutions={AVAILABLE_RESOLUTION}
+-            selectedResolution={selectedResolutionIndex}
+-            selectResolution={selectResolution}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <BitratePicker
+-            bitrates={availableBitrates}
+-            selectedBitrate={selectedMaxBitrateIndex}
+-            selectBitrate={selectBitrate}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <LogLevelPicker.default
+-            levels={logLevels}
+-            selectedLevel={level}
+-            selectLogLevel={setLogLevel}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <ConnectResetPicker
+-            resetTypes={resetTypes}
+-            selectedResetType={connectResetType}
+-            setConnectResetType={setResetType}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            focusOnEnter={focusOnEnter}
+-            setFocusOnEnter={setFocusOnEnter}
+-          />
+-          <ActionButton
+-            imgUrl={assets.clear}
+-            onPress={factoryResetConnect}
+-            focusedControl={focusedControl}
+-            setFocusedControl={setFocusedControl}
+-            label={'Factory Reset'}
+-          />
+-        </View>
+-
+-        <View style={videoStyles.logContainer}>
+-          {isLogEnabled && <Logging level={LogLevelPicker.getLabel(level)} focusedControl={focusedControl} />}
+-          {isEventLogEnabled && (
+-            <EventLogging messageHistory={messageHistory} historySize={20} />
+-          )}
+-          {isBitrateLogEnabled && (
+-            <BitrateAndResolution
+-              availableBitrates={availableBitrates}
+-              availableResolution={AVAILABLE_RESOLUTION}
+-              maxBitrate={maxBitrate}
+-              selectedBitrate={selectedBitrate}
+-              selectedResolution={selectedResolution}
+-              currentResolution={currentResolution}
++            <BitratePicker
++              bitrates={availableBitrates}
++              selectedBitrate={selectedMaxBitrateIndex}
++              selectBitrate={selectBitrate}
++              focusedControl={focusedControl}
++              setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
++            />
++            <LogLevelPicker.default
++              levels={logLevels}
++              selectedLevel={level}
++              selectLogLevel={setLogLevel}
++              focusedControl={focusedControl}
++              setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
++            />
++            <ConnectResetPicker
++              resetTypes={resetTypes}
++              selectedResetType={connectResetType}
++              setConnectResetType={setResetType}
++              focusedControl={focusedControl}
++              setFocusedControl={setFocusedControl}
++              focusOnEnter={focusOnEnter}
++              setFocusOnEnter={setFocusOnEnter}
++            />
++            <ActionButton
++              imgUrl={assets.clear}
++              onPress={factoryResetConnect}
++              focusedControl={focusedControl}
++              setFocusedControl={setFocusedControl}
++              label={'Factory Reset'}
+             />
+-          )}
+-          {isStatisticsEnabled && (
+-            <StatisticsLogging statisticsData={statisticsData} />
+-          )}
+-          {isKeyMapsEnabled && <KeyHints />}
+-        </View>
+-      </View>
++          </View>
++
++          <View style={videoStyles.logContainer}>
++            {isLogEnabled && <Logging level={LogLevelPicker.getLabel(level)} focusedControl={focusedControl} />}
++            {isEventLogEnabled && (
++              <EventLogging messageHistory={messageHistory} historySize={20} />
++            )}
++            {isBitrateLogEnabled && (
++              <BitrateAndResolution
++                availableBitrates={availableBitrates}
++                availableResolution={AVAILABLE_RESOLUTION}
++                maxBitrate={maxBitrate}
++                selectedBitrate={selectedBitrate}
++                selectedResolution={selectedResolution}
++                currentResolution={currentResolution}
++              />
++            )}
++            {isStatisticsEnabled && (
++              <StatisticsLogging statisticsData={statisticsData} />
++            )}
++            {isKeyMapsEnabled && <KeyHints />}
++          </View>
++        </View>}
+     </>
+   );
+ };

@@ -1,0 +1,6 @@
+!test/commonAutoTest/commonAutoTest-0.63.4/.npmrc
+!test/commonAutoTest/commonAutoTest-0.67.4/.npmrc
+!refAppCommon/app-0.63.4/.npmrc
+!refAppCommon/app-0.67.4/.npmrc
+!unifiedExample/example-0.67.4/.npmrc
+!unifiedExample/example-0.63.4/.npmrc

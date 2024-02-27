@@ -1,0 +1,1046 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OPYSDKFPS
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreData
+import CoreMedia
+import Foundation
+@_exported import OPYSDKFPS
+import Swift
+import SystemConfiguration
+import UIKit
+import VideoToolbox
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+@objc @_inheritsConvenienceInitializers final public class OTVDefaultLicenseDelegate : OPYSDKFPS.OTVCommonLicenseDelegate {
+  @objc final public func setHTTPHeader(parameters: [Swift.String : Swift.String])
+  @objc override final public func generateHTTPHeaders(assetID: Swift.String) -> [Swift.String : Swift.String]?
+  @objc override public init(certificateURL: Foundation.URL, licenseURL: Foundation.URL)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class AssetThumbnails : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public func prepareThumbnails(delegate: any OPYSDKFPS.ThumbnailsDelegate, url: Foundation.URL)
+  public func reset()
+  public func thumbnails() -> OPYSDKFPS.ThumbnailPair?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVAudioDecoderInfo : OPYSDKFPS.OTVDecoderInfo {
+  @objc deinit
+}
+@objc public enum OTVTrackType : Swift.Int {
+  case audio
+  case subtitle
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class OTVDecoderInfoUtil {
+  public init()
+  public func getVideoDecoderInfo() -> [OPYSDKFPS.OTVVideoDecoderInfo]
+  public func getAudioDecoderInfo() -> [OPYSDKFPS.OTVAudioDecoderInfo]
+  public func isVideoDecoderSupported(xFormat: OPYSDKFPS.OTVDecoderFormat) -> Swift.Bool
+  public func isAudioDecoderSupported(xFormat: OPYSDKFPS.OTVDecoderFormat) -> Swift.Bool
+  @objc deinit
+}
+extension OPYSDKFPS.OTVLogType : Swift.Comparable {
+  public static func < (lhs: OPYSDKFPS.OTVLogType, rhs: OPYSDKFPS.OTVLogType) -> Swift.Bool
+}
+@objc public protocol OTVCustomerSSMCallback : ObjectiveC.NSObjectProtocol {
+  @objc func license(keySystem: Swift.String, payload: Foundation.Data, licenseType: OPYSDKFPS.OTVLicenseRequestType) -> OPYSDKFPS.OTVSSMLicenseResponse
+  @objc func heartbeat()
+}
+@objc public class OTVSSMLicenseResponse : ObjectiveC.NSObject {
+  public init(license: Foundation.Data? = nil, heartbeat: Swift.Int = 0, renewType: OPYSDKFPS.OTVLicenseRenewType = OTVLicenseRenewType.enforced)
+  @objc deinit
+}
+@objc(OTVLicenseRenewType) public enum OTVLicenseRenewType : Swift.Int {
+  case heartbeat
+  case enforced
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OPYSDKFPS.OTVLicenseRenewType {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+@objc(OTVLicenseRequestType) public enum OTVLicenseRequestType : Swift.Int {
+  case request
+  case renewal
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OPYSDKFPS.OTVLicenseRequestType {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+@objc public class OTVCustomerSSMDelegate : ObjectiveC.NSObject, OPYSDKFPS.OTVLicenseDelegate {
+  public init(certificate: Foundation.Data)
+  @objc deinit
+  public func setCallback(_ callback: (any OPYSDKFPS.OTVCustomerSSMCallback)?)
+  @objc public func certificate() -> Foundation.Data?
+  @objc public func scheme() -> Swift.String?
+  @objc public func contentIdentifier(url: Foundation.URL) -> Foundation.Data?
+  @objc public func ckcMessage(spc: Foundation.Data) -> Foundation.Data?
+  @objc public func ckcMessageWithID(spc: Foundation.Data, assetID: Swift.String) -> Foundation.Data?
+  @objc public func ckcMessageWith(spc: Foundation.Data, assetID: Swift.String, session: AVFoundation.AVContentKeySession, keyRequest: AVFoundation.AVContentKeyRequest) -> Foundation.Data?
+  final public func reset()
+}
+public enum Component {
+  case date(Swift.String)
+  case message
+  case level
+  case file(fullPath: Swift.Bool, fileExtension: Swift.Bool)
+  case line
+  case column
+  case function
+  case location
+  case thread
+  case block(() -> Any?)
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVIFrameThumbnailsAvailable: Foundation.Notification.Name
+  public static let OTVIFrameThumbnailsNotAvailable: Foundation.Notification.Name
+  public static let OTVIFrameThumbnailsError: Foundation.Notification.Name
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTVThumbnailView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public init(url: Foundation.URL, frame: CoreFoundation.CGRect = .zero)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc @_Concurrency.MainActor(unsafe) public func hasThumbnails() -> Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public func setTime(toSeconds seconds: Foundation.TimeInterval)
+  @objc deinit
+}
+@objc(OTVThumbnailError) public enum OTVIFrameThumbnailError : Swift.Int {
+  case positionError = 1
+  case itemError = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OPYSDKFPS.OTVIFrameThumbnailError {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+@objc public class OTVEvent : ObjectiveC.NSObject {
+  @objc public init(timestamp: Foundation.Date, type: Swift.String, command: Swift.String, extra: Swift.String?)
+  @objc @_inheritsConvenienceInitializers public class EventType : ObjectiveC.NSObject {
+    public static let eventTimeline: Swift.String
+    public static let playback: Swift.String
+    public static let licenceRequest: Swift.String
+    public static let sessionManagement: Swift.String
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc @_inheritsConvenienceInitializers public class EventCommand : ObjectiveC.NSObject {
+    @_hasMissingDesignatedInitializers public class Timeline {
+      public static let loggingStarted: Swift.String
+      public static let loggingStopped: Swift.String
+      @objc deinit
+    }
+    @objc @_inheritsConvenienceInitializers public class Playback : ObjectiveC.NSObject {
+      public static let prepared: Swift.String
+      public static let firstFrame: Swift.String
+      public static let setURL: Swift.String
+      public static let start: Swift.String
+      public static let stop: Swift.String
+      @objc override dynamic public init()
+      @objc deinit
+    }
+    @objc @_inheritsConvenienceInitializers public class LicenceRequest : ObjectiveC.NSObject {
+      public static let provisionRequestStart: Swift.String
+      public static let provisionRequestSuccess: Swift.String
+      public static let provisionRequestFailure: Swift.String
+      public static let keyRequestStart: Swift.String
+      public static let keyRequestSuccess: Swift.String
+      public static let keyRequestFailure: Swift.String
+      @objc override dynamic public init()
+      @objc deinit
+    }
+    @objc @_inheritsConvenienceInitializers public class SessionManagement : ObjectiveC.NSObject {
+      public static let setupStart: Swift.String
+      public static let setupSuccess: Swift.String
+      public static let setupFailure: Swift.String
+      public static let teardownStart: Swift.String
+      public static let teardownSuccess: Swift.String
+      public static let teardownFailure: Swift.String
+      public static let renewalStart: Swift.String
+      public static let renewalSuccess: Swift.String
+      public static let renewalFailure: Swift.String
+      public static let heartbeatStart: Swift.String
+      public static let heartbeatSuccess: Swift.String
+      public static let heartbeatFailure: Swift.String
+      @objc override dynamic public init()
+      @objc deinit
+    }
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc @_inheritsConvenienceInitializers public class ExtraKey : ObjectiveC.NSObject {
+    public static let url: Swift.String
+    public static let contentToken: Swift.String
+    public static let sessionToken: Swift.String
+    public static let error: Swift.String
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  final public let timestamp: Foundation.Date
+  final public let type: Swift.String
+  final public let command: Swift.String
+  final public let extra: Swift.String?
+  public func parseExtra() -> [Swift.String : Any?]?
+  public static func buildExtra(_ dict: [Swift.String : Any?]) -> Swift.String?
+  @objc deinit
+}
+@objc(OTVDownloadState) public enum OTVPersistenceAssetState : Swift.Int {
+  case notDownloaded
+  case preparing
+  case prepared
+  case downloading
+  case paused
+  case downloaded
+  case error
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OPYSDKFPS.OTVPersistenceAssetState {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+extension OPYSDKFPS.OTVDownloadError {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+extension OPYSDKFPS.OTVPersistenceDRMType {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+extension OPYSDKFPS.OTVPersistenceAsset {
+  @objc(state) dynamic public var downloadState: OPYSDKFPS.OTVPersistenceAssetState {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVMediaInfo : ObjectiveC.NSObject {
+  @objc public var duration: Swift.Double {
+    get
+  }
+  @available(*, deprecated, renamed: "selectedBitrate")
+  @objc public var selectedBandwidth: Swift.Double {
+    @objc get
+  }
+  @objc public var selectedBitrate: Swift.Double {
+    get
+  }
+  @objc public var selectedResolution: CoreFoundation.CGSize {
+    get
+  }
+  @objc public var selectedEstimateSize: Swift.UInt64 {
+    @objc get
+  }
+  @objc public var selectedStreamInfo: OPYSDKFPS.OTVStreamInfo? {
+    @objc get
+    @objc set
+  }
+  @objc public var mediaSelections: OPYSDKFPS.OTVMediaSelectionOptions
+  @objc public var availableIFrameTracks: [OPYSDKFPS.OTVIframeTracks]? {
+    get
+  }
+  @objc public var availableStreamInfo: [OPYSDKFPS.OTVStreamInfo]? {
+    get
+  }
+  @objc public var availableDrmInfo: [OPYSDKFPS.OTVStreamDrmInfo]? {
+    get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVStreamInfo : ObjectiveC.NSObject, Swift.Codable {
+  @objc public var duration: Swift.Double {
+    get
+  }
+  @objc public var bitrate: Swift.Double {
+    get
+  }
+  @objc public var totalSizeEstimate: Swift.UInt64
+  @objc public var resolution: CoreFoundation.CGSize {
+    get
+  }
+  @objc public var codecs: Swift.String {
+    get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers public class OTVStreamDrmInfo : ObjectiveC.NSObject {
+  @objc public var drmType: OPYSDKFPS.OTVPersistenceDRMType {
+    get
+  }
+  @objc public var keyInfo: Swift.String {
+    get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum OTVMediaSelectionOptions : Swift.Int, Swift.Comparable {
+  public static func < (lhs: OPYSDKFPS.OTVMediaSelectionOptions, rhs: OPYSDKFPS.OTVMediaSelectionOptions) -> Swift.Bool
+  case perferred = 1
+  case all = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(OTVSDK) public class OTVSDKInternal : ObjectiveC.NSObject {
+  @objc public static func loadWithLicence(_ licence: Swift.String? = nil)
+  @objc public static func setLogging(level: OPYSDKFPS.OTVLogType = .warning)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class OTVSDK {
+  public static let errorNotificationName: Foundation.Notification.Name
+  public static let sdkLoadedNotificationName: Foundation.Notification.Name
+  public static func load(licence: Swift.String? = nil)
+  public static func setLogging(level: OPYSDKFPS.OTVLogType = .warning)
+  public static func setLogProvider(xLogProvider: any OPYSDKFPS.IOTVLogProvider)
+  @objc public enum OTVError : Swift.Int {
+    case expiredLicence
+    case licenceInvalid
+    case externalPlaybackNotAllowed
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+extension OPYSDKFPS.OTVPersistenceManager {
+  @objc final public func totalDiskSpaceInBytes() -> Swift.Int64
+  @objc final public func freeDiskSpaceInBytes() -> Swift.Int64
+  @objc final public func usedDiskSpaceInBytes() -> Swift.Int64
+}
+@objc public protocol Player {
+  @objc func bufferedDuration() -> Swift.Double
+  @objc func availableResoloutions() -> [CoreFoundation.CGSize]?
+  @objc func selectedResoloution() -> CoreFoundation.CGSize
+  @objc func startUpTime() -> Swift.Double
+  @objc func numberOfStalls() -> Swift.Int
+  @objc func playbackType() -> Swift.String?
+  @objc func playbackStartDate() -> Foundation.Date?
+  @objc func playbackStartOffset() -> Foundation.TimeInterval
+}
+@objc public protocol Rendering {
+  @objc func frameDrops() -> Swift.Int
+  @objc func frameDropsPerSecond() -> Swift.Int
+  @objc func framesPerSecond() -> Swift.Int
+  @objc func framesPerSecondNominal() -> Swift.Int
+}
+@objc @_hasMissingDesignatedInitializers public class OTVPlaybackAnalytics : ObjectiveC.NSObject {
+  @objc public var player: any OPYSDKFPS.Player {
+    @objc get
+  }
+  @objc public var rendering: any OPYSDKFPS.Rendering {
+    @objc get
+  }
+  public enum Event : Swift.Int {
+    case availableResoloutionChanged
+    case selectedResolutionChanged
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVPlaybackAnalyticsNotification: Foundation.Notification.Name
+}
+public let seekingNotification: Foundation.Notification.Name
+public let seekedNotification: Foundation.Notification.Name
+extension OPYSDKFPS.OTVAVPlayerItem {
+  @objc override dynamic public func seek(to time: CoreMedia.CMTime, toleranceBefore: CoreMedia.CMTime, toleranceAfter: CoreMedia.CMTime, completionHandler: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc override dynamic public func seek(to date: Foundation.Date, completionHandler: ((Swift.Bool) -> Swift.Void)? = nil) -> Swift.Bool
+}
+public protocol ThumbnailsDelegate : AnyObject {
+  func prepared()
+  func failed(error: OPYSDKFPS.ThumbnailError, message: Swift.String)
+}
+public let availableBitratesChangedName: Foundation.Notification.Name
+public let selectedBitrateChangedName: Foundation.Notification.Name
+extension CoreFoundation.CGSize : Swift.Comparable {
+  public static func < (lhs: CoreFoundation.CGSize, rhs: CoreFoundation.CGSize) -> Swift.Bool
+}
+public let OTVAVFoundationErrors: Foundation.Notification.Name
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVAVPlayer : AVFoundation.AVPlayer {
+  @objc public var networkAnalytics: OPYSDKFPS.OTVNetworkAnalytics? {
+    get
+  }
+  @objc public var playbackAnalytics: OPYSDKFPS.OTVPlaybackAnalytics? {
+    get
+  }
+  @objc public var subtitleView: UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init(playerItem item: AVFoundation.AVPlayerItem?)
+  @objc override convenience dynamic public init(url URL: Foundation.URL)
+  convenience public init(playerItem item: OPYSDKFPS.OTVAVPlayerItem? = nil)
+  public func setLicenseDelegate(_ delegate: any OPYSDKFPS.OTVLicenseDelegate)
+  @objc deinit
+  @objc override dynamic public func replaceCurrentItem(with item: AVFoundation.AVPlayerItem?)
+  @objc override dynamic public func play()
+  @objc override dynamic public func playImmediately(atRate rate: Swift.Float)
+  @objc public func tracks(type: OPYSDKFPS.OTVTrackType) -> [OPYSDKFPS.OTVTrackInfo]
+  @objc public func selectedTrack(type: OPYSDKFPS.OTVTrackType) -> Swift.Int
+  @objc public func selectTrack(type: OPYSDKFPS.OTVTrackType, index: Swift.Int)
+  @objc public func deselectTrack(type: OPYSDKFPS.OTVTrackType, index: Swift.Int)
+  @objc public func register(tracksChangedListener: any OPYSDKFPS.OTVTracksChangedListener)
+  @objc public func unregister(tracksChangedListener: any OPYSDKFPS.OTVTracksChangedListener)
+  @objc(addSubtitleWithUrl:mimeType:language:) public func addSubtitleWithUrl(subtitleURL: Swift.String, mimeType: Swift.String, language: Swift.String)
+}
+public enum OTVAVPlayerError : Swift.Int {
+  case unknown
+  case otvAVPlayerIsNil
+  case otvAVPlayerItemIsNil
+  case notAnOTVAVPlayerItem
+  case opySubtitleManagerNotSet
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum OTVAVFoundationError : Swift.Int {
+  case otvAVPlayer
+  case otvAVPlayerItem
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension OPYSDKFPS.OTVAVFoundationError {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+extension OPYSDKFPS.OTVAVPlayerError {
+  public init?(intValue: Swift.Int)
+  public var intValue: Swift.Int? {
+    get
+  }
+}
+@objc public protocol OTVLicenseDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func scheme() -> Swift.String?
+  @objc func contentIdentifier(url: Foundation.URL) -> Foundation.Data?
+  @objc func certificate() -> Foundation.Data?
+  @objc func ckcMessage(spc: Foundation.Data) -> Foundation.Data?
+  @objc func ckcMessageWithID(spc: Foundation.Data, assetID: Swift.String) -> Foundation.Data?
+  @objc func ckcMessageWith(spc: Foundation.Data, assetID: Swift.String, session: AVFoundation.AVContentKeySession, keyRequest: AVFoundation.AVContentKeyRequest) -> Foundation.Data?
+}
+extension OPYSDKFPS.OTVLicenseDelegate {
+  public func ckcMessageWithID(spc: Foundation.Data, assetID: Swift.String) -> Foundation.Data?
+  public func ckcMessageWith(spc: Foundation.Data, assetID: Swift.String, session: AVFoundation.AVContentKeySession, keyRequest: AVFoundation.AVContentKeyRequest) -> Foundation.Data?
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVAVPlayerItem : AVFoundation.AVPlayerItem {
+  @objc dynamic public var metadata: Swift.String
+  @objc convenience dynamic public init(asset: AVFoundation.AVAsset)
+  @objc convenience dynamic public init(url URL: Foundation.URL)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVDRMManager : ObjectiveC.NSObject {
+  public enum OTVDRMLicenseError : Swift.Int {
+    case keyResponseWithExpiredLease
+    case keyResponseError
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public static let shared: OPYSDKFPS.OTVDRMManager
+  @objc public func setLicenseDelegate(_ delegate: any OPYSDKFPS.OTVLicenseDelegate)
+  @objc public func requestLicense(identifier: Swift.String, license options: [Swift.String : Any]? = nil)
+  @objc public func isLicensePersisted(identifier: Swift.String) -> Swift.Bool
+  @objc public func eraseOfflineLicense(identifier: Swift.String) -> Swift.Bool
+  @objc public func renewLicense(identifier: Swift.String, license options: [Swift.String : Any]? = nil)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVDRMLicenseError: Foundation.Notification.Name
+}
+extension OPYSDKFPS.OTVDRMManager {
+  public struct Keys {
+    public static let keyResponseWithExpiredLease: Swift.String
+    public static let keyResponseError: Swift.String
+  }
+}
+public class OTVDecoderFormat {
+  public var mimeType: Swift.String
+  public var codecs: Swift.String?
+  public init(mimeType: Swift.String, codecs: Swift.String? = nil)
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVSSMSetupErrorNotification: Foundation.Notification.Name
+  public static let OTVSSMTeardownErrorNotification: Foundation.Notification.Name
+  public static let OTVSSMHeartbeatErrorNotification: Foundation.Notification.Name
+}
+@objc public protocol IOTVLogProvider : ObjectiveC.NSObjectProtocol {
+  @objc func logProvider(xLog: Swift.String)
+}
+@objc public class OTVWatermark : ObjectiveC.NSObject {
+  @objc public init?(secret: Swift.String)
+  @objc public init?(url: Swift.String, token: Swift.String, tenant: Swift.String, secret: Swift.String)
+  @objc public func set(token: Swift.String)
+  @objc public func set(url: Swift.String)
+  @objc public func set(tenant: Swift.String)
+  @objc public func set(apiKey: Swift.String)
+  @objc public var quickmarkVersion: Swift.String {
+    @objc get
+  }
+  @objc public var quickmarkCoreVersion: Swift.String? {
+    @objc get
+  }
+  @objc public func bind(playerView: UIKit.UIView, playerLayer: AVFoundation.AVPlayerLayer)
+  @objc public func unbind()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OTVContainerView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) final public let customOverlayView: UIKit.UIView
+  @_Concurrency.MainActor(unsafe) final public let playerLayer: AVFoundation.AVPlayerLayer
+  @_Concurrency.MainActor(unsafe) weak public var player: OPYSDKFPS.OTVAVPlayer? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func addSubview(_ view: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIKit.UIView, at index: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIKit.UIView, aboveSubview siblingSubview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIKit.UIView, belowSubview siblingSubview: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func bringSubviewToFront(_ view: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func sendSubviewToBack(_ view: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func exchangeSubview(at index1: Swift.Int, withSubviewAt index2: Swift.Int)
+  @_Concurrency.MainActor(unsafe) public func bindWatermark(_ watermark: OPYSDKFPS.OTVWatermark)
+  @_Concurrency.MainActor(unsafe) public func bindWatermark(bindClosure: @escaping (_ playerView: UIKit.UIView, _ playerLayer: AVFoundation.AVPlayerLayer) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) public func unbindWatermark()
+  @_Concurrency.MainActor(unsafe) public func unbindWatermark(unbindClosure: @escaping () -> Swift.Void)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class OTVDRMInfo : ObjectiveC.NSObject {
+  @objc public var name: Swift.String? {
+    get
+  }
+  @objc public var contentType: Swift.String? {
+    get
+  }
+  @objc public var securityLevel: OPYSDKFPS.OTVDRMInfo.OTVDRMSecurityLevel {
+    get
+  }
+  @objc public var securityLevelName: Swift.String {
+    @objc get
+  }
+  @objc public enum OTVDRMSecurityLevel : Swift.Int {
+    case otvDRMSLUknown
+    case otvDRMSLSW
+    case otvDRMSLHWCrypt
+    case otvDRMSLHWDecode
+    public func name() -> Swift.String
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class OTVDRM : ObjectiveC.NSObject {
+  @objc public static let shared: OPYSDKFPS.OTVDRM
+  @objc public func getDRMInfo() -> [OPYSDKFPS.OTVDRMInfo]
+  @objc public func getDRMInfo(drmName: Swift.String, mediaType: Swift.String, contentType: Swift.String) -> [OPYSDKFPS.OTVDRMInfo]
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class OTVAVURLAsset : AVFoundation.AVURLAsset {
+  @objc override dynamic public init(url URL: Foundation.URL, options: [Swift.String : Any]? = nil)
+  @objc deinit
+}
+extension Foundation.FileManager {
+  public func allocatedSizeOfDirectory(at directoryURL: Foundation.URL) throws -> Swift.UInt64
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVAssetDownloadProgress: Foundation.Notification.Name
+  public static let OTVAssetDownloadStateChanged: Foundation.Notification.Name
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class OTVPersistenceManager : ObjectiveC.NSObject {
+  @objc public static let shared: OPYSDKFPS.OTVPersistenceManager
+  @objc(startDownloadWithUrlAsset:title:licenseDelegate:artwork:options:) final public func startDownload(urlAsset: AVFoundation.AVURLAsset, title: Swift.String, licenseDelegate: (any OPYSDKFPS.OTVLicenseDelegate)?, artwork: Foundation.Data?, options: [Swift.String : Any]? = nil) -> OPYSDKFPS.OTVPersistenceAsset?
+  @objc(prepareDownloadWithUrl:title:) final public func prepareDownload(url: Foundation.URL, title: Swift.String) -> OPYSDKFPS.OTVPersistenceAsset
+  @objc(startDownloadWithAsset:artwork:options:avMediaSelectionOptions:) final public func startDownload(asset: OPYSDKFPS.OTVPersistenceAsset, artwork: Foundation.Data?, options: [Swift.String : Any]? = nil, avMediaSelectionOptions: [AVFoundation.AVMediaSelection]? = nil) -> Swift.Bool
+  @objc(startDownloadWithAsset:artwork:options:) final public func startDownload(asset: OPYSDKFPS.OTVPersistenceAsset, artwork: Foundation.Data?, options: [Swift.String : Any]? = nil) -> Swift.Bool
+  @objc final public func getDownloads() -> [OPYSDKFPS.OTVPersistenceAsset]?
+  @objc final public func pauseDownload(asset: OPYSDKFPS.OTVPersistenceAsset) -> Swift.Bool
+  @objc final public func resumeDownload(asset: OPYSDKFPS.OTVPersistenceAsset) -> Swift.Bool
+  @objc final public func deleteDownload(asset: OPYSDKFPS.OTVPersistenceAsset) -> Swift.Bool
+  @objc deinit
+}
+extension OPYSDKFPS.OTVPersistenceManager {
+  public struct Keys {
+    public static let OTVPrefetchLicense: Swift.String
+    public static let OTVLicenseOptionOffline: Swift.String
+  }
+}
+@objc open class OTVCommonLicenseDelegate : ObjectiveC.NSObject, OPYSDKFPS.OTVLicenseDelegate {
+  @objc public init(certificateURL: Foundation.URL, licenseURL: Foundation.URL)
+  @objc open func scheme() -> Swift.String?
+  @objc open func contentIdentifier(url: Foundation.URL) -> Foundation.Data?
+  @objc open func certificate() -> Foundation.Data?
+  @objc open func ckcMessage(spc: Foundation.Data) -> Foundation.Data?
+  @objc open func ckcMessageWithID(spc: Foundation.Data, assetID: Swift.String) -> Foundation.Data?
+  @objc open func ckcMessageWith(spc: Foundation.Data, assetID: Swift.String, session: AVFoundation.AVContentKeySession, keyRequest: AVFoundation.AVContentKeyRequest) -> Foundation.Data?
+  @objc open func generateHTTPHeaders(assetID: Swift.String) -> [Swift.String : Swift.String]?
+  @objc open func getLicenseRequestUrl() -> Foundation.URL
+  @objc open func getCkcFromLicenseResponse(response: [Swift.String : Any]) -> Swift.String?
+  @objc deinit
+}
+@objc public protocol AdaptiveStreaming {
+  @objc func availableBitrates() -> [Swift.Int]?
+  @objc func selectedBitrate() -> Swift.Double
+  @objc func bitrateSwitches() -> Swift.Int
+  @objc func bitrateDowngrade() -> Swift.Int
+  @objc func averageBitrate() -> Swift.Int
+  @objc func averageVideoBitrate() -> Swift.Int
+  @objc func averageAudioBitrate() -> Swift.Int
+}
+@objc public protocol NetworkUsage {
+  @objc func bytesDownloaded() -> Swift.Int64
+  @objc func downloadBitrate() -> Swift.Double
+  @objc func downloadBitrateAverage() -> Swift.Double
+  @objc func numberOfMediaRequests() -> Swift.Int
+  @objc func transferDuration() -> Foundation.TimeInterval
+  @objc func downloadsOverdue() -> Swift.Int
+}
+@objc public protocol ContentServer {
+  @objc func finalIPAddress() -> Swift.String?
+  @objc func finalURL() -> Swift.String?
+  @objc func url() -> Swift.String?
+  @objc func numberOfServerAddressChanges() -> Swift.Int
+}
+@objc @_hasMissingDesignatedInitializers public class OTVNetworkAnalytics : ObjectiveC.NSObject {
+  public enum OTVHTTPError : Swift.Int, Swift.CaseIterable {
+    case unrecognizedHttpResponse400
+    case http401Unauthorized
+    case unrecognizedHttpResponse402
+    case http403Forbidden
+    case http404FileNotFound
+    case unrecognizedHttpResponse405
+    case unrecognizedHttpResponse406
+    case unrecognizedHttpResponse407
+    case unrecognizedHttpResponse408
+    case unrecognizedHttpResponse409
+    case unrecognizedHttpResponse410
+    case unrecognizedHttpResponse411
+    case unrecognizedHttpResponse412
+    case unrecognizedHttpResponse413
+    case unrecognizedHttpResponse414
+    case unrecognizedHttpResponse415
+    case unrecognizedHttpResponse500
+    case unrecognizedHttpResponse501
+    case unrecognizedHttpResponse502
+    case http503Unavailable
+    case unrecognizedHttpResponse504
+    case unrecognizedHttpResponse505
+    public init?(rawValue: Swift.Int)
+    public typealias AllCases = [OPYSDKFPS.OTVNetworkAnalytics.OTVHTTPError]
+    public typealias RawValue = Swift.Int
+    public static var allCases: [OPYSDKFPS.OTVNetworkAnalytics.OTVHTTPError] {
+      get
+    }
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum NetworkError : Swift.Int {
+    case unknown
+    case httpError
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum Event : Swift.Int {
+    case selectedBitrateChanged
+    case availableBitratesChanged
+    case urlChanged
+    case errorChanged
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public var error: Swift.Int {
+    get
+  }
+  public var httpError: Swift.Int {
+    get
+  }
+  public var httpErrorMessage: Swift.String? {
+    get
+  }
+  @objc public var adaptiveStreaming: any OPYSDKFPS.AdaptiveStreaming {
+    get
+  }
+  @objc public var networkUsage: any OPYSDKFPS.NetworkUsage {
+    get
+  }
+  @objc public var contentServer: any OPYSDKFPS.ContentServer {
+    get
+  }
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVNetworkAnalyticsNotification: Foundation.Notification.Name
+}
+public enum OTVDownloadState : Swift.String, Swift.Codable {
+  case notDownloaded
+  case preparing
+  case prepared
+  case downloading
+  case paused
+  case downloaded
+  case error
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum OTVDownloadError : Swift.Int {
+  case noError
+  case unknownError
+  case downloadTaskError
+  case licenseRequestError
+  case manifestDownloadError
+  case manifestParseError
+  case unsupportedLiveError
+  case insufficientSpaceError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum OTVPersistenceDRMType : Swift.Int, Swift.Comparable {
+  public static func < (lhs: OPYSDKFPS.OTVPersistenceDRMType, rhs: OPYSDKFPS.OTVPersistenceDRMType) -> Swift.Bool
+  case fps = 1
+  case prm = 2
+  case unKnownDrm = 100
+  case noDrm = 200
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class OTVPersistLicenseInfo : ObjectiveC.NSObject {
+  @objc dynamic public var duration: Swift.Int64
+  @objc dynamic public var licenseInfomation: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class OTVPersistenceAsset : ObjectiveC.NSObject {
+  @objc public var uuid: Swift.String {
+    get
+  }
+  @objc public var title: Swift.String {
+    get
+  }
+  @objc public var url: Swift.String {
+    get
+  }
+  @objc public var percentComplete: Swift.Double {
+    get
+  }
+  @objc public var error: Swift.String? {
+    get
+  }
+  @objc public var downloadError: OPYSDKFPS.OTVDownloadError {
+    @objc get
+  }
+  public var state: OPYSDKFPS.OTVDownloadState {
+    get
+  }
+  @objc public var identifier: Swift.String? {
+    @objc get
+  }
+  @objc public var totalSizeDownloaded: Swift.UInt64 {
+    @objc get
+  }
+  @objc public var drmMode: OPYSDKFPS.OTVPersistenceDRMType {
+    get
+  }
+  @objc public var mediaInfo: OPYSDKFPS.OTVMediaInfo? {
+    get
+  }
+  @objc public var licenseInfo: OPYSDKFPS.OTVPersistLicenseInfo? {
+    get
+  }
+  @objc deinit
+  @objc public func renewLicense(delegate: any OPYSDKFPS.OTVLicenseDelegate, options: [Swift.String : Any]? = nil)
+  @objc public func setupFPS(with delegate: any OPYSDKFPS.OTVLicenseDelegate)
+  @objc public func setupPRM(for urlAssetExtension: any OPYSDKFPS.OTVAVURLAssetExtension)
+}
+extension OPYSDKFPS.OTVPersistenceAsset {
+  public func offlineURL() -> Foundation.URL?
+}
+extension OPYSDKFPS.OTVPersistenceAsset {
+  public struct Keys {
+    public static let name: Swift.String
+    public static let percentDownloaded: Swift.String
+    public static let downloadState: Swift.String
+    public static let errorDescription: Swift.String
+    public static let errorCode: Swift.String
+  }
+}
+@_hasMissingDesignatedInitializers public class OTVDecoderInfo {
+  public var decoderName: Swift.String
+  public var decoderMimeType: Swift.String
+  public var maxInstances: Swift.Int?
+  @objc deinit
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVLicenseDownloadEnded: Foundation.Notification.Name
+}
+@objc @_inheritsConvenienceInitializers public class OTVMediaTracks : ObjectiveC.NSObject {
+  @objc public var type: Swift.String? {
+    get
+  }
+  @objc public var name: Swift.String? {
+    get
+  }
+  @objc public var language: Swift.String? {
+    get
+  }
+  @objc public var isDefault: Swift.String? {
+    get
+  }
+  @objc public var autoSelect: Swift.String? {
+    get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVIframeTracks : ObjectiveC.NSObject {
+  @objc public var bandwith: Swift.Int {
+    get
+  }
+  @objc public var averageBandwidth: Swift.Int {
+    get
+  }
+  @objc public var uri: Swift.String? {
+    get
+  }
+  @objc public var codecs: Swift.String? {
+    get
+  }
+  @objc public var resolution: CoreFoundation.CGSize {
+    get
+  }
+  @objc deinit
+}
+@objc public enum OTVOutputDeviceType : Swift.Int {
+  case digital = 1
+  case airplay = 2
+  case recording = 3
+  case mirroring = 4
+  case unknown = 5
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension Foundation.NSNotification.Name {
+  public static let OTVOutputDeviceConnected: Foundation.Notification.Name
+  public static let OTVOutputDeviceDisconnected: Foundation.Notification.Name
+}
+@objc public class OTVOutputDeviceMonitor : ObjectiveC.NSObject {
+  public init(player: OPYSDKFPS.OTVAVPlayer)
+  @objc deinit
+  @objc override dynamic public func observeValue(forKeyPath keyPath: Swift.String?, of object: Any?, change: [Foundation.NSKeyValueChangeKey : Any]?, context: Swift.UnsafeMutableRawPointer?)
+}
+@_hasMissingDesignatedInitializers public class OTVVideoDecoderInfo : OPYSDKFPS.OTVDecoderInfo {
+  public var decoderProfileLevels: [[Swift.Int]]?
+  public var isHardwareSupported: Swift.Bool
+  public var isTunellingSupported: Swift.Bool
+  public var supportedMaxResolution: [[Swift.Int]]?
+  @objc deinit
+}
+@objc public protocol OTVTracksChangedListener {
+  @objc func tracksChanged()
+}
+public typealias OTVMediaToken = Swift.String
+@objc @_inheritsConvenienceInitializers public class OTVSSPLicenseDelegate : OPYSDKFPS.OTVCommonLicenseDelegate {
+  @objc public func setHTTPHeaderType(type: Swift.String)
+  @objc public init(certificateURL: Foundation.URL, licenseURL: Foundation.URL, ssmServerURL: Foundation.URL?, syncSSMSetupTeardown: Swift.Bool)
+  @objc convenience public init(certificateURL: Foundation.URL, licenseURL: Foundation.URL, ssmServerURL: Foundation.URL?)
+  @objc convenience override public init(certificateURL: Foundation.URL, licenseURL: Foundation.URL)
+  @objc deinit
+  @objc override public func generateHTTPHeaders(assetID: Swift.String) -> [Swift.String : Swift.String]?
+  @objc override public func getLicenseRequestUrl() -> Foundation.URL
+  @objc override public func getCkcFromLicenseResponse(response: [Swift.String : Any]) -> Swift.String?
+  @objc override public func ckcMessageWith(spc: Foundation.Data, assetID: Swift.String, session: AVFoundation.AVContentKeySession, keyRequest: AVFoundation.AVContentKeyRequest) -> Foundation.Data?
+  @objc public func setStream(token: OPYSDKFPS.OTVMediaToken, with url: Foundation.URL, success: @escaping () -> Swift.Void = { /* Default Empty Closure */ }, failure: @escaping () -> Swift.Void = { /* Default Empty Closure */ })
+  @objc public func setToken(initialToken: OPYSDKFPS.OTVMediaToken, tokenCallback: @escaping () -> (Swift.String))
+}
+public let availableResoloutionsChangedName: Foundation.Notification.Name
+public let selectedResoloutionsChangedName: Foundation.Notification.Name
+@_hasMissingDesignatedInitializers public class OTVReachability {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class OTVEventTimelineAnalyzer : ObjectiveC.NSObject {
+  public static func getStartDuration() -> [(url: Swift.String, startDuration: Swift.Int)]
+  public static func getStartDuration(for url: Swift.String) -> [Swift.Int]
+  public static func getStartDurationDetails(for url: Swift.String) -> [OPYSDKFPS.OTVEvent]
+  public static func getZapDuration(from fromURL: Swift.String, to toURL: Swift.String) -> Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum ThumbnailError : Swift.String {
+  case parseError
+  case dataError
+  case communicationError
+  case accessError
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class OTVEventTimeline : ObjectiveC.NSObject {
+  @objc public static let shared: OPYSDKFPS.OTVEventTimeline
+  @objc public func enableTimeline(_ enable: Swift.Bool)
+  @objc public func isEnabled() -> Swift.Bool
+  @objc public func getTimelineList() -> [OPYSDKFPS.OTVEvent]
+  @objc public func getTimelineList(limit: Swift.Int) -> [OPYSDKFPS.OTVEvent]
+  @objc public func getTimelineList(from fromDate: Foundation.Date, to toDate: Foundation.Date) -> [OPYSDKFPS.OTVEvent]
+  @objc public func getTimelineList(type: Swift.String) -> [OPYSDKFPS.OTVEvent]
+  @objc public func addToTimeline(type: Swift.String, command: Swift.String, extra: Swift.String? = nil)
+  @objc public func removeTimeline(olderThan: Foundation.Date)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ThumbnailPair {
+  final public let startTimes: [Swift.Int32]
+  final public let thumbnailDictionary: [Swift.Int32 : UIKit.UIImage]
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class OTVTrackInfo : ObjectiveC.NSObject {
+  @objc final public let type: OPYSDKFPS.OTVTrackType
+  @objc final public let name: Swift.String
+  @objc final public let language: Swift.String?
+  @objc final public let mediaType: Swift.String
+  @objc deinit
+}
+extension OPYSDKFPS.OTVTrackInfo {
+  public static func == (lhs: OPYSDKFPS.OTVTrackInfo, rhs: OPYSDKFPS.OTVTrackInfo) -> Swift.Bool
+}
+extension OPYSDKFPS.OTVTrackType : Swift.Equatable {}
+extension OPYSDKFPS.OTVTrackType : Swift.Hashable {}
+extension OPYSDKFPS.OTVTrackType : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVLicenseRenewType : Swift.Equatable {}
+extension OPYSDKFPS.OTVLicenseRenewType : Swift.Hashable {}
+extension OPYSDKFPS.OTVLicenseRenewType : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVLicenseRenewType : Swift.CodingKey {}
+extension OPYSDKFPS.OTVLicenseRequestType : Swift.Equatable {}
+extension OPYSDKFPS.OTVLicenseRequestType : Swift.Hashable {}
+extension OPYSDKFPS.OTVLicenseRequestType : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVLicenseRequestType : Swift.CodingKey {}
+extension OPYSDKFPS.OTVIFrameThumbnailError : Swift.Equatable {}
+extension OPYSDKFPS.OTVIFrameThumbnailError : Swift.Hashable {}
+extension OPYSDKFPS.OTVIFrameThumbnailError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVIFrameThumbnailError : Swift.CodingKey {}
+extension OPYSDKFPS.OTVPersistenceAssetState : Swift.Equatable {}
+extension OPYSDKFPS.OTVPersistenceAssetState : Swift.Hashable {}
+extension OPYSDKFPS.OTVPersistenceAssetState : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVPersistenceAssetState : Swift.CodingKey {}
+extension OPYSDKFPS.OTVDownloadError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVDownloadError : Swift.CodingKey {}
+extension OPYSDKFPS.OTVDownloadError : Swift.Hashable {}
+extension OPYSDKFPS.OTVDownloadError : Swift.Equatable {}
+extension OPYSDKFPS.OTVPersistenceDRMType : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVPersistenceDRMType : Swift.CodingKey {}
+extension OPYSDKFPS.OTVPersistenceDRMType : Swift.Hashable {}
+extension OPYSDKFPS.OTVMediaSelectionOptions : Swift.Hashable {}
+extension OPYSDKFPS.OTVMediaSelectionOptions : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVSDK.OTVError : Swift.Equatable {}
+extension OPYSDKFPS.OTVSDK.OTVError : Swift.Hashable {}
+extension OPYSDKFPS.OTVSDK.OTVError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVPlaybackAnalytics.Event : Swift.Equatable {}
+extension OPYSDKFPS.OTVPlaybackAnalytics.Event : Swift.Hashable {}
+extension OPYSDKFPS.OTVPlaybackAnalytics.Event : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVAVPlayerError : Swift.Equatable {}
+extension OPYSDKFPS.OTVAVPlayerError : Swift.Hashable {}
+extension OPYSDKFPS.OTVAVPlayerError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVAVPlayerError : Swift.CodingKey {}
+extension OPYSDKFPS.OTVAVFoundationError : Swift.Equatable {}
+extension OPYSDKFPS.OTVAVFoundationError : Swift.Hashable {}
+extension OPYSDKFPS.OTVAVFoundationError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVAVFoundationError : Swift.CodingKey {}
+extension OPYSDKFPS.OTVDRMManager.OTVDRMLicenseError : Swift.Equatable {}
+extension OPYSDKFPS.OTVDRMManager.OTVDRMLicenseError : Swift.Hashable {}
+extension OPYSDKFPS.OTVDRMManager.OTVDRMLicenseError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVDRMInfo.OTVDRMSecurityLevel : Swift.Equatable {}
+extension OPYSDKFPS.OTVDRMInfo.OTVDRMSecurityLevel : Swift.Hashable {}
+extension OPYSDKFPS.OTVDRMInfo.OTVDRMSecurityLevel : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.OTVHTTPError : Swift.Equatable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.OTVHTTPError : Swift.Hashable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.OTVHTTPError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.NetworkError : Swift.Equatable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.NetworkError : Swift.Hashable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.NetworkError : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.Event : Swift.Equatable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.Event : Swift.Hashable {}
+extension OPYSDKFPS.OTVNetworkAnalytics.Event : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVDownloadState : Swift.Equatable {}
+extension OPYSDKFPS.OTVDownloadState : Swift.Hashable {}
+extension OPYSDKFPS.OTVDownloadState : Swift.RawRepresentable {}
+extension OPYSDKFPS.OTVOutputDeviceType : Swift.Equatable {}
+extension OPYSDKFPS.OTVOutputDeviceType : Swift.Hashable {}
+extension OPYSDKFPS.OTVOutputDeviceType : Swift.RawRepresentable {}
+extension OPYSDKFPS.ThumbnailError : Swift.Equatable {}
+extension OPYSDKFPS.ThumbnailError : Swift.Hashable {}
+extension OPYSDKFPS.ThumbnailError : Swift.RawRepresentable {}

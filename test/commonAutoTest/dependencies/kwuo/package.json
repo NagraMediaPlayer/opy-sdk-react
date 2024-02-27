@@ -1,0 +1,16 @@
+{
+    "name": "@nagra/kwuo",
+    "version": "1.3.0-nmp-31",
+    "description": "",
+    "bin": {"kwuo": "./bin/kwuo"},
+    "main": "./lib/index.js",
+    "scripts":     {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "publish": "cd ."
+    },
+    "keywords": [],
+    "author": "Chidume Nnamdi <kurtwanger40@gmail.com>",
+    "license": "ISC",
+    "devDependencies": {"chalk": "^2.4.1"},
+    "dependencies": {}
+}

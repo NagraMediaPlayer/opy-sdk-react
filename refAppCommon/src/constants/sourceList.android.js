@@ -1,0 +1,653 @@
+// Copyright (c) 2020--2023 Nagravision SA. All rights reserved.
+export const sourceListClear = [
+	{
+		id: 1,
+		External_Subtitles: [],
+		name: 'DASH Clear big_buck_bunny with burnt-in resolution',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/bbb_multi-resolution/bbb_public/bbb_public.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'BASIC', 'BUNNY', 'OPENSOURCE'],
+	},
+	{
+		id: 2,
+		External_Subtitles: [],
+		name: 'DASH Clear Live - BBC1',
+		source: {
+			type: 'application/dash+xml',
+		},
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash/Live/Channel(bbc1)/manifest.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['LIVE', 'CLEAR', 'DASH', 'BBC'],
+	},
+	{
+		id: 3,
+		External_Subtitles: [],
+		name: 'HLSV1 Clear VOD Roxanne',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/hls1/clear/H_KeyTag_StingRoxanne/index.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'HLS', 'ROXANNE'],
+	},
+	{
+		id: 4,
+		External_Subtitles: [],
+		name: 'HLSV3 Clear Live - BBC1',
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-harmonic/hls/clear/bbc1clear/index.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['LIVE', 'CLEAR', 'HLS', 'BBC'],
+	},
+	{
+		id: 5,
+		External_Subtitles: [],
+		name: 'DASH Clear Elmo CC608',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/elmo_cc/elmo_cc.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'CC608', 'CC708'],
+	},
+	{
+		id: 6,
+		External_Subtitles: [],
+		name: 'HLS Clear Elmo CC608 and CC708',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/hls2/clear/CC_1080i_29_Mpeg2_608_708_Elmo.ts/index_cc_signalled.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'HLS', 'CC608', 'CC708'],
+	},
+	{
+		id: 7,
+		External_Subtitles: [],
+		name: 'DASH S4C Multisubs (SMPTE-TT-TXT)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/harmonic/s4c-multisubs_TTML/manifest.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'SMPTE'],
+	},
+	{
+		id: 8,
+		External_Subtitles: [],
+		name: 'DASH S4C Multisubs (SMPTE-TT-PNG)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/harmonic/s4c-multisubs_SMPTE-TT/manifest.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'SMPTE'],
+	},
+	{
+		id: 9,
+		External_Subtitles: [
+			{
+				Language: 'srt.one',
+				MIME: 'application/x-subrip',
+				URL: 'https://replacemewithyourown.com/vod/hls3/clear/DownloadToGo_Subtitle_MA_Apple/apple_bipbop.srt',
+			},
+			{
+				Language: 'srt.two',
+				MIME: 'application/x-subrip',
+				URL: 'https://replacemewithyourown.com/vod/hls3/clear/DownloadToGo_Subtitle_MA_Apple/apple_bipbop.two.srt',
+			},
+		],
+		name: 'WebVTT-SRT-Clear-Vod-Apple without bom',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/hls3/clear/DownloadToGo_Subtitle_MA_Apple/bipbop_16x9_variant_without_bom.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'HLS', 'APPLE', 'BIPBOP', 'OPENSOURCE'],
+	},
+	{
+		id: 10,
+		External_Subtitles: [],
+		name: 'HLS Clear VOD DownloadToGo MA WebVTT Comment NoForced',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/hls5/clear/DownloadToGo_WebVTT_MA_Comment/index_GearWebVTT_NoForced.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'HLS', 'WEBVTT'],
+	},
+	{
+		id: 11,
+		External_Subtitles: [],
+		name: 'DASH Clear Breaking Bad - Multi-Audio',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/dash_clear_breaking_bad_multisample_rate/breaking_bad_multi.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', '16X9', 'MULTIAUDIO'],
+	},
+	{
+		id: 12,
+		External_Subtitles: [],
+		name: 'HLSv4 planet earth jungle - Multi-Audio',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/hls4/clear/MA_envivio_v_a_a_clear/index.m3u8',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'HLS', 'MULTIAUDIO'],
+	},
+	{
+		id: 13,
+		External_Subtitles: [],
+		name: 'DASH adhocadmoc preroll',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			type: 'application/dash+xml',
+		},
+		AdTagURL: 'https://replacemewithyourown.com/mock-ads-server/preroll',
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'BUNNY', 'ADVERTS', 'OPENSOURCE'],
+	},
+	{
+		id: 14,
+		External_Subtitles: [],
+		name: 'DASH adhocadmoc skippable',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			type: 'application/dash+xml',
+		},
+		AdTagURL:
+			'https://replacemewithyourown.com/mock-ads-server/skippablepreroll',
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'BUNNY', 'ADVERTS', 'OPENSOURCE'],
+	},
+	{
+		id: 15,
+		External_Subtitles: [],
+		name: 'DASH adhocadmoc pre mid postroll',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			type: 'application/dash+xml',
+		},
+		AdTagURL:
+			'https://replacemewithyourown.com/mock-ads-server/prerollmidrollpostroll',
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'BUNNY', 'ADVERTS', 'OPENSOURCE'],
+	},
+	{
+		id: 16,
+		External_Subtitles: [],
+		name: 'DASH IMASample VMAP Pre-, Mid-, and Post-rolls, Single Ads',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			type: 'application/dash+xml',
+		},
+		AdTagURL:
+			'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/ad_rule_samples&ciu_szs=300x250,728x90&ad_rule=1&impl=s&gdfp_req=1&env=vp&output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3Dpremidpost&cmsid=496&vid=short_onecue&correlator=',
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'BUNNY', 'ADVERTS', 'OPENSOURCE'],
+	},
+	{
+		id: 17,
+		External_Subtitles: [],
+		name: 'Big buck bunny MP4',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/mp4/big_buck_bunny.mp4',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'MP4'],
+	},
+	{
+		id: 18,
+		External_Subtitles: [],
+		name: '404 Error Code test',
+		source: {
+			src: 'https://replacemewithyourown.com/thisUrlDoesNotExist.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 19,
+		External_Subtitles: [],
+		name: 'Bad URL Not Found test',
+		source: {
+			src: 'https://replacemewithyourown.com/path/to/oblivion.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 20,
+		External_Subtitles: [],
+		name: 'Host Not Found test',
+		source: {
+			src: 'http://duff.site.com/path/to/oblivion.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 21,
+		External_Subtitles: [],
+		name: 'Forbidden test',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/test403.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 22,
+		External_Subtitles: [],
+		name: 'Corrupt manifest test',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/TestCases/1b/envivio/corrupt_manifest.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 23,
+		External_Subtitles: [],
+		name: 'Unsupported manifest test',
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-vos/Content/DASH/Live/channel(bbc1)/manifest.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['LIVE', 'CLEAR', 'DASH', 'ERROR'],
+	},
+	{
+		id: 24,
+		External_Subtitles: [],
+		name: 'DASH Single adaption set, 7 tiles at 10x1, each thumb 320x180',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_tiled_thumbnails.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+	},
+	{
+		name: 'DASH Single adaption set, 4 tiles at 10x1, each thumb 205x115',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_4_tiles_thumbnails.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 25,
+		External_Subtitles: [],
+	},
+	{
+		name: 'DASH Single adaption set, 1 tile at 10x20, each thumb 102x58',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_tiled_thumbnails_2.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 26,
+		External_Subtitles: [],
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH Two adaption sets with different thumb resolutions',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_multiple_tiled_thumbnails.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 27,
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH Single adaptation set, 1 thumbnail per image',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_thumbnails.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 28,
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH Live stream, Single adaptation set, 1x1 tiles (livesim)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/dash-if_livesim/dashif-livesim_2019-01-24/vod/testpic_2s/Manifest_thumbs.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 29,
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH 4 hour stream (BBB video, LOTR thumbnails)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/bbb_1080p_30fps_4hr/bbb_30fps_4hr_1/bbb_30fps_4hr_1_thumbs.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 30,
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH Single adaption set, +30 sec presentationTimeOffset (4 tiles at 10x1, each thumb 205x115)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_4_tiles_thumbnails_positive_PTO.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 31,
+	},
+	{
+		External_Subtitles: [],
+		name: 'DASH Single adaption set, -30 sec presentationTimeOffset (4 tiles at 10x1, each thumb 205x115)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/clear/DASHIFREF/dash.akamaized.net/akamai/bbb_30fps/bbb_with_4_tiles_thumbnails_negative_PTO.mpd',
+			type: 'application/dash+xml',
+		},
+		__v: 0,
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
+		id: 32,
+	},
+];
+
+export const sourceListEncryptedSSM = [
+	{
+		id: 1,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Live Channel4',
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash_7_cenc_ssp/Live/Channel(Channel4)/manifest.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiQW5kcm9pZDEwMDAtbm9rY2lkIn0sImNvbnRlbnRSaWdodHMiOlt7ImNvbnRlbnRJZCI6ImNoYW5uZWw0X2Rhc2hfdWV4M1hqMGkiLCJzdG9yYWJsZSI6dHJ1ZSwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ulnEMkSE3-dARAQ0KKuWjaBFAuQqj0s6Xd8Tu0o4kUk',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 2,
+		External_Subtitles: [],
+		name: 'DASH Encrypted SSM VOD BBB (1 session)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.YpdDnrK0AfAJmaa_CGNOFpFOmpYr6xDBLXThsHU0m30,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..O7LYaq8w8vKKF3XnKcN9Nw.DM7HFeKivQeo_5ngdpptr52WYkU96UUx6JGpQHq1nb5ANpAQ4jTopJqT4QqMF6dUe63PcX997ONMn7CreymnFkdJySn675rTIE8eZgrKBMhksmnIq-JWFxSjvOEdhUi7yd9uvF-ElL-_pRWmYdOlQG2akba-pG43tMkF_YtwTnI.q3wswzE7iLx0h29Rb3ySTg',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 3,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD BBB (2 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjIsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.e0vnBXLcms1RhVewSfaDHezeyzHrBIbWO0ilkXNeeyk,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..kOcUUDjPTXu8L-EI7NAoVw.4KcRxOA5BgJ5cKMTEkSK1eH847gPw3Dq8-Det1e-Nmgdn358xbnU8oQivDGsMNjKUWtUOe-X4NLrRJ0VevkDacNn27K3pYozFSvLD9fGI0i8VOGpqx9B47ymnR5R9jpldUXoLO9gF4o0id_WVNIK4xAy00dWzz7UFngl4ZobxHY.q970zMGD6K-cm4rZ6bqc2A',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 4,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD BBB (1000 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbImIxM2U0NWQwLTAzMjQtNDZkZC04NGQ1LTNiMmQ2NzkyZWIzNCJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fYmlnX2J1Y2tfYnVubnkiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.mfllZuvu2v8hBpz789v_GToXkgWT7K2qPusA7W7e1rY,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..ZlOOBbbwJp7m5-3IwWZfJQ.eHFQxiKkU0OH4T8hy3uXgrxQFY-ZOaAYVKs3aT7UZCcfHvs8ZAh4WSZsF3b3n0XA0m2fTpDNd9wdy6u8JVwC5hKEW3a23Pc6RU0C7zHUKmgG8di4vxpuyg5SlWrY4ijxGJTdEGgP_xON43vZfCqWUws-RkwXNg2-nZ0OiJqRnvw.EjIY4zLG4O_OeCXhVnx1qw',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 5,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD elephants dream (2 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_elephants_dream_1080p/elephants_dream.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjI3NjUzNGNmLWE3YTgtNGQyOS1iZDY2LTRjNWQ4MmIyMzFjNiJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fZWxlcGhhbnRzX2RyZWFtIiwic3RvcmFibGUiOnRydWUsImVuY3J5cHRpb25NZXRob2QiOiJSQVdfQUVTXzEyOF9DVFJfQ0VOQyIsInNlc3Npb25Db250cm9sIjp7Im1heFNlc3Npb25zIjoyLCJzZXNzaW9uQ29udHJvbEVuYWJsZWQiOnRydWV9LCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.U_E2CbI_Ims7tZJKv8K0s8AtcJv9za7yzlOxgdYc8T0,eyJrY0lkcyI6WyIyNzY1MzRjZi1hN2E4LTRkMjktYmQ2Ni00YzVkODJiMjMxYzYiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..KhGgjfP1Oy6Mz8ey1ilLqA.wJJ4O3JL6mNMmRnU07I_4ZS9LsfsS3vrGPVBVxN3JKBIvKKn-YxjPbQF2gOEajn3jn6l0SrHwlnLwbvTZX11cYlWOBRwj2Od0rz4kW8hCRjNWEV0yuaGkZjuEE_yoqdVFyscp-geZubOiZ2oQeuocAzZFfq8ODJPcpoSWGvzPK0.6EAw7dIfXen87LmLpIup0A',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 6,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD elephants dream (1000 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_elephants_dream_1080p/elephants_dream.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjI3NjUzNGNmLWE3YTgtNGQyOS1iZDY2LTRjNWQ4MmIyMzFjNiJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fZWxlcGhhbnRzX2RyZWFtIiwic3RvcmFibGUiOnRydWUsImVuY3J5cHRpb25NZXRob2QiOiJSQVdfQUVTXzEyOF9DVFJfQ0VOQyIsInNlc3Npb25Db250cm9sIjp7Im1heFNlc3Npb25zIjoxMDAwLCJzZXNzaW9uQ29udHJvbEVuYWJsZWQiOnRydWV9LCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.oT8y0jfdsITXPAhl6GQzN5L9lpYqkfaUXGl4efTnHZM,eyJrY0lkcyI6WyIyNzY1MzRjZi1hN2E4LTRkMjktYmQ2Ni00YzVkODJiMjMxYzYiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..wsnc0QpMNIf_l_QDXGF1pQ.C4V5B00U0WCoWZ71-axjczto38BKD7po0dxPODM7mOeCDFkL9X625reQIvDRO6iskIRSXl00XlznTEMxqUUuZo_C3DqxeLH_Ko80r-czSoLppnsOx-v9DRRbXt2yTFU1Rdrsh4RwipysEeXthpYkLmV2grhghOf8BzcwievMG1s.XEFFov1cOllhksSupBkYSw',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 7,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD Sintel (2 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_sintel_1080p/sintel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjRkZDY3MGRmLWI4NDgtNDc2Yi1hODYyLTYzMjFjN2FlN2ZkNSJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fc2ludGVsXzRrIiwic3RvcmFibGUiOnRydWUsImVuY3J5cHRpb25NZXRob2QiOiJSQVdfQUVTXzEyOF9DVFJfQ0VOQyIsInNlc3Npb25Db250cm9sIjp7Im1heFNlc3Npb25zIjoyLCJzZXNzaW9uQ29udHJvbEVuYWJsZWQiOnRydWV9LCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.kleQHMxF7eI1XfXD_5yeVqgqq-mtgFn1FIMFaIz257c,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..Sk01vvY0Shj2PkSAYa2K6g.UvLoBPpwFcFL5fOy4S7J47w69j1cdp9QWyEcf_CIeP3ssHujR-I4z0Prsk6OH8ZaAZZJr6sZJaei8KMvB6UsO-BB3QWXdbyavSFerseZiyl_sUms8nbcUKBToq8YGh_Fznh3F_NdnNLsme9vT-nvXEw4LnV--3nXoFSY6F8xPLg.z6lXbYFSq7DGeF1hpeOaEw',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 8,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD Sintel (1000 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_sintel_1080p/sintel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjRkZDY3MGRmLWI4NDgtNDc2Yi1hODYyLTYzMjFjN2FlN2ZkNSJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fc2ludGVsXzRrIiwic3RvcmFibGUiOnRydWUsImVuY3J5cHRpb25NZXRob2QiOiJSQVdfQUVTXzEyOF9DVFJfQ0VOQyIsInNlc3Npb25Db250cm9sIjp7Im1heFNlc3Npb25zIjoxMDAwLCJzZXNzaW9uQ29udHJvbEVuYWJsZWQiOnRydWV9LCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.1iNNS3HZZlQCSZFZtXwL0MFTRA4FXMfDcFrbPVhOvTQ,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..vsTrkpP-0kRjybX5MkTaVg.EJ3X3NZnWzJDB7QrDSZ_yHJgPMdg-zYgnQJuH3ut-ilvBg32UfNJAL1iIyysGpW1jx9wblHONMyTvF2c9WY3c5SKM529cm9wNUVqVGU1_GS1DTcVFhbG4r6IuHDOpfEwqs_lBhbKtlzihyEyFQh2XgwfLV0PZmguEqpvDAqOw2Q.cMjeNe62Sd17Ub24Sg_kKg',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 9,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD Tears Of Steel (2 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_tears_of_steel_1080p/tears_of_steel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDIifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjgzZGZlY2M0LTk1Y2MtNGNhNS1hNzczLTYyODhlNDI4MjE4NyJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fdGVhcnNfb2Zfc3RlZWwiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjIsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.WDkFwufyirY9AigOJ4U9kTRVcp7fBclziANylbD-cVI,eyJrY0lkcyI6WyI4M2RmZWNjNC05NWNjLTRjYTUtYTc3My02Mjg4ZTQyODIxODciXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..kX4tnMgUcwtyPwTn78SwlQ.KHpqdoTSXKOExIJhUHywUy-Dj9XV8NAczo9jwpc8eYN590_WuZxNLQ9ubPtQoHZjyDYEXgf205dElQ7guvY1a3ojlOJ5xPR_wOmhy0R-iMmvzi_90OcVuchRoeCsuCDwo55jMM1DAUqocbeHqXlkSkMddJCtM5EYHiiAMwW7dCw.mQ0Udov3Heka_xalUm_pyQ',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 10,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD Tears Of Steel (1000 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/demo_content/ed_tears_of_steel_1080p/tears_of_steel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siZGVmYXVsdEtjSWRzIjpbIjgzZGZlY2M0LTk1Y2MtNGNhNS1hNzczLTYyODhlNDI4MjE4NyJdLCJjb250ZW50SWQiOiJkYXNoLWRlbW9fdGVhcnNfb2Zfc3RlZWwiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwic2Vzc2lvbkNvbnRyb2wiOnsibWF4U2Vzc2lvbnMiOjEwMDAsInNlc3Npb25Db250cm9sRW5hYmxlZCI6dHJ1ZX0sImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.Tn59Acib3vvoNym1gZ_2afYmJ4PWowOOgr8VXVETwOo,eyJrY0lkcyI6WyI4M2RmZWNjNC05NWNjLTRjYTUtYTc3My02Mjg4ZTQyODIxODciXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..Cf4uS3bU8xV0x64eC89a-Q.Zu-s0omeASdoz5xNs3Yjok6lqtYHvqofEsCFyT68GVY8aI_VZWOOrN9SHnlo4vWFg-QEJoAT76gk3trBxg8wt4fPYhtbQthVsbpWYxFq_t8Ai8-EEhCvEL31wG-Zq79xBEgdhZUm1Hj9Se0-Aod4BcgXoMWKukzxxs_l559okc4.YYu7-K14eND3dhdGrT3PCQ',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 11,
+		External_Subtitles: [],
+		name: 'DASH Encrypted VOD Planet Earth 4 hours (1000 sessions)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/scramble/planetearth-jungle_25fps_5mbps_4hr/planetearth-jungle_1.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiYW5kcm9pZDEwMDAifSwiY29udGVudFJpZ2h0cyI6W3siY29udGVudElkIjoicGxhbmV0ZWFydGgtanVuZ2xlIiwic3RvcmFibGUiOnRydWUsInNlc3Npb25Db250cm9sIjp7Im1heFNlc3Npb25zIjoxMDAwLCJzZXNzaW9uQ29udHJvbEVuYWJsZWQiOnRydWV9LCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.8tY7R-ZWp5bnr4ld0IVKWGmlW5EaxfGVAruhRd9OweI',
+			type: 'application/dash+xml',
+		},
+	},
+];
+
+export const sourceListEncryptedSSP = [
+	{
+		id: 1,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Sintel (WebVTT eng,fra,deu) (SSP UEX3 WV)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_sintel_1080p/sintel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNGRkNjcwZGYtYjg0OC00NzZiLWE4NjItNjMyMWM3YWU3ZmQ1Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19zaW50ZWxfNGsiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.RE5W1q44m5Po-gdcfrn7sK-CdFzrEq44KiFo0KK7Kx0,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..G9PbDGQNz8VOX7NXoePFtQ.eDmP659_5ZQHfCxjrwD5lCiiP1oZqxp3dQKWx1sMpeAau1cJKFl9QuO3Iy-1N9_SzLB3SmCVoQCGWVF9obv5np-RU5nsZshCODtfVI4RqFZNSk5_31sGcFOQAe5qxNYrzQ0auCr9gfNNCZDYuqgLAHPXQMWOGkxf9cxNKHI3Ook.Po0ergXEvtoq35Tss0tNRQ',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 2,
+		External_Subtitles: [],
+		name: 'DASH Encrypted SFR Casino Royale (multi-audio, WebVTT, SMPTE-TT-PNG) (SSP UEX3 WV)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/customers/sfr/scramble/ssp_mgm_casinoroyale2006_vm_hd_feature/mgm_casinoroyale2006_vm_hd_feature.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNjZhMWI5YzQtOTllOC00NjBjLTkwMGEtZThlMTkzM2UzZGQ5Il0sImNvbnRlbnRJZCI6Im1nbV9jYXNpbm9yb3lhbGUyMDA2X3ZtX2hkX2ZlYXR1cmUiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.vOov4NfuWGZ2RC8ndUYzFz7cvBUFlGIxcKKkFATrL3c,eyJrY0lkcyI6WyI2NmExYjljNC05OWU4LTQ2MGMtOTAwYS1lOGUxOTMzZTNkZDkiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..eXTVmCn_ixVdk2D_xmg_qg.hQN-1cmTR1LteCptRL0RRW79Jm8_7TXxhK-YN728JX0ob5i6-vFsw0rTcmdYtrJhLpQLBZYklZ-b2wSzy-D1caUP9J395HYEk4nZkiOTLD4eerZpXk7agetbSEguRvGiosANYzznmZY4oEru_CEI25eiX_WWmSrqbTssH0hwSo0.yeptYxeXGUfeAFEk7ZmXgQ',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 3,
+		External_Subtitles: [],
+		name: 'DASH TearsOfSteel-ENCRYPTED-VOD-WIDEVINE (AZURE)',
+		source: {
+			src: 'https://amssamples.streaming.mediaservices.windows.net/482242cd-f022-403a-870a-d9c9ed455b09/TearsOfSteel.ism/manifest(format=mpd-time-csf)',
+			token: '',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 4,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Sintel (WebVTT eng,fra,deu) (SSP UEX3 WV)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_sintel_1080p/sintel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNGRkNjcwZGYtYjg0OC00NzZiLWE4NjItNjMyMWM3YWU3ZmQ1Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19zaW50ZWxfNGsiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.RE5W1q44m5Po-gdcfrn7sK-CdFzrEq44KiFo0KK7Kx0,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..G9PbDGQNz8VOX7NXoePFtQ.eDmP659_5ZQHfCxjrwD5lCiiP1oZqxp3dQKWx1sMpeAau1cJKFl9QuO3Iy-1N9_SzLB3SmCVoQCGWVF9obv5np-RU5nsZshCODtfVI4RqFZNSk5_31sGcFOQAe5qxNYrzQ0auCr9gfNNCZDYuqgLAHPXQMWOGkxf9cxNKHI3Ook.Po0ergXEvtoq35Tss0tNRQ',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 5,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Big Buck Bunny expire 2 mins storable (SSP UEX3 WV)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJqdGkiOiI4YmE1YjhiOS1kYTU1LTQ5MmYtYjhjNC1kNDI1ZWZiNTQ0NDIiLCJjb250ZW50UmlnaHRzIjpbeyJkdXJhdGlvbiI6MTIwLCJkZWZhdWx0S2NJZHMiOlsiYjEzZTQ1ZDAtMDMyNC00NmRkLTg0ZDUtM2IyZDY3OTJlYjM0Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19iaWdfYnVja19idW5ueSIsInN0b3JhYmxlIjp0cnVlLCJlbmNyeXB0aW9uTWV0aG9kIjoiUkFXX0FFU18xMjhfQ1RSX0NFTkMiLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwid2F0ZXJtYXJraW5nRW5hYmxlZCI6dHJ1ZSwiaW1hZ2VDb25zdHJhaW50Ijp0cnVlLCJoZGNwVHlwZSI6IlRZUEVfMSIsInVuY29tcHJlc3NlZERpZ2l0YWxDYXBwaW5nUmVzb2x1dGlvbiI6Ik5PX1JFU1RSSUNUSU9OUyIsInVucHJvdGVjdGVkQW5hbG9nT3V0cHV0Ijp0cnVlLCJhbmFsb2dDYXBwaW5nUmVzb2x1dGlvbiI6Ik5PX1JFU1RSSUNUSU9OUyIsImhkY3AiOnRydWUsImRldmljZUNhcHBpbmdSZXNvbHV0aW9uIjoiTk9fUkVTVFJJQ1RJT05TIiwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.KdYIyO0uYEGWEUL3IJxu5r-bGBGOfI5CUUE3R36ukHE,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..jsCjJQ-QYzrKQMviE1ma5w.u8QMvcMLGfN8kB1OoWSx6XHHA96BtyY9Ysh71EHbTJsgq6kxuYxdGqVJZOI2pxJJDbEbZNyBjyvv-figNJxBd5KSXDAy7FuVIYCSDKEACFO3IRVhIwqkzJQ_aj9dekBlkOxjiVw7bKMkS6Mh0o-zPLArM3Qtkj4QLeu-ClzgZcg.jLf562GEzBHhv0sSutTuGw',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 6,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Big Buck Bunny expire 2 mins (SSP UEX3 WV)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJqdGkiOiI4YmE1YjhiOS1kYTU1LTQ5MmYtYjhjNC1kNDI1ZWZiNTQ0NDIiLCJjb250ZW50UmlnaHRzIjpbeyJkdXJhdGlvbiI6MTIwLCJkZWZhdWx0S2NJZHMiOlsiYjEzZTQ1ZDAtMDMyNC00NmRkLTg0ZDUtM2IyZDY3OTJlYjM0Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19iaWdfYnVja19idW5ueSIsInN0b3JhYmxlIjpmYWxzZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsIndhdGVybWFya2luZ0VuYWJsZWQiOnRydWUsImltYWdlQ29uc3RyYWludCI6dHJ1ZSwiaGRjcFR5cGUiOiJUWVBFXzEiLCJ1bmNvbXByZXNzZWREaWdpdGFsQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJ1bnByb3RlY3RlZEFuYWxvZ091dHB1dCI6dHJ1ZSwiYW5hbG9nQ2FwcGluZ1Jlc29sdXRpb24iOiJOT19SRVNUUklDVElPTlMiLCJoZGNwIjp0cnVlLCJkZXZpY2VDYXBwaW5nUmVzb2x1dGlvbiI6Ik5PX1JFU1RSSUNUSU9OUyIsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.Pchd2moCXfu2GWpGpgrM-3xXWGORx5NVOJ4IaaVLUuc,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..oDSKSFnDEk13y5cb8_S42Q.LDD_Q8Cj8FO-ZvRhSu_fwTjrXznsHUHaxPi-D-47H8UVe1n4N4FsaBwZWCdYzTHB7tZCxQnd2OMA3BJf5zIkkfcW3jI-95N2isvLRNivh4soX9oA8RuYc8A3vsQwtBYlk43T9seLWyQUsY9JEX2o8mHjcVGzrXLL7nlp5L1C6Pg.iU_ynEnJcD-Z3C0a85T6tA',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 7,
+		External_Subtitles: [],
+		name: 'DASH Encrypted - Channel 4 Live (SSP Cloud)',
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-pmxo/Content/dash_7_cenc_ssp/Live/Channel(Channel4)/manifest.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJjaGFubmVsNF9kYXNoX3VleDNYajBpIiwic3RvcmFibGUiOnRydWUsImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6ZmFsc2UsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.2bpnSJjyUCGl7eYG1dgD7PC-zNJIp5H4rD9pltspeMo',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 8,
+		External_Subtitles: [],
+		name: 'DASH Encrypted - BBC One Live (SSP Cloud)',
+		source: {
+			src: 'https://replacemewithyourown.com/secureplayer/live-vos/Content/DASH/Live/channel(bbc1)/manifest.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJiYmMxLWRhc2giLCJzdG9yYWJsZSI6dHJ1ZSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.19n0W9ibFFI9eMkS0lW691EjTOeVjlPi-f1sOuVabOs',
+			type: 'application/dash+xml',
+		},
+	},
+	{
+		id: 9,
+		External_Subtitles: [],
+		name: 'DASH Encrypted Sintel (WebVTT eng,fra,deu) (SSP UEX3 PLAYREADY)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_sintel_1080p/sintel.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNGRkNjcwZGYtYjg0OC00NzZiLWE4NjItNjMyMWM3YWU3ZmQ1Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19zaW50ZWxfNGsiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.RE5W1q44m5Po-gdcfrn7sK-CdFzrEq44KiFo0KK7Kx0,eyJrY0lkcyI6WyI0ZGQ2NzBkZi1iODQ4LTQ3NmItYTg2Mi02MzIxYzdhZTdmZDUiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..G9PbDGQNz8VOX7NXoePFtQ.eDmP659_5ZQHfCxjrwD5lCiiP1oZqxp3dQKWx1sMpeAau1cJKFl9QuO3Iy-1N9_SzLB3SmCVoQCGWVF9obv5np-RU5nsZshCODtfVI4RqFZNSk5_31sGcFOQAe5qxNYrzQ0auCr9gfNNCZDYuqgLAHPXQMWOGkxf9cxNKHI3Ook.Po0ergXEvtoq35Tss0tNRQ',
+			type: 'application/dash+xml',
+		},
+		drm_scheme: 'PlayReady',
+	},
+	{
+		id: 10,
+		External_Subtitles: [],
+		name: 'DASH Encrypted SFR Casino Royale (multi-audio, WebVTT, SMPTE-TT-PNG) (SSP Cloud PLAYREADY)',
+		source: {
+			src: 'https://replacemewithyourown.com/vod/dash/customers/sfr/scramble/ssp_mgm_casinoroyale2006_vm_hd_feature/mgm_casinoroyale2006_vm_hd_feature.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiNjZhMWI5YzQtOTllOC00NjBjLTkwMGEtZThlMTkzM2UzZGQ5Il0sImNvbnRlbnRJZCI6Im1nbV9jYXNpbm9yb3lhbGUyMDA2X3ZtX2hkX2ZlYXR1cmUiLCJzdG9yYWJsZSI6dHJ1ZSwiZW5jcnlwdGlvbk1ldGhvZCI6IlJBV19BRVNfMTI4X0NUUl9DRU5DIiwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5IjpmYWxzZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.vOov4NfuWGZ2RC8ndUYzFz7cvBUFlGIxcKKkFATrL3c,eyJrY0lkcyI6WyI2NmExYjljNC05OWU4LTQ2MGMtOTAwYS1lOGUxOTMzZTNkZDkiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..eXTVmCn_ixVdk2D_xmg_qg.hQN-1cmTR1LteCptRL0RRW79Jm8_7TXxhK-YN728JX0ob5i6-vFsw0rTcmdYtrJhLpQLBZYklZ-b2wSzy-D1caUP9J395HYEk4nZkiOTLD4eerZpXk7agetbSEguRvGiosANYzznmZY4oEru_CEI25eiX_WWmSrqbTssH0hwSo0.yeptYxeXGUfeAFEk7ZmXgQ',
+			type: 'application/dash+xml',
+		},
+		drm_scheme: 'PlayReady',
+	},
+	{
+		id: 11,
+		External_Subtitles: [],
+		name: 'DASH TearsOfSteel-ENCRYPTED-VOD-PLAYREADY (AZURE PLAYREADY)',
+		source: {
+			src: 'https://amssamples.streaming.mediaservices.windows.net/482242cd-f022-403a-870a-d9c9ed455b09/TearsOfSteel.ism/manifest(format=mpd-time-csf)',
+			type: 'application/dash+xml',
+		},
+		drm_scheme: 'PlayReady',
+	},
+	{
+		id: 12,
+		External_Subtitles: [],
+		name: 'Big Buck Bunny (CONNECT)',
+		source: {
+			src: 'https://replacemewithyourown.com/demo/content/ed_big_buck_bunny_1080p/big_buck_bunny.mpd',
+			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiYjEzZTQ1ZDAtMDMyNC00NmRkLTg0ZDUtM2IyZDY3OTJlYjM0Il0sImNvbnRlbnRJZCI6ImRhc2gtZGVtb19iaWdfYnVja19idW5ueSIsInN0b3JhYmxlIjp0cnVlLCJlbmNyeXB0aW9uTWV0aG9kIjoiUkFXX0FFU18xMjhfQ1RSX0NFTkMiLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.3tc0D6EGRe7nkPVT9g1vaqyoWuviZKboQQlLtKtlSj0,eyJrY0lkcyI6WyJiMTNlNDVkMC0wMzI0LTQ2ZGQtODRkNS0zYjJkNjc5MmViMzQiXSwidHlwIjoiSldUIiwiZW5jIjoiQTEyOENCQy1IUzI1NiIsImFsZyI6ImRpciIsImtpZCI6IjI5Mjg0OCJ9..nJHHvkDRCWJt5poriL-whg.oXukvAclNVKVxSRz-hMU8Yj4Uju0DSSYAC3q9q7HX_WBlG1U6WG8S_K83JMBxwNfaFsT2EhdFF_KgeIe_2uZTFa3lapFcx2RAIKxv7atZIT3bm284rUX0_DQjRXDnZGh3h1Jiq6H6MnHt1DuxzvqmxnScJXlYXH9Y_mxokHfjAM.gIbpzdJXg-kli7UBc98bVA',
+			type: 'application/dash+xml',
+		},
+		drm_scheme: 'Connect',
+	},
+];
+
+export const sourceList = [
+	...sourceListClear,
+	...sourceListEncryptedSSM,
+	...sourceListEncryptedSSP,
+];

@@ -1,0 +1,69 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+# project '../../src/ios/unifiedExample.xcodeproj'
+project './unifiedExample.xcodeproj'
+
+target 'unifiedExample' do
+  platform :ios, '12.0'
+
+  config = use_native_modules!
+
+  use_react_native!(
+    :path => config[:reactNativePath]
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    #:hermes_enabled => false
+  )
+  #use_flipper_tvos!
+  use_flipper!
+  # target 'unifiedExampleTests' do
+  #   inherit! :complete
+  #   # Pods for testing
+  # end
+end
+
+# target 'unifiedExample-tvOS' do
+#   platform :tvos, '12.0'
+
+#   # Pods for unifiedExample-tvOS
+# 	config = use_native_modules!
+  
+#   use_react_native!(
+#     :path => config[:reactNativePath],
+#     # to enable hermes on iOS, change `false` to `true` and then install pods
+#     :hermes_enabled => false
+#   )
+
+#   target 'unifiedExample-tvOSTests' do
+#     inherit! :search_paths
+#     # Pods for testing
+#   end
+# end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if config.build_settings['DEVELOPMENT_TEAM'].nil?
+        config.build_settings['DEVELOPMENT_TEAM'] = 'QK7L23LPTC'
+      end
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+      if config.build_settings['TVOS_DEPLOYMENT_TARGET'].to_f < 12.0
+        config.build_settings['TVOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+
+      #####
+case target.name
+when 'RCT-Folly'
+  target.build_configurations.each do |config|
+    #config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.4'
+    config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', '_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION', 'FOLLY_HAVE_CLOCK_GETTIME=1']
+  end
+end
+
+#####
+
+    end
+  end
+end
