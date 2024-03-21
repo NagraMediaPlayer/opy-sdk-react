@@ -1,6 +1,6 @@
 {
   "name": "@nagra/opy-react-native",
-  "version": "1.15.0",
+  "version": "1.15.2",
   "description": "Nagra OpenTV React Native Player SDK",
   "repository": {
     "type": "git",

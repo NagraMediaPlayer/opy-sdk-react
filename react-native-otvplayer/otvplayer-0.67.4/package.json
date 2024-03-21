@@ -1,7 +1,7 @@
 {
   "name": "@nagra/react-otvplayer",
   "title": "React Native OTVPlayer",
-  "version": "1.15.0-1708534045-0.67.4",
+  "version": "1.15.2-1710936913-0.67.4",
   "description": "React Native OTVPlayer Plugin",
   "homepage": "https://www.nagra.com",
   "main": "web/index.js",
