@@ -94,6 +94,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   BOOL _paused;
   BOOL _playInBackground;
   BOOL _playWhenInactive;
+  BOOL _tracksChangedSet;
   double _maxBitrate;
   NSDictionary *_maxResolution;
 
@@ -103,6 +104,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   double _progressUpdateInterval;
   BOOL _errorHandlingListenersSet;
   BOOL _playerListenersListenersSet;
+  BOOL _addListenersSet;
   NSDictionary *_pendingSeekInfo;
   BOOL _videoLoadStarted;
   BOOL _playbackStalled;
@@ -144,6 +146,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTEventDispatcher *_eventDispatcher;
 
   dispatch_semaphore_t tokenSemaphore;
+  BOOL _waitForToken;
   NSString* _token;
 }
 
@@ -161,7 +164,6 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
   if (self = [super init]) {
     _player = [[OTVAVPlayer alloc] initWithPlayerItem: nil];
-    //[_player registerWithTracksChangedListener:self];
     [self attachSSMErrorListners];
     [self attachLogListners];
     [self attachDRMErrorListners];
@@ -193,6 +195,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
     _lastPlayerItemErrorCode = -1;
     _lastThumbnailPlayerItemErrorCode =-1;
     tokenSemaphore = dispatch_semaphore_create(0);
+    _waitForToken = true;
 
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -370,14 +373,33 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
     RCTOTVLogD(@"sendStatisticsUpdate exit");
 
   }
+}
 
+-(void)registerOnTracksChanged {
+  if (!_tracksChangedSet) {
+    [_player registerWithTracksChangedListener:self];
+    _tracksChangedSet = true;
+  }
+}
+
+-(void)removeOnTracksChanged {
+  if (_tracksChangedSet) {
+    [_player unregisterWithTracksChangedListener:self];
+    _tracksChangedSet = false;
+  }
 }
 
 - (void)dealloc
 {
   RCTOTVLogD(@"dealloc enter");
   [OTVDRMHelper.shared.delegate removeStream];
+  if (_waitForToken) {
+    _waitForToken = false;
+    dispatch_semaphore_signal(tokenSemaphore);
+  }
+  _thumbnails = nil;
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [self removeListeners];
   [self removePlayerListeners];
   [self removePlayerErrorListeners];
   [self stopStatisticsUpdate];
@@ -385,15 +407,14 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   [self removePlayerItemObservers];
   [self removePlayerTimeObserver];
   [self removePlayerObservers];
-  [_player unregisterWithTracksChangedListener:self];
   [self removeSSMErrorListners];
   [self removeLogListners];
   [self removeDRMErrorListners];
+  [self removeOnTracksChanged];
   [_player pause];
   [_player replaceCurrentItemWithPlayerItem:nil];
-  _thumbnails = nil;
+  _player = nil;
   RCTOTVLogD(@"dealloc exit");
-
 }
 
 //cleanup function location. When the view is being descoped but there are still objects that need to be removed.
@@ -481,6 +502,8 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
     if(src[@"token"] && [_token isEqualToString:@""] && !_drmError){
       _token = src[@"token"];
       _src = src;
+      _waitForToken = false;
+
       dispatch_semaphore_signal(tokenSemaphore);
     }
     RCTOTVLogD(@"setSource exit");
@@ -521,14 +544,17 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
       [drmHelper clearStreamDelegate];
       [weakSelf setupFPSPlayback];
     }else if(self->_src[@"token"] && ![self->_src[@"token"] isEqual:[NSNull null]]){
+      RCTOTVLogI(@"Token passed with source.");
       [self setupFPSPlayback];
     }else {
       dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^(void){
-        tokenSemaphore = dispatch_semaphore_create(0);
+
+        self->tokenSemaphore = dispatch_semaphore_create(0);
         dispatch_time_t timeout;
         RCTOTVLogD(@"tokenWait start");
         timeout = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC));
-        dispatch_semaphore_wait(tokenSemaphore, timeout);
+        _waitForToken = true;
+        dispatch_semaphore_wait(self->tokenSemaphore, timeout);
         RCTOTVLogD(@"tokenWait end");
         if (![_token isEqual:@""] && !_drmError && ![self->_src[@"token"] isEqual:[NSNull null]]) {
           [self setupFPSPlayback];
@@ -557,6 +583,12 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   //remove last SSM session.
   [drmHelper.delegate removeStream];
 
+  //if token callback is waiting stop it and signal last semaphore to clean up
+  if (_waitForToken) {
+    _waitForToken = false;
+    dispatch_semaphore_signal(tokenSemaphore);
+  }
+
   _drmError = false;
   _lastDRMErrorCode = -1;
   _lastPlayerItemErrorCode = -1;
@@ -573,7 +605,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   [self stopStatisticsUpdate];
   [self removePlayerTimeObserver];
   [self removePlayerItemObservers];
-  [self->_player unregisterWithTracksChangedListener:self];
+  [self removeOnTracksChanged];
 
   [_player replaceCurrentItemWithPlayerItem:nil];
 }
@@ -584,6 +616,8 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   /**
    setSrc is called in JS thread, make sure native player is handled in UI thread
    */
+
+  RCTOTVLogD(@"setupFPSPlayback enter");
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t) 0), dispatch_get_main_queue(), ^{
     if(self->_src[@"token"]){
       self->_token = self->_src[@"token"];
@@ -598,7 +632,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
     NSURL* srcURL = [NSURL URLWithString: self->_src[@"src"]];
 
     if (srcURL && srcURL.absoluteString.length != 0) {
-      [self->_player registerWithTracksChangedListener:self];
+      [self registerOnTracksChanged];
     }
 
     self->_playerItem = [[OTVAVPlayerItem alloc] initWithURL:srcURL];
@@ -630,7 +664,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
     [self setupOTVThumbnail];
   });
-
+  RCTOTVLogD(@"setupFPSPlayback exit");
 }
 -(void)setupOTVThumbnail {
   NSURL* srcURL = [NSURL URLWithString: _src[@"src"]];
@@ -808,17 +842,23 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
 - (void)stop {
   RCTOTVLogD(@"stop enter");
+  if (_waitForToken) {
+    _waitForToken = false;
+    dispatch_semaphore_signal(tokenSemaphore);
+  }
   [self removePlayerErrorListeners];
   [self stopStatisticsUpdate];
   [self removePlayerItemObservers];
   [self removePlayerTimeObserver];
   [self removePlayerObservers];
+  [self removeListeners];
   [_player pause];
-  [_player unregisterWithTracksChangedListener:self];
-  [_player replaceCurrentItemWithPlayerItem:nil];
+  [self removeOnTracksChanged];
   _thumbnails = nil;
   _thumbnailModel = nil;
   _newThumbnailStyle = nil;
+  [_player replaceCurrentItemWithPlayerItem:nil];
+
   [self sendOnStop];
   RCTOTVLogD(@"stop exit");
 }
@@ -1087,6 +1127,21 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
 }
 
+/**
+ It may crash if trying to remove the observer when there is no observer set
+ */
+- (void)removePlayerItemObservers
+{
+  RCTOTVLogD(@"removePlayerItemObservers enter");
+  if (_playerItemObserversSet) {
+    RCTOTVLogD(@"removePlayerItemObservers removal");
+    [_playerItem removeObserver:self forKeyPath:statusKeyPath];
+    [_playerItem removeObserver:self forKeyPath:playbackLikelyToKeepUpKeyPath];
+    _playerItemObserversSet = NO;
+  }
+  RCTOTVLogD(@"removePlayerItemObservers exit");
+}
+
 - (void)addPlayerObservers
 {
   RCTOTVLogD(@"addPlayerObservers enter");
@@ -1102,25 +1157,14 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 {
   RCTOTVLogD(@"removePlayerObservers enter");
   if (_playerObserversSet) {
+    RCTOTVLogD(@"removePlayerObservers removal");
     [_player removeObserver:self forKeyPath:playerTimeControlStatusKeyPath];
     _playerObserversSet = NO;
   }
   RCTOTVLogD(@"removePlayerObservers exit");
 }
 
-/**
- It may crash if trying to remove the observer when there is no observer set
- */
-- (void)removePlayerItemObservers
-{
-  RCTOTVLogD(@"removePlayerItemObservers enter");
-  if (_playerItemObserversSet) {
-    [_playerItem removeObserver:self forKeyPath:statusKeyPath];
-    [_playerItem removeObserver:self forKeyPath:playbackLikelyToKeepUpKeyPath];
-    _playerItemObserversSet = NO;
-  }
-  RCTOTVLogD(@"removePlayerItemObservers exit");
-}
+
 
 
 - (void)attachPlayerErrorListeners
@@ -1141,6 +1185,8 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTOTVLogD(@" removePlayerErrorListeners enter");
 
   if (_errorHandlingListenersSet) {
+    RCTOTVLogD(@" removePlayerErrorListeners removal");
+
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                             name:AVPlayerItemNewErrorLogEntryNotification
                                             object:nil];
@@ -1176,6 +1222,8 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 {
   RCTOTVLogD(@"removePlayerListeners enter");
   if (_playerListenersListenersSet) {
+    RCTOTVLogD(@"removePlayerListeners removal");
+
    [[NSNotificationCenter defaultCenter] removeObserver:self
                                           name: otvAvailableBitratesChanged
                                           object:nil];
@@ -1213,9 +1261,10 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 {
   RCTOTVLogD(@"stopStatisticsUpdate enter");
   if (_updateStatisticsTimer) {
+    RCTOTVLogI(@"Statistics observer removed");
+
     [_player removeTimeObserver:_updateStatisticsTimer];
     _updateStatisticsTimer = nil;
-    RCTOTVLogI(@"Statistics observer removed");
   }
   RCTOTVLogD(@"stopStatisticsUpdate exit");
 }
@@ -1249,8 +1298,13 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
     dispatch_time_t dipatchTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(_progressUpdateInterval * NSEC_PER_SEC));
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_after(dipatchTime, queue, ^{
-      [weakSelf sendProgressUpdate];
-      [weakSelf scheduleLoopInSeconds:_progressUpdateInterval];
+      if (self->_player != nil && self->_player.currentItem != nil && [weakSelf isLiveStream]){
+        [weakSelf sendProgressUpdate];
+        [weakSelf scheduleLoopInSeconds:_progressUpdateInterval];
+      } else{
+        RCTOTVLogD(@"scheduleLoopInSeconds end of live stream detected, removing liveTimeObserver.");
+        return;
+      }
     });
   }
 }
@@ -1264,13 +1318,17 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
   if (_timeObserver)
   {
+    RCTOTVLogD(@"removePlayerTimeObserver remove _timeObserver");
     [_player removeTimeObserver:_timeObserver];
     _timeObserver = nil;
+
   }
   if (_liveTimeObserver)
   {
+    RCTOTVLogD(@"removePlayerTimeObserver remove _liveTimeObserver");
     [_liveTimeObserver invalidate];
     _liveTimeObserver = nil;
+
   }
 
   RCTOTVLogD(@"removePlayerTimeObserver exit");
@@ -1283,6 +1341,9 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 - (void)sendProgressUpdate
 {
   RCTOTVLogD(@"sendProgressUpdate enter");
+  if (_player == nil) {
+    return;
+  }
   AVPlayerItem *video = [_player currentItem];
   if (video == nil || video.status != AVPlayerItemStatusReadyToPlay) {
     return;
@@ -1682,24 +1743,37 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTOTVLogD(@"attachListeners enter");
 
   // listen for end of file
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:AVPlayerItemDidPlayToEndTimeNotification
-                                                object:[_player currentItem]];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(playerItemDidReachEnd:)
                                                name:AVPlayerItemDidPlayToEndTimeNotification
                                              object:[_player currentItem]];
 
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:AVPlayerItemPlaybackStalledNotification
-                                                object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(playbackStalled:)
                                                name:AVPlayerItemPlaybackStalledNotification
                                              object:nil];
-
+  _addListenersSet = YES;
   RCTOTVLogD(@"attachListeners exit");
 }
+
+- (void)removeListeners
+{
+  RCTOTVLogD(@"removeListeners enter");
+  if (_addListenersSet) {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:AVPlayerItemDidPlayToEndTimeNotification
+                                                  object:[_player currentItem]];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:AVPlayerItemPlaybackStalledNotification
+                                                  object:nil];
+    _addListenersSet = NO;
+  }
+
+  RCTOTVLogD(@"removeListeners exit");
+}
+
+
 
 -(void)attachSSMErrorListners
 {

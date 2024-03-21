@@ -1,6 +1,6 @@
 // Copyright (c) 2020--2023 Nagravision SA. All rights reserved.
 //
-//  RCTOTVLogImpl.swift 
+//  RCTOTVLogImpl.swift
 
 import Foundation
 import os
@@ -37,7 +37,7 @@ internal class LogImpl: NSObject {
     super.init()
     self.logSdkVersion()
   }
-  
+
   internal func getBundleName() -> String? {
     let bundle = Bundle(for: type(of: self))
     return bundle.infoDictionary?["CFBundleName"] as? String
@@ -57,7 +57,7 @@ internal class LogImpl: NSObject {
     return  name + " - " + version
     #endif
   }
-  
+
   func logSdkVersion() {
     if let fpsSdkVersion = getSdkInfo() {
       os_log("%{public}@", log: LogImpl.Logger.osLogger, type: .debug, fpsSdkVersion)
@@ -87,7 +87,7 @@ extension LogImpl: RCTOTVLogProtocol {
       self.logger.output(level, message)
     }
   }
-  
+
   public func log(_ level: RCTOTVLogType, _ message: String) {
     LogImpl.shared.queue.async {
       self.logger.output(level, message)
@@ -113,18 +113,16 @@ extension LogImpl.Logger {
       os_log("%{public}@", log: LogImpl.Logger.osLogger, type: .error, message)
       LogImpl.shared.logProvider?.logProvider(xLog: message)
     @unknown default: break
-        
+
     }
   }
-  
+
   func output(_ level: RCTOTVLogType, _ message: String) {
     switch self {
     case .debugConsole:
-      print(message)
       LogImpl.shared.logProvider?.logProvider(xLog: message)
     case .deviceConsole:
       logOutput(level, message)
-      print(message)
     }
   }
 }
