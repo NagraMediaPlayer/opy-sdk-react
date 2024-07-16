@@ -1697,23 +1697,25 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   for (int i = 0; i < tracks.count; ++i) {
     OTVTrackInfo *track = [tracks objectAtIndex:i];
     assert(track);
+    NSArray* characterArray = @[];
 
     RCTOTVLogI(@"Adding track to list");
     if (type == OTVTrackTypeSubtitle) {
-      NSArray* characterArray = @[];
       NSDictionary *outputTrack = @{
-                                  @"encodeType": [NSNumber numberWithInt:1000],
+                                  @"encodeType": [NSNumber numberWithInt:track.codec],
                                   @"title": track.name ? track.name: [NSNull null],
                                   @"language": track.language ? track.language: [NSNull null],
-                                  @"characteristics": characterArray
+                                  @"characteristics": track.characteristics ? track.characteristics : characterArray
                                   };
       RCTOTVLogI(@"%@", outputTrack);
       [outputTracks addObject:outputTrack];
     } else {
       NSDictionary *outputTrack = @{
-                                  @"encodeType": [NSNumber numberWithInt:1000],
+                                  @"encodeType": [NSNumber numberWithInt:track.codec],
                                   @"title": track.name ? track.name: [NSNull null],
                                   @"language": track.language ? track.language: [NSNull null],
+                                  @"channelCount": track.channelCount ? [NSNumber numberWithInt:track.channelCount]: [NSNumber numberWithInt:0],
+                                  @"characteristics": track.characteristics ? track.characteristics : characterArray
                                   };
       RCTOTVLogI(@"%@", outputTrack);
       [outputTracks addObject:outputTrack];
@@ -2325,3 +2327,4 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 */
 
 @end
+

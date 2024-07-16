@@ -33,6 +33,8 @@ declare module "@nagra/react-otvplayer" {
     language: string;
     title: string;
     encodeType: 0 | 1 | 2 | 3 | 1000;
+    channelCount: number;
+    characteristics: string[];
   }
 
   export interface TextMediaTrack {

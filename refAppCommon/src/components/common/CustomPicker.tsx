@@ -93,6 +93,30 @@ const CustomPicker: FC<Props> = ({
     }
   };
 
+  const itemText = (itemToShow: any): string => {
+    let labelForItem;
+
+    if (itemToShow.title) {
+      labelForItem = itemToShow.title;
+      if (itemToShow.channelCount) {
+        labelForItem += ` (${itemToShow.channelCount} channels)`;
+      }
+      if (itemToShow.encodeType) {
+        labelForItem += ` [type ${itemToShow.encodeType}]`;
+      }
+      if (itemToShow.characteristics.length > 0) {
+        labelForItem += ` ${itemToShow.characteristics.join(', ')}`;
+      }
+    } else {
+      labelForItem =
+        itemToShow.name ||
+        itemToShow.resolution ||
+        (itemToShow / 1000).toString();
+    }
+
+    return labelForItem;
+  };
+
   // @ts-ignore
   const renderItem = ({ item, index }): ReactElement<any, any> => (
     <TouchableHighlight
@@ -101,8 +125,7 @@ const CustomPicker: FC<Props> = ({
     activeOpacity={0.5}
     underlayColor="#eb6c3a"
     ref={myComponentRef} onLayout={() => {}}>
-      {/* This to be updated to support different type of data */}
-      <Text style={styles.listText} >{item.name || item.title || item.resolution || ((item / 1000).toString())}</Text>
+      <Text style={styles.listText} >{itemText(item)}</Text>
     </TouchableHighlight>
   );
 
