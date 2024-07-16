@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-tvos12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OPYSDKFPSTv
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-tvos12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name OPYSDKFPSTv
 import AVFoundation
 import CoreMedia
 import Foundation
@@ -165,10 +164,10 @@ extension Foundation.NSNotification.Name {
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class OTVThumbnailView : UIKit.UIView {
   @objc @_Concurrency.MainActor(unsafe) public init(url: Foundation.URL, frame: CoreFoundation.CGRect = .zero)
+  @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
   @objc @_Concurrency.MainActor(unsafe) public func hasThumbnails() -> Swift.Bool
   @objc @_Concurrency.MainActor(unsafe) public func setTime(toSeconds seconds: Foundation.TimeInterval)
-  @objc deinit
 }
 @objc(OTVThumbnailError) public enum OTVIFrameThumbnailError : Swift.Int {
   case positionError = 1
@@ -737,6 +736,9 @@ public enum ThumbnailError : Swift.String {
   @objc final public let name: Swift.String
   @objc final public let language: Swift.String?
   @objc final public let mediaType: Swift.String
+  @objc final public let channelCount: Swift.Int
+  @objc final public let codec: Swift.Int
+  @objc final public let characteristics: [Swift.String]
   @objc deinit
 }
 extension OPYSDKFPSTv.OTVTrackInfo {
