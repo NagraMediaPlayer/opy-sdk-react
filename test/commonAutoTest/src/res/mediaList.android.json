@@ -40,7 +40,9 @@
             {
               "language": "und",
               "encodeType": 0,
-              "title": "und[AAC]"
+              "title": "und[AAC]",
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -65,7 +67,9 @@
             {
               "language": "en",
               "encodeType": 0,
-              "title": "en[AAC]"
+              "title": "en[AAC]",
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -338,7 +342,9 @@
             {
               "language": "und",
               "encodeType": 0,
-              "title": "und[AAC]"
+              "title": "und[AAC]",
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -462,7 +468,9 @@
             {
               "language": "und",
               "encodeType": 0,
-              "title": "und[AAC]"
+              "title": "und[AAC]",
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -519,17 +527,196 @@
                 {
                   "language": "nar",
                   "encodeType": 0,
-                  "title": "nar[AAC]"
+                  "title": "nar[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
                 },
                 {
                   "language": "en",
                   "encodeType": 0,
-                  "title": "en[AAC]"
+                  "title": "en[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
                 },
                 {
                   "language": "cy",
                   "encodeType": 0,
-                  "title": "cy[AAC]"
+                  "title": "cy[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "BBC Multi Track Content": {
+      "url": "https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.mpd",
+      "mimeType": "application/dash+xml",
+      "expectedOutput": {
+        "eventsExpected": [
+          {
+            "event": "onAudioTrackSelected",
+            "payload": {
+              "index": 1
+            }
+          },
+          {
+            "event": "onTracksChanged",
+            "payload": {
+              "textTracks": [
+                {
+                  "language": "en",
+                  "encodeType": 4,
+                  "title": "en[SMPTE]",
+                  "characteristics": [
+                    "public.accessibility.transcribes-spoken-dialog"
+                  ]
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 4,
+                  "title": "fr[SMPTE]",
+                  "characteristics": [
+                    "public.accessibility.transcribes-spoken-dialog"
+                  ]
+                },
+                {
+                  "language": "de",
+                  "encodeType": 4,
+                  "title": "de[SMPTE]",
+                  "characteristics": [
+                    "public.accessibility.transcribes-spoken-dialog"
+                  ]
+                }
+              ],
+              "audioTracks": [
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 6,
+                  "characteristics": []
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "en",
+                  "encodeType": 0,
+                  "title": "en[AAC]",
+                  "channelCount": 6,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 6,
+                  "characteristics": []
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "de",
+                  "encodeType": 0,
+                  "title": "de[AAC]",
+                  "channelCount": 6,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 2,
+                  "characteristics": []
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 6,
+                  "characteristics": []
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 2,
+                  "characteristics": ["public.accessibility.describes-video"]
+                },
+                {
+                  "language": "fr",
+                  "encodeType": 0,
+                  "title": "fr[AAC]",
+                  "channelCount": 6,
+                  "characteristics": ["public.accessibility.describes-video"]
                 }
               ]
             }

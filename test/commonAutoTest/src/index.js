@@ -13,7 +13,11 @@ import { postTestResults, postLogs } from "./utils/testResults";
 import { captureConsoleLogs } from "./utils/logging";
 import { getTestTagConfig } from "./utils/tagging";
 
-import { isRunningInSafariBrowser } from "./utils/platformVariations";
+import {
+	isRunningInSafariBrowser,
+	isRunningOnAndroid,
+	isRunningOniOS,
+} from "./utils/platformVariations";
 
 // The test suites
 import { executeNonPlaybackTests } from "./testSteps/miscellaneous/misc.test";
@@ -114,6 +118,14 @@ let otvPlayer;
 				? "HLS Multi Track Content"
 				: "Multi Track Content"
 		);
+
+		// Extra track selection tracks for 4iG/3SS CR re audio channel info
+		if (isRunningOnAndroid() || isRunningOniOS()) {
+			await executeTrackSelectionTests(
+				otvPlayer,
+				"BBC Multi Track Content"
+			);
+		}
 
 		// Robustness tests
 		await executeLongPlayTests(

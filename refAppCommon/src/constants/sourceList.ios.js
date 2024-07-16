@@ -17,7 +17,7 @@ export const sourceListClear = [
 		name: 'Advanced Stream',
 		source: {
 			src: 'https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -29,7 +29,7 @@ export const sourceListClear = [
 		name: 'Basic Stream',
 		source: {
 			src: 'https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		AdTagURL:
 			'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480' +
@@ -46,7 +46,7 @@ export const sourceListClear = [
 		name: 'Apple Basic Stream 16x9 with MA',
 		source: {
 			src: 'https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -60,7 +60,7 @@ export const sourceListClear = [
 		name: 'HLSv4 Stream with MA',
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls4/clear/MA_envivio_v_a_a_clear/index.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -72,7 +72,7 @@ export const sourceListClear = [
 		name: 'Big Buck Bunny 10min TS I-Frames',
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls4/clear/bbb_iframe_playlist/ts/index.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		AdTagURL:
 			'https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250,728x90&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dredirecterror&nofb=1&correlator=',
@@ -86,7 +86,7 @@ export const sourceListClear = [
 		name: 'Elmo CC608 and CC708 - Clear',
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls2/clear/CC_1080i_29_Mpeg2_608_708_Elmo.ts/index_cc_signalled.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -98,11 +98,22 @@ export const sourceListClear = [
 		name: 'BBC Live',
 		source: {
 			src: 'https://replacemewithyourown.com/secureplayer/live-harmonic/hls/clear/bbc1clear/index.m3u8',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
 		tags: ['LIVE', 'CLEAR', 'BBC'],
+	},
+	{
+		id: 8,
+		External_Subtitles: [],
+		name: 'BBC Testcard',
+		source: {
+			src: 'https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.m3u8',
+			type: 'application/x-mpegURL',
+		},
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'BBC'],
 	},
 ];
 
@@ -114,7 +125,7 @@ export const sourceListEncryptedSSM = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls6/scramble/elephants_dream_24fps_fmp4_fps_scramble/master-ssp.m3u8',
 			token: 'eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMiJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6Miwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.MOD-K1dmvPJzyFxt0JlH5LYmY636bjnuNc9wkf4TKVY',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -127,7 +138,7 @@ export const sourceListEncryptedSSM = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls6/scramble/elephants_dream_24fps_fmp4_fps_scramble/master-ssp.m3u8',
 			token: 'eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -140,7 +151,7 @@ export const sourceListEncryptedSSM = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls6/scramble/bbb_sunflower_60fps_fmp4_fps_scramble/master-ssp.m3u8',
 			token: 'eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -153,7 +164,7 @@ export const sourceListEncryptedSSM = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls6/scramble/bbb_sunflower_60fps_fmp4_fps_scramble/master-ssp.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoic2FmYXJpMiJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6Miwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.Yz3itoLthexGELwGVigsQXAQUjf-TjJRuHHuTLYMFEg',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -169,7 +180,7 @@ export const sourceListEncryptedSSP = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls4/scramble/bbb_iframe_playlist/byterange/index.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMDYzMjFhODYtMzFhZi00OTcxLWJiMmItM2Y4YTA2YzUwZjZiIl0sImNvbnRlbnRJZCI6Ik5BTE0xMTM4Iiwic3RvcmFibGUiOnRydWUsImRlZmF1bHRVc2FnZVJ1bGVzIjp7Im1pbkxldmVsIjowLCJkaWdpdGFsT25seSI6dHJ1ZSwidW5wcm90ZWN0ZWREaWdpdGFsT3V0cHV0Ijp0cnVlfX1dfQ.J1Ml7jfPZiz-kHJpnTsCZgRZLEGZ13WpAi3In9h5j9s',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -182,7 +193,7 @@ export const sourceListEncryptedSSP = [
 		source: {
 			src: 'https://replacemewithyourown.com/secureplayer/live-pmxo/Content/hls_fairplay_ssp/Live/Channel(Channel4)/index.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJjb250ZW50SWQiOiJDSDRfRlBTX1NTUEFXUyIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOmZhbHNlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.dPW7IORMhOIXUpVd7h1DxY38WchpuO1dxpK9WMJ9IHQ',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -195,7 +206,7 @@ export const sourceListEncryptedSSP = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls5/scramble/doctors_smpte-tt-id3-png_subtitles_fairplay/index-ssp.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -208,7 +219,7 @@ export const sourceListEncryptedSSP = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls5/scramble/screenID3_png_multi-subtitle_fairplay_encrypted/index-ssp.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		__v: 0,
 		headend: '5b2b78e7dac20f5011331290',
@@ -221,7 +232,7 @@ export const sourceListEncryptedSSP = [
 		source: {
 			src: 'https://replacemewithyourown.com/vod/hls5/scramble/screenID3_png_multi-subtitle_fairplay_encrypted/index-ssp.m3u8',
 			token: 'eyJraWQiOiIyOTI4NDgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJkZWZhdWx0VXNhZ2VSdWxlcyI6eyJtaW5MZXZlbCI6MCwiZGlnaXRhbE9ubHkiOnRydWUsInVucHJvdGVjdGVkRGlnaXRhbE91dHB1dCI6dHJ1ZX19XX0.ch1hZliH8J4qVeGcgGJFUFJqc4DxJ4iP_xGczf9yqHA',
-			type: 'application/dash+xml',
+			type: 'application/x-mpegURL',
 		},
 		tokenType: 'nv-application-data',
 		__v: 0,

@@ -56,9 +56,10 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-unifiedExample0634/ios/Pods/
 node_modules
 
 # Output of the build
 dist/0.72.4
 dist/0.67.4
+example-0.67.4/ios/Pods/
+example-0.72.4/ios/Pods/
