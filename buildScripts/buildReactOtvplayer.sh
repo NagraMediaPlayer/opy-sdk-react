@@ -52,7 +52,7 @@ function build_android() {
 	pushd "${SCRIPT_PATH}"/../"$FOLDERNAME"/"$PLATFORM_FOLDER"
 	rm -rf build "$DIST_PATH/android"
 
-	./gradlew build
+	./gradlew build --refresh-dependencies
 	check $? ${LINENO}
 
 	mkdir -p "$DIST_PATH/android/libs"
