@@ -277,6 +277,10 @@ export default class Broadcast {
             title: _audioTrack.language,
             // encodeType metadata not available yet, so setting to default UNKNOWN
             encodeType: AUDIO_ENCODING_TYPE.UNKNOWN,
+            // Hard coding channel count to 2 as no metadata available
+            channelCount: 2,
+            //Empty list as no characteristics info could be extracted from the textComponent.
+            characteristics: [],
           };
           audioTracks.push(audioObj);
         }

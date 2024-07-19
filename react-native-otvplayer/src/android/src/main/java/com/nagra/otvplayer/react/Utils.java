@@ -112,7 +112,15 @@ public final class Utils {
             int encodeType = track.mEncodeType;
             String EncStr = "UNKNOWN";
             WritableMap tTrack = Arguments.createMap();
+
+            WritableArray characterArray = Arguments.createArray();
+            for (String characteristics : track.mCharacteristics) {
+                characterArray.pushString(characteristics);
+            }
+            tTrack.putArray("characteristics", characterArray);
+
             if (trackType == OTVTrackInfo.MEDIA_TRACK_TYPE_AUDIO) {
+                tTrack.putInt("channelCount", track.mAudioChannelCount > 0 ? track.mAudioChannelCount : 2);
                 switch (track.mEncodeType) {
                     case IOTVUPIEventListener.TrackInfo.AUDIO_TRACK_ENCODING_TYPE_AAC:
                         EncStr = "AAC";
@@ -131,9 +139,6 @@ public final class Utils {
                         break;
                 }
             } else if (trackType == OTVTrackInfo.MEDIA_TRACK_TYPE_TIMEDTEXT) {
-                WritableArray characterArray = Arguments.createArray();
-                tTrack.putArray("characteristics", characterArray);
-
                 switch (track.mEncodeType) {
                     case IOTVUPIEventListener.TrackInfo.SUBTITLE_TRACK_ENCODING_TYPE_DVB_BITMAP:
                         EncStr = "DVB BITMAP";

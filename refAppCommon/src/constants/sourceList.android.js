@@ -405,6 +405,28 @@ export const sourceListClear = [
 		tags: ['VOD', 'CLEAR', 'DASH', 'THUMBNAILS'],
 		id: 32,
 	},
+	{
+		id: 33,
+		External_Subtitles: [],
+		name: 'BBC Testcard HLS',
+		source: {
+			src: 'https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.m3u8',
+			type: 'application/x-mpegURL',
+		},
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'BBC'],
+	},
+	{
+		id: 34,
+		External_Subtitles: [],
+		name: 'BBC Testcard DASH',
+		source: {
+			src: 'https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.mpd',
+			type: 'application/dash+xml',
+		},
+		headend: '5b2b78e7dac20f5011331290',
+		tags: ['VOD', 'CLEAR', 'BBC'],
+	},
 ];
 
 export const sourceListEncryptedSSM = [

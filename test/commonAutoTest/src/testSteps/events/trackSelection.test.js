@@ -44,7 +44,9 @@ export async function executeTrackSelectionTests(otvPlayer, streamName) {
 			}
 			expect(found).toBe(
 				true,
-				`Expecting ${JSON.stringify(receivedTracks[receivedTrkIdx])}`
+				`Expecting for index ${receivedTrkIdx} ${JSON.stringify(
+					receivedTracks[receivedTrkIdx]
+				)}`
 			);
 		}
 	};

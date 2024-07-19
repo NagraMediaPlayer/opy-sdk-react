@@ -47,12 +47,12 @@ docs/**
 
 node_modules/
 ios/pods/
-# otvplayer-0.6*.4/android/libs/*.aar
-# otvplayer-0.6*.4/web/libs
-# otvplayer-0.6*.4/ios/Pods
-# otvplayer-0.7*.4/android/libs/*.aar
-# otvplayer-0.7*.4/web/libs
-# otvplayer-0.7*.4/ios/Pods
-# otvplayer-0.7*.4/ios/libs
+otvplayer-0.6*.4/android/libs/*.aar
+otvplayer-0.6*.4/web/libs
+otvplayer-0.6*.4/ios/Pods
+otvplayer-0.7*.4/android/libs/*.aar
+otvplayer-0.7*.4/web/libs
+otvplayer-0.7*.4/ios/Pods
+otvplayer-0.7*.4/ios/libs
 dist/
 temp/

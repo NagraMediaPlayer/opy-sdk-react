@@ -33,6 +33,8 @@ export interface AudioMediaTrack {
   language: string;
   title: string;
   encodeType: AUDIO_ENCODING_TYPE;
+  channelCount: number;
+  characteristics: string[];
 }
 
 export interface TextMediaTrack {

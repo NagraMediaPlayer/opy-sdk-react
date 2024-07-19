@@ -63,7 +63,14 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-app-0.72.4/ios/pods/
+app-0.63.4/ios/pods/
 app-0.67.4/ios/pods/
-app-0.72.4/android/app/.cxx/
-app-0.67.4/android/app/.cxx/
+app-0.72.4/ios/pods/
+
+app-0.67.4/android/app/build
+app-0.63.4/android/app/build
+app-0.72.4/android/app/build
+
+app-0.67.4/android/app/.cxx
+app-0.63.4/android/app/.cxx
+app-0.72.4/android/app/.cxx

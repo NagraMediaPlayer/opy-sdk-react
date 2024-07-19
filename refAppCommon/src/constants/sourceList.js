@@ -1,6 +1,20 @@
 // Copyright (c) 2020--2023 Nagravision SA. All rights reserved.
 const unFilteredSourceListClear = [
 	{
+		name: 'BBC Testcard HLS',
+		source: {
+			src: 'https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.m3u8',
+			type: 'application/x-mpegURL',
+		},
+	},
+	{
+		name: 'BBC Testcard DASH',
+		source: {
+			src: 'https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.mpd',
+			type: 'application/dash+xml',
+		},
+	},
+	{
 		name: 'DASH Live stream, Single adaptation set, 1x1 tiles (livesim)',
 		source: {
 			src: 'https://replacemewithyourown.com/vod/dash/dash-if_livesim/dashif-livesim_2019-01-24/vod/testpic_2s/Manifest_thumbs.mpd',

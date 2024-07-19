@@ -173,13 +173,13 @@
             {
               "title": "English CC",
               "language": "en",
-              "encodeType": 1000,
+              "encodeType": 2,
               "characteristics": []
             },
             {
               "title": "English",
               "language": "en",
-              "encodeType": 1000,
+              "encodeType": 2,
               "characteristics": []
             }
           ],
@@ -187,7 +187,9 @@
             {
               "title": "English",
               "language": "en",
-              "encodeType": 1000
+              "encodeType": 0,
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -209,7 +211,7 @@
             {
               "characteristics": [],
               "title": "CC",
-              "encodeType": 1000,
+              "encodeType": 4,
               "language": null
             }
           ],
@@ -217,7 +219,9 @@
             {
               "language": null,
               "title": "Unknown",
-              "encodeType": 1000
+              "encodeType": 0,
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -286,7 +290,9 @@
             {
               "language": null,
               "title": "Unknown",
-              "encodeType": 1000
+              "encodeType": 0,
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -419,7 +425,7 @@
             {
               "characteristics": [],
               "title": "CC",
-              "encodeType": 1000,
+              "encodeType": 2,
               "language": null
             }
           ],
@@ -427,7 +433,9 @@
             {
               "language": "und",
               "title": "Unknown language",
-              "encodeType": 1000
+              "encodeType": 0,
+              "channelCount": 2,
+              "characteristics": []
             }
           ]
         }
@@ -503,61 +511,65 @@
                 {
                   "language": "en",
                   "title": "English",
-                  "encodeType": 1000
+                  "encodeType": 0,
+                  "channelCount": 2,
+                  "characteristics": []
                 },
                 {
                   "language": "en",
                   "title": "BipBop Audio 2 - English",
-                  "encodeType": 1000
+                  "encodeType": 0,
+                  "channelCount": 2,
+                  "characteristics": []
                 }
               ],
               "textTracks": [
                 {
                   "characteristics": [],
                   "title": "English SDH",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "en"
                 },
                 {
                   "characteristics": [],
                   "title": "English (Forced) Forced",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "en"
                 },
                 {
                   "characteristics": [],
                   "title": "French SDH",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "fr"
                 },
                 {
                   "characteristics": [],
                   "title": "French Forced",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "fr"
                 },
                 {
                   "characteristics": [],
                   "title": "Spanish SDH",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "es"
                 },
                 {
                   "characteristics": [],
                   "title": "Spanish Forced",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "es"
                 },
                 {
                   "characteristics": [],
                   "title": "Japanese SDH",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "ja"
                 },
                 {
                   "characteristics": [],
                   "title": "Japanese Forced",
-                  "encodeType": 1000,
+                  "encodeType": 4,
                   "language": "ja"
                 }
               ]
@@ -565,6 +577,98 @@
           }
         ]
       }
-    }
+    },
+    "BBC Multi Track Content": {
+      "url": "https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.m3u8",
+      "mimeType": "application/x-mpegURL",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0,
+        "maxBitrate": null,
+        "maxResolution": {
+          "width": 0,
+          "height": 0
+        }
+      },
+      "expectedOutput": {
+        "eventsExpected": [
+          {
+            "event": "onAudioTrackSelected",
+            "payload": {
+              "index": 0
+            }
+          },
+          {
+            "event": "onTracksChanged",
+            "payload": {
+              "audioTracks": [
+                {
+                  "characteristics": [],
+                  "language": "en",
+                  "title": "English",
+                  "encodeType": 0,
+                  "channelCount": 2
+                },
+                {
+                  "characteristics": [],
+                  "language": "de",
+                  "title": "German",
+                  "encodeType": 0,
+                  "channelCount": 2
+                },
+                {
+                  "characteristics": [],
+                  "language": "fr",
+                  "title": "French",
+                  "encodeType": 0,
+                  "channelCount": 2
+                },
+                {
+                  "characteristics": [],
+                  "language": "en",
+                  "title": "English",
+                  "encodeType": 0,
+                  "channelCount": 2
+                },
+                {
+                  "characteristics": [],
+                  "language": "de",
+                  "title": "German",
+                  "encodeType": 0,
+                  "channelCount": 2
+                },
+                {
+                  "characteristics": [],
+                  "language": "fr",
+                  "title": "French",
+                  "encodeType": 0,
+                  "channelCount": 2
+                }
+              ],
+              "textTracks": [
+                {
+                  "characteristics": [],
+                  "title": "English",
+                  "encodeType": 4,
+                  "language": "en"
+                },
+                {
+                  "characteristics": [],
+                  "title": "French",
+                  "encodeType": 4,
+                  "language": "fr"
+                },
+                {
+                  "characteristics": [],
+                  "title": "Deutsch",
+                  "encodeType": 4,
+                  "language": "de"
+                }
+              ]
+            }
+          }
+        ]
+      }
   }
 }

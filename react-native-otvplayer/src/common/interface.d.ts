@@ -44,8 +44,8 @@ export interface OTVPlayerProps {
     height?: number;
   };
   statisticsConfig?: {
-    statisticsTypes?: number,
-    statisticsUpdateInterval?: number,
+    statisticsTypes?: number;
+    statisticsUpdateInterval?: number;
   };
   onDownloadResChanged?: Function;
   onBitratesAvailable?: Function;
@@ -85,9 +85,9 @@ export interface ThumbnailStyle {
 }
 
 export interface ThumbnailType {
-  display?: boolean,
-  positionInSeconds?: number,
-  style?: ThumbnailStyle
+  display?: boolean;
+  positionInSeconds?: number;
+  style?: ThumbnailStyle;
 }
 
 export interface OnLoadStartEvent {
@@ -216,8 +216,13 @@ export interface AvailableTextTrack extends AvailableMediaTrack {
   characteristics: string[];
 }
 
+export interface AvailableAudioTrack extends AvailableMediaTrack {
+  channelCount: number;
+  characteristics: string[];
+}
+
 export interface OnTracksChangedEvent {
-  audioTracks?: AvailableMediaTrack[];
+  audioTracks?: AvailableAudioTrack[];
   textTracks?: AvailableTextTrack[];
 }
 
@@ -314,13 +319,13 @@ export interface StatisticsInformation {
       averageBitrate?: number;
       averageVideoBitrate?: number;
       averageAudioBitrate?: number;
-    }
+    };
     contentServer: {
       finalIPAddress?: string;
       finalURL?: string;
       url?: string;
       numberOfServerAddressChanges?: number;
-    }
+    };
     networkUsage: {
       bytesDownloaded?: number;
       downloadBitrate?: number;
@@ -328,8 +333,8 @@ export interface StatisticsInformation {
       numberOfMediaRequests?: number;
       transferDuration?: number;
       downloadsOverdue?: number;
-    }
-  }
+    };
+  };
   playback: {
     bufferedDuration?: number;
     availableResolutions?: ArrayBuffer;
@@ -340,13 +345,13 @@ export interface StatisticsInformation {
     playbackType?: string;
     playbackStartDate?: string;
     playbackStartOffset?: number;
-  }
+  };
   rendering: {
     frameDrops?: number;
     frameDropsPerSecond?: number;
     framesPerSecondNominal?: number;
     framesPerSecond?: number;
-  }
+  };
 }
 
 export interface OnStatisticsUpdateEvent {
@@ -358,25 +363,25 @@ export interface OnStatisticsUpdateNativeEvent {
 }
 
 export interface OnBitratesAvailableEvent {
-  availableBitrates: Array<number>
+  availableBitrates: Array<number>;
 }
 
 export interface OnBitratesAvailableNativeEvent {
-  nativeEvent: OnBitratesAvailableEvent
+  nativeEvent: OnBitratesAvailableEvent;
 }
 export interface OnSelectedBitrateEvent {
-  selectedBitrate: number
+  selectedBitrate: number;
 }
 export interface OnSelectedBitrateNativeEvent {
-  nativeEvent: OnSelectedBitrateEvent
+  nativeEvent: OnSelectedBitrateEvent;
 }
 export interface OnDownloadResChangedEvent {
-  width: number,
-  height: number
+  width: number;
+  height: number;
 }
 
 export interface OnDownloadResChangedNativeEvent {
-  nativeEvent: OnDownloadResChangedEvent
+  nativeEvent: OnDownloadResChangedEvent;
 }
 export interface OnLogEvent {
   logs?: string;

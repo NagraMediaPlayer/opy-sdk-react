@@ -517,6 +517,14 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
       }
       // props.onError should only called if player is not stopped.
       if (playerStatus !== PlayerStatus.STOPPED && props.onError) {
+
+        // Ignore SSM teardown error as it is not an error for the App
+        // @ts-ignore
+        if (event?.nativeEvent?.code === ERROR_TABLE["Teardown error"]) {
+          logger.log(LOG_LEVEL.DEBUG, "Ignoring SSM teardown error");
+          return;
+        }
+
         props.onError(event.nativeEvent);
       }
       logger.log(LOG_LEVEL.DEBUG, "_onError exit");
@@ -1165,6 +1173,8 @@ const ERROR_TABLE = {
  * @param {String} event.audioTracks[].title The title of the track.
  * @param {String} event.audioTracks[].language The language of the track.
  * @param {Number} event.audioTracks[].encodeType Refer to {@link AUDIO_ENCODING_TYPE}.
+ * @param {Number} event.audioTracks[].channelCount The count of channels in the track.
+ * @param {Array<String>} event.audioTracks[].characteristics Characteristics of the track.
  * @param {Array<Object>} event.textTracks Array of available text tracks.
  * @param {String} event.textTracks[].title The title of the track.
  * @param {String} event.textTracks[].language The language of the track.
