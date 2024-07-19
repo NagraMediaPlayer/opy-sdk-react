@@ -104,7 +104,7 @@ const CustomPicker: FC<Props> = ({
       if (itemToShow.encodeType) {
         labelForItem += ` [type ${itemToShow.encodeType}]`;
       }
-      if (itemToShow.characteristics.length > 0) {
+      if (itemToShow.characteristics && itemToShow.characteristics.length > 0) {
         labelForItem += ` ${itemToShow.characteristics.join(', ')}`;
       }
     } else {

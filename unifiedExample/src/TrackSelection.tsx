@@ -270,7 +270,10 @@ function TrackSelection({navigation}) {
       label = trackList[selectedIndex].title;
       label += ` ${trackList[selectedIndex].channelCount} channels`;
       label += ` [${audioEncodeType[trackList[selectedIndex].encodeType]}]`;
-      if (trackList[selectedIndex].characteristics.length > 0) {
+      if (
+        trackList[selectedIndex].characteristics &&
+        trackList[selectedIndex].characteristics.length > 0
+      ) {
         label += ` [${trackList[selectedIndex].characteristics.join(', ')}]`;
       }
     }
@@ -283,7 +286,10 @@ function TrackSelection({navigation}) {
     if (trackList.length > 0) {
       label = trackList[selectedIndex].title;
       label += ` [${textEncodeType[trackList[selectedIndex].encodeType]}]`;
-      if (trackList[selectedIndex].characteristics.length > 0) {
+      if (
+        trackList[selectedIndex].characteristics &&
+        trackList[selectedIndex].characteristics.length > 0
+      ) {
         label += ` [${trackList[selectedIndex].characteristics.join(', ')}]`;
       }
     }
