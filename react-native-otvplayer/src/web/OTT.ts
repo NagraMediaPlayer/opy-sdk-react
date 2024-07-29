@@ -1540,7 +1540,7 @@ export class OTT implements OttPlayerProps {
    * @return {!Array.<string>}
    */
   private _getCodecParts = (codecString: string) => {
-    const parts = codecString.split('.');
+    const parts = codecString ? codecString.split('.') : ["",""];
 
     const base = parts[0];
 
