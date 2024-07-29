@@ -1545,19 +1545,22 @@ export class OTT implements OttPlayerProps {
       audioTracks: AudioMediaTrack[],
       textTracks: TextMediaTrack[];
 
+    const descriptionsSet = ["main-desc", "descriptions"]
+
     if (this._onTracksChanged) {
-      audioTracks = this._playerInstance.audioTracks().tracks_.map((element) => {
+      audioTracks = this._playerInstance.audioTracks().tracks_.map((currentTrack) => {
         return {
-          language: element.language,
-          title: element.label,
+          language: currentTrack.language,
+          title: currentTrack.label,
           // encodeType metadata not available yet, so setting to default UNKNOWN
           encodeType: AUDIO_ENCODING_TYPE.UNKNOWN,
+          characteristics: descriptionsSet.includes(currentTrack.kind.toLowerCase()) ? ["public.accessibility.describes-video"] : [],
         };
       });
-      textTracks = this._playerInstance.textTracks().tracks_.map((element) => {
+      textTracks = this._playerInstance.textTracks().tracks_.map((currentTrack) => {
         return {
-          language: element.language,
-          title: element.label,
+          language: currentTrack.language,
+          title: currentTrack.label,
           // encodeType metadata not available yet, so setting to default UNKNOWN
           encodeType: TEXT_ENCODING_TYPE.UNKNOWN,
           // Empty list as no characteristics info could be extracted from the text track list.
