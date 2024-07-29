@@ -1584,20 +1584,6 @@ export class OTT implements OttPlayerProps {
         return 'dtsx'; // DTS:X
       case base === 'mp4a' && profile === 'a9':
         return 'dtsc'; // DTS Digital Surround
-      case base === 'avc1':
-      case base === 'avc3':
-        return 'avc'; // H264
-      case base === 'hvc1':
-      case base === 'hev1':
-        return 'hevc'; // H265
-      case base === 'dvh1':
-      case base === 'dvhe':
-        return 'dovi-hevc'; // Dolby Vision based in HEVC
-      case base === 'dvav':
-      case base === 'dva1':
-        return 'dovi-avc'; // Dolby Vision based in AVC
-      case base === 'dav1':
-        return 'dovi-av1'; // Dolby Vision based in AV1
     }
     return base;
   };
@@ -1611,7 +1597,7 @@ export class OTT implements OttPlayerProps {
   private _translateCodecToEncodingType = (codec: string) => {
     let returnValue = AUDIO_ENCODING_TYPE.UNKNOWN;
     const aacSet = ['aac'];
-    const ac3Set = ['ac-3'];
+    const ac3Set = ['ac-3', 'ec-3'];
     const dtsSet = ['dts', 'dtsc', 'dtsx'];
     const mpegSet = ['mp3'];
     
