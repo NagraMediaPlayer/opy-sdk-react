@@ -853,24 +853,28 @@ describe(" Test Player Events ", () => {
 					encodeType: 0,
 					language: "en",
 					title: "en (main)",
+					channelCount: 2,
 				},
 				{
 					characteristics: [],
 					encodeType: 0,
 					language: "en",
 					title: "en (alternate)",
+					channelCount: 6,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "en",
 					title: "en (alternate)",
+					channelCount: 2,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "en",
 					title: "en (alternate)",
+					channelCount: 6,
 				},
 
 				// deutsch
@@ -879,24 +883,28 @@ describe(" Test Player Events ", () => {
 					encodeType: 0,
 					language: "de",
 					title: "de (dub)",
+					channelCount: 2,
 				},
 				{
 					characteristics: [],
 					encodeType: 0,
 					language: "de",
 					title: "de (dub,alternate)",
+					channelCount: 6,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "de",
 					title: "de (dub,alternate)",
+					channelCount: 2,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "de",
 					title: "de (dub,alternate)",
+					channelCount: 6,
 				},
 
 				// french
@@ -905,24 +913,28 @@ describe(" Test Player Events ", () => {
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub)",
+					channelCount: 2,
 				},
 				{
 					characteristics: [],
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub,alternate)",
+					channelCount: 6,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub,alternate)",
+					channelCount: 2,
 				},
 				{
 					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub,alternate)",
+					channelCount: 6,
 				},
 			],
 			textTracks: [
