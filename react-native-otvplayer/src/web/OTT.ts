@@ -1533,6 +1533,105 @@ export class OTT implements OttPlayerProps {
 
   /**
    * @function
+   * @summary Get the base and profile of a codec string. Where [0] will be the codec
+   * base and [1] will be the profile.
+   * Credit: Shaka Player mime_utils.js
+   * @param {string} codecString
+   * @return {!Array.<string>}
+   */
+  private _getCodecParts = (codecString: string) => {
+    const parts = codecString.split('.');
+
+    const base = parts[0];
+
+    parts.shift();
+    const profile = parts.join('.');
+
+    // Make sure that we always return a "base" and "profile".
+    return [base, profile];
+  };
+
+  /**
+   * @function
+   * @summary Translates from codec into encoding type.
+   * Credit: Shaka Player mime_utils.js
+   * @param {string} codecString
+   */
+  private _getNormalizedCodec = (codecString:string) => {
+    const parts = this._getCodecParts(codecString);
+    const base = parts[0];
+    const profile = parts[1].toLowerCase();
+    switch (true) {
+      case base === 'mp4a' && profile === '69':
+      case base === 'mp4a' && profile === '6b':
+      case base === 'mp4a' && profile === '40.34':
+        return 'mp3';
+      case base === 'mp4a' && profile === '66':
+      case base === 'mp4a' && profile === '67':
+      case base === 'mp4a' && profile === '68':
+      case base === 'mp4a' && profile === '40.2':
+      case base === 'mp4a' && profile === '40.02':
+      case base === 'mp4a' && profile === '40.5':
+      case base === 'mp4a' && profile === '40.05':
+      case base === 'mp4a' && profile === '40.29':
+      case base === 'mp4a' && profile === '40.42': // Extended HE-AAC
+        return 'aac';
+      case base === 'mp4a' && profile === 'a5':
+        return 'ac-3'; // Dolby Digital
+      case base === 'mp4a' && profile === 'a6':
+        return 'ec-3'; // Dolby Digital Plus
+      case base === 'mp4a' && profile === 'b2':
+        return 'dtsx'; // DTS:X
+      case base === 'mp4a' && profile === 'a9':
+        return 'dtsc'; // DTS Digital Surround
+      case base === 'avc1':
+      case base === 'avc3':
+        return 'avc'; // H264
+      case base === 'hvc1':
+      case base === 'hev1':
+        return 'hevc'; // H265
+      case base === 'dvh1':
+      case base === 'dvhe':
+        return 'dovi-hevc'; // Dolby Vision based in HEVC
+      case base === 'dvav':
+      case base === 'dva1':
+        return 'dovi-avc'; // Dolby Vision based in AVC
+      case base === 'dav1':
+        return 'dovi-av1'; // Dolby Vision based in AV1
+    }
+    return base;
+  };
+
+  /**
+   * @function
+   * @summary Translates from codec into encoding type
+   * as we need to provide the enum `AUDIO_ENCODING_TYPE`
+   * @return value from `AUDIO_ENCODING_TYPE` enum
+   */
+  private _translateCodecToEncodingType = (codec: string) => {
+    let returnValue = AUDIO_ENCODING_TYPE.UNKNOWN;
+    const aacSet = ['aac'];
+    const ac3Set = ['ac-3'];
+    const dtsSet = ['dts', 'dtsc', 'dtsx'];
+    const mpegSet = ['mp3'];
+    
+    const codecBase = this._getNormalizedCodec(codec);
+
+    if (aacSet.includes(codecBase)) {
+      returnValue = AUDIO_ENCODING_TYPE.AAC;
+    } else if (ac3Set.includes(codecBase)) {
+      returnValue = AUDIO_ENCODING_TYPE.AC3;
+    } else if (dtsSet.includes(codecBase)) {
+      returnValue = AUDIO_ENCODING_TYPE.DTS;
+    } else if (mpegSet.includes(codecBase)) {
+      returnValue = AUDIO_ENCODING_TYPE.MPEG;
+    }
+
+    return returnValue;
+  };
+
+  /**
+   * @function
    * @summary Fires when the audioTrack/textTracks load from loaded metadata.
    */
   public onTracksChanged = () => {
@@ -1545,7 +1644,7 @@ export class OTT implements OttPlayerProps {
       audioTracks: AudioMediaTrack[],
       textTracks: TextMediaTrack[];
 
-    const descriptionsSet = ["main-desc", "descriptions"]
+    const descriptionsSet = ["main-desc", "descriptions"];
 
     if (this._onTracksChanged) {
       audioTracks = this._playerInstance.audioTracks().tracks_.map((currentTrack) => {
@@ -1553,7 +1652,7 @@ export class OTT implements OttPlayerProps {
           language: currentTrack.language,
           title: currentTrack.label,
           // encodeType metadata not available yet, so setting to default UNKNOWN
-          encodeType: AUDIO_ENCODING_TYPE.UNKNOWN,
+          encodeType: this._translateCodecToEncodingType(currentTrack.audioCodec),
           characteristics: descriptionsSet.includes(currentTrack.kind.toLowerCase()) ? ["public.accessibility.describes-video"] : [],
         };
       });

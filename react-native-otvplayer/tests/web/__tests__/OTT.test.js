@@ -117,7 +117,7 @@ const rawAudioTracks = [
 	},
 	{
 		enabled: false,
-		kind: "translation",
+		kind: "descriptions",
 		language: "de",
 		label: "de (dub,alternate)",
 		audioCodec: "mp4a.40.2",
@@ -125,7 +125,7 @@ const rawAudioTracks = [
 	},
 	{
 		enabled: false,
-		kind: "translation",
+		kind: "descriptions",
 		language: "de",
 		label: "de (dub,alternate)",
 		audioCodec: "mp4a.40.2",
@@ -861,13 +861,13 @@ describe(" Test Player Events ", () => {
 					title: "en (alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "en",
 					title: "en (alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "en",
 					title: "en (alternate)",
@@ -887,13 +887,13 @@ describe(" Test Player Events ", () => {
 					title: "de (dub,alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "de",
 					title: "de (dub,alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "de",
 					title: "de (dub,alternate)",
@@ -913,13 +913,13 @@ describe(" Test Player Events ", () => {
 					title: "fr (dub,alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub,alternate)",
 				},
 				{
-					characteristics: [],
+					characteristics: ["public.accessibility.describes-video"],
 					encodeType: 0,
 					language: "fr",
 					title: "fr (dub,alternate)",
