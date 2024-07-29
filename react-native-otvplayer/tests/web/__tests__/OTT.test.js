@@ -12,7 +12,6 @@ import { DRMStates, OTTPlayerStates } from "../../../src/web/common/interface";
 import { PluginErrorCode } from "../../../src/web/common/ErrorHandler";
 import { OTTHelper } from "../../../src/web/OTTHelper";
 import { OTT, OTTResetTypes } from "../../../src/web/OTT";
-//import { DRM } from '../../../src/web/DRM';
 import { Logger } from "../../../src/Logger";
 jest.mock("../../../src/Logger");
 
@@ -64,16 +63,127 @@ const textTracks = {
 	0: { mode: "showing", language: "eng", label: "eng" },
 	1: { mode: "disabled", language: "french", label: "french" },
 };
+
+const rawAudioTracks = [
+	{
+		enabled: true,
+		kind: "main",
+		language: "en",
+		label: "en (main)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "main",
+		language: "en",
+		label: "en (alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "6",
+	},
+	{
+		enabled: false,
+		kind: "main-desc",
+		language: "en",
+		label: "en (alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "main-desc",
+		language: "en",
+		label: "en (alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "6",
+	},
+
+	// deutsch
+	{
+		enabled: false,
+		kind: "translation",
+		language: "de",
+		label: "de (dub)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "translation",
+		language: "de",
+		label: "de (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "translation",
+		language: "de",
+		label: "de (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "translation",
+		language: "de",
+		label: "de (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+
+	// Francais
+	{
+		enabled: false,
+		kind: "translation",
+		language: "fr",
+		label: "fr (dub)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "translation",
+		language: "fr",
+		label: "fr (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "6",
+	},
+	{
+		enabled: false,
+		kind: "descriptions",
+		language: "fr",
+		label: "fr (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "2",
+	},
+	{
+		enabled: false,
+		kind: "descriptions",
+		language: "fr",
+		label: "fr (dub,alternate)",
+		audioCodec: "mp4a.40.2",
+		audioChannelConfig: "6",
+	},
+];
+
 const audioTracks = {
-	length: 2,
-	tracks_: [
-		{ enabled: true, language: "eng", label: "eng" },
-		{ enabled: false, language: "french", label: "french" },
-	],
+	length: 12,
+	tracks_: rawAudioTracks,
 	on: jest.fn(),
 	off: jest.fn(),
-	0: { enabled: true, language: "eng", label: "eng" },
-	1: { enabled: false, language: "french", label: "french" },
+	0: rawAudioTracks[0],
+	1: rawAudioTracks[1],
+	2: rawAudioTracks[2],
+	3: rawAudioTracks[3],
+	4: rawAudioTracks[4],
+	5: rawAudioTracks[5],
+	6: rawAudioTracks[6],
+	7: rawAudioTracks[7],
+	8: rawAudioTracks[8],
+	9: rawAudioTracks[9],
+	10: rawAudioTracks[10],
+	11: rawAudioTracks[11],
 };
 const mutedFn = jest.fn();
 const addEventListenerFn = jest.fn();
@@ -127,7 +237,7 @@ const mockErrorHandler = {
 	triggerError: triggerErrorCB,
 	set onErrorEvent(onErrorCallback) {
 		this._onError = onErrorCallback;
-	}
+	},
 };
 const onStatisticsUpdateCB = jest.fn();
 const onProgressCB = jest.fn();
@@ -386,7 +496,9 @@ describe(" Test Player Api methods", () => {
 		// Test with wrong params.
 		ott.seek("test");
 		expect(triggerErrorCB).toHaveBeenCalled();
-		expect(triggerErrorCB.mock.calls[0][1].errorCode).toBe(PluginErrorCode.SEEK_ERROR);
+		expect(triggerErrorCB.mock.calls[0][1].errorCode).toBe(
+			PluginErrorCode.SEEK_ERROR
+		);
 	});
 	test("method: reset()", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
@@ -396,11 +508,10 @@ describe(" Test Player Api methods", () => {
 		expect(resetFn).toHaveBeenCalled();
 	});
 	test("method: reset() before native player is initialized.", () => {
-		ott._playerState = OTTPlayerStates.INITIALISING
+		ott._playerState = OTTPlayerStates.INITIALISING;
 		ott.reset(OTTResetTypes.RESET_FOR_UNMOUNT_OR_TYPE_CHANGE);
 		expect(ott._playerState).toEqual(OTTPlayerStates.INITIALISING);
 		expect(resetFn).not.toHaveBeenCalled();
-
 	});
 	test("method: setup()", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
@@ -413,7 +524,9 @@ describe(" Test Player Api methods", () => {
 		ott.addTextTracks(textTracks);
 		expect(addRemoteTextTrackFn).toHaveBeenCalled();
 		expect(addRemoteTextTrackFn.mock.calls[0][0].language).toBe("eng");
-		expect(addRemoteTextTrackFn.mock.calls[0][0].src).toBe("http://test/test");
+		expect(addRemoteTextTrackFn.mock.calls[0][0].src).toBe(
+			"http://test/test"
+		);
 		expect(addRemoteTextTrackFn.mock.calls[0][1]).toBe(false);
 	});
 	test("method: isSrcTypeSupported()", () => {
@@ -725,8 +838,112 @@ describe(" Test Player Events ", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onAudioTrackSelected();
 		expect(onAudioTrackSelectedCB).toHaveBeenCalled();
-		expect(onAudioTrackSelectedCB.mock.calls[0][0].index).toBe(0);
+		expect(onAudioTrackSelectedCB.mock.calls[0][0].index).toBe(0); // TODO
 	});
+
+	test("audioTracks contents", () => {
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott.onTracksChanged();
+		expect(onTracksChangedCB).toHaveBeenCalled();
+
+		const expectedTracks = {
+			audioTracks: [
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "en",
+					title: "en (main)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "en",
+					title: "en (alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "en",
+					title: "en (alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "en",
+					title: "en (alternate)",
+				},
+
+				// deutsch
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "de",
+					title: "de (dub)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "de",
+					title: "de (dub,alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "de",
+					title: "de (dub,alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "de",
+					title: "de (dub,alternate)",
+				},
+
+				// french
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "fr",
+					title: "fr (dub)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "fr",
+					title: "fr (dub,alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "fr",
+					title: "fr (dub,alternate)",
+				},
+				{
+					characteristics: [],
+					encodeType: 0,
+					language: "fr",
+					title: "fr (dub,alternate)",
+				},
+			],
+			textTracks: [
+				{
+					characteristics: [],
+					encodeType: 1000,
+					language: "eng",
+					title: "eng",
+				},
+				{
+					characteristics: [],
+					encodeType: 1000,
+					language: "french",
+					title: "french",
+				},
+			],
+		};
+
+		expect(onTracksChangedCB.mock.calls[0][0]).toBe(expectedTracks);
+	});
+
 	test("Event: onTextTrackSelected", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onTextTrackSelected();
@@ -886,4 +1103,4 @@ describe(" Test Set Player Event properties ", () => {
 		ott.onWaiting();
 		expect(onWaitingCallBack).toHaveBeenCalled();
 	});
-})
+});
