@@ -1627,6 +1627,7 @@ export class OTT implements OttPlayerProps {
           break;
 
         case "6":
+        case "F801":
           channelCount = 6;
           break;
 
