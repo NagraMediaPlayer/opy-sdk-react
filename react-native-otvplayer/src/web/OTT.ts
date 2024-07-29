@@ -1616,6 +1616,28 @@ export class OTT implements OttPlayerProps {
     return returnValue;
   };
 
+  private _translateToAudioChannelCount = (channelConfig: string) => {
+    let channelCount;
+
+    if (channelConfig) {
+      switch (channelConfig) {
+        case "2":
+        case "A000":
+          channelCount = 2;
+          break;
+
+        case "6":
+          channelCount = 6;
+          break;
+
+        default:
+          channelCount = 2;
+          break;
+      }
+    }
+    return channelCount;
+  }
+
   /**
    * @function
    * @summary Fires when the audioTrack/textTracks load from loaded metadata.
@@ -1640,6 +1662,7 @@ export class OTT implements OttPlayerProps {
           // encodeType metadata not available yet, so setting to default UNKNOWN
           encodeType: this._translateCodecToEncodingType(currentTrack.audioCodec),
           characteristics: descriptionsSet.includes(currentTrack.kind.toLowerCase()) ? ["public.accessibility.describes-video"] : [],
+          channelCount: this._translateToAudioChannelCount(currentTrack.audioChannelConfig),
         };
       });
       textTracks = this._playerInstance.textTracks().tracks_.map((currentTrack) => {

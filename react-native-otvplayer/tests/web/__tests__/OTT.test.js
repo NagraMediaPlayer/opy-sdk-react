@@ -113,7 +113,7 @@ const rawAudioTracks = [
 		language: "de",
 		label: "de (dub,alternate)",
 		audioCodec: "mp4a.40.2",
-		audioChannelConfig: "2",
+		audioChannelConfig: "6",
 	},
 	{
 		enabled: false,
@@ -129,7 +129,7 @@ const rawAudioTracks = [
 		language: "de",
 		label: "de (dub,alternate)",
 		audioCodec: "mp4a.40.2",
-		audioChannelConfig: "2",
+		audioChannelConfig: "6",
 	},
 
 	// Francais
@@ -953,7 +953,9 @@ describe(" Test Player Events ", () => {
 			],
 		};
 
-		expect(onTracksChangedCB.mock.calls[0][0]).toBe(expectedTracks);
+		expect(onTracksChangedCB.mock.calls[0][0]).toStrictEqual(
+			expectedTracks
+		);
 	});
 
 	test("Event: onTextTrackSelected", () => {
