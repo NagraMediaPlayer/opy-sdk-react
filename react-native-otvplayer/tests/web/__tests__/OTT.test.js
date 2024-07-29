@@ -539,11 +539,15 @@ describe(" Test Player Api methods", () => {
 		expect(textTracks[0].mode).toBe("disabled");
 		expect(textTracks[1].mode).toBe("showing");
 	});
+
 	test("method: selectAudioTrack()", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.selectAudioTrack(1);
 		expect(audioTracks[0].enabled).toBe(false);
 		expect(audioTracks[1].enabled).toBe(true);
+
+		// Care needed here to reinstate after so no knock-on effects on later tests
+		ott.selectAudioTrack(0);
 	});
 
 	test("method: dispatchStatisticsEvent()", () => {
@@ -834,11 +838,13 @@ describe(" Test Player Events ", () => {
 		ott.onTracksChanged();
 		expect(onTracksChangedCB).toHaveBeenCalled();
 	});
+
+	// Care needed with consequences of earlier test
 	test("Event: onAudioTrackSelected", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onAudioTrackSelected();
 		expect(onAudioTrackSelectedCB).toHaveBeenCalled();
-		expect(onAudioTrackSelectedCB.mock.calls[0][0].index).toBe(0); // TODO
+		expect(onAudioTrackSelectedCB.mock.calls[0][0].index).toBe(0);
 	});
 
 	test("audioTracks contents", () => {
