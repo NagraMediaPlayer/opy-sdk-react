@@ -1617,22 +1617,19 @@ export class OTT implements OttPlayerProps {
   };
 
   private _translateToAudioChannelCount = (channelConfig: string) => {
-    let channelCount;
+    let channelCount = 2;
 
     if (channelConfig) {
       switch (channelConfig) {
-        case "2":
-        case "A000":
-          channelCount = 2;
-          break;
-
         case "6":
         case "F801":
           channelCount = 6;
           break;
 
+        case "2":
+        case "A000":
         default:
-          channelCount = 2;
+          // default value set above
           break;
       }
     }
