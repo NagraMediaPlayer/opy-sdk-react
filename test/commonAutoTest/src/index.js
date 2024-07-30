@@ -120,7 +120,7 @@ let otvPlayer;
 		);
 
 		// Extra track selection tracks for 4iG/3SS CR re audio channel info
-		if (isRunningOnAndroid() || isRunningOniOS()) {
+		if (!isRunningInSafariBrowser()) {
 			await executeTrackSelectionTests(
 				otvPlayer,
 				"BBC Multi Track Content"

@@ -71,7 +71,7 @@ export async function executeTrackSelectionTests(otvPlayer, streamName) {
 		afterAll(async () => {});
 
 		await it(
-			`play ${streamName} and audio and Text tracks and verify events`,
+			`play ${streamName} : Audio tracks and verify events`,
 			`@high_priority @nonSafari @trackSelection @events @nonApple`,
 			// Test unstable on iOS
 			async () => {
@@ -84,11 +84,6 @@ export async function executeTrackSelectionTests(otvPlayer, streamName) {
 					);
 
 					if (eventObj.event === "onTracksChanged") {
-						verifyTracks(
-							eventVerifier.whatPayloadForEvent("onTracksChanged")
-								.textTracks,
-							eventObj.payload.textTracks
-						);
 						verifyTracks(
 							eventVerifier.whatPayloadForEvent("onTracksChanged")
 								.audioTracks,
@@ -129,34 +124,65 @@ export async function executeTrackSelectionTests(otvPlayer, streamName) {
 					).toEqual({ index: 2 });
 					eventVerifier.reset();
 				}
+			}
+		);
+
+		// Text track selection avoided on Browser until later version of Shaka
+		// where text tracks are reported correctly.
+		await it(
+			`play ${streamName} : Text tracks and verify events`,
+			`@high_priority @nonSafari @trackSelection @events @nonApple @under_development`,
+			// Test unstable on iOS
+			async () => {
+				let resource = await playMeGivenStream(otvPlayer, streamName);
+				await sleepInMs(5000);
+
+				resource.expectedOutput.eventsExpected.map((eventObj) => {
+					expect(eventVerifier.didEventOccur(eventObj.event)).toBe(
+						true
+					);
+
+					if (eventObj.event === "onTracksChanged") {
+						verifyTracks(
+							eventVerifier.whatPayloadForEvent("onTracksChanged")
+								.textTracks,
+							eventObj.payload.textTracks
+						);
+					}
+				});
+
+				eventVerifier.reset();
 
 				await selectTextTrack(0);
 
 				expect(eventVerifier.didEventOccur("onTextTrackSelected")).toBe(
-					true
+					true,
+					"onTextTrackSelected event occurred"
 				);
 				expect(
 					eventVerifier.whatPayloadForEvent("onTextTrackSelected")
-				).toEqual({ index: 0 });
+				).toEqual({ index: 0 }, "Text track index is 0");
 
 				eventVerifier.reset();
 				await selectTextTrack(-1);
 				expect(eventVerifier.didEventOccur("onTextTrackSelected")).toBe(
-					true
+					true,
+					"onTextTrackSelected event occurred"
 				);
 				expect(
 					eventVerifier.whatPayloadForEvent("onTextTrackSelected")
-				).toEqual({ index: -1 });
+				).toEqual({ index: -1 }, "Text track index is -1");
 
 				eventVerifier.reset();
 				await selectTextTrack(1);
 
 				expect(eventVerifier.didEventOccur("onTextTrackSelected")).toBe(
-					true
+					true,
+					"onTextTrackSelected event occurred"
 				);
 				expect(
 					eventVerifier.whatPayloadForEvent("onTextTrackSelected")
-				).toEqual({ index: 1 });
+				).toEqual({ index: 1 }, "Text track index is 1");
 			}
 		);
 	});
