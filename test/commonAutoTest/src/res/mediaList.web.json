@@ -20,7 +20,7 @@
             {
               "language": "und",
               "title": "und",
-              "encodeType": 1000
+              "encodeType": 0
             }
           ],
           "textTracks": []
@@ -894,17 +894,23 @@
                 {
                   "language": "nar",
                   "title": "nar",
-                  "encodeType": 1000
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
                 },
                 {
                   "language": "en",
                   "title": "en",
-                  "encodeType": 1000
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
                 },
                 {
                   "language": "cy",
                   "title": "cy",
-                  "encodeType": 1000
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
                 }
               ]
             }
@@ -996,6 +1002,114 @@
                   "title": "",
                   "encodeType": 1000,
                   "characteristics": []
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "BBC Multi Track Content": {
+      "url": "https://rdmedia.bbc.co.uk/testcard/vod/manifests/avc-full.mpd",
+      "mimeType": "application/dash+xml",
+      "expectedOutput": {
+        "eventsExpected": [
+          {
+            "event": "onAudioTrackSelected",
+            "payload": {
+              "index": 1
+            }
+          },
+          {
+            "event": "onTracksChanged",
+            "payload": {
+              "textTracks": [],
+              "audioTracks": [
+                {
+                  "language": "en",
+                  "title": "en (main)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
+                },
+                {
+                  "language": "en",
+                  "title": "en (alternate)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 6
+                },
+                {
+                  "language": "en",
+                  "title": "en (alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 2
+                },
+                {
+                  "language": "en",
+                  "title": "en (alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 6
+                },
+
+                {
+                  "language": "de",
+                  "title": "de (dub)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
+                },
+                {
+                  "language": "de",
+                  "title": "de (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 6
+                },
+                {
+                  "language": "de",
+                  "title": "de (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 2
+                },
+                {
+                  "language": "de",
+                  "title": "de (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 6
+                },
+
+                {
+                  "language": "fr",
+                  "title": "fr (dub)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 2
+                },
+                {
+                  "language": "fr",
+                  "title": "fr (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": [],
+                  "channelCount": 6
+                },
+                {
+                  "language": "fr",
+                  "title": "fr (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 2
+                },
+                {
+                  "language": "fr",
+                  "title": "fr (dub,alternate)",
+                  "encodeType": 0,
+                  "characteristics": ["public.accessibility.describes-video"],
+                  "channelCount": 6
                 }
               ]
             }
