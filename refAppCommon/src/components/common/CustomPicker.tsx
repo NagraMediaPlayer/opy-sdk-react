@@ -101,7 +101,7 @@ const CustomPicker: FC<Props> = ({
       if (itemToShow.channelCount) {
         labelForItem += ` (${itemToShow.channelCount} channels)`;
       }
-      if (itemToShow.encodeType) {
+      if (itemToShow.encodeType !== undefined) {
         labelForItem += ` [type ${itemToShow.encodeType}]`;
       }
       if (itemToShow.characteristics && itemToShow.characteristics.length > 0) {
