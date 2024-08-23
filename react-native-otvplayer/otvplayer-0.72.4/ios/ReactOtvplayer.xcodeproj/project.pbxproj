@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,6 +56,8 @@
 		5CBED74C29D3083500B1337A /* RCTOTVLog.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73929D3078500B1337A /* RCTOTVLog.h */; };
 		5CBED74D29D3085300B1337A /* RCTOTVLog.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED73929D3078500B1337A /* RCTOTVLog.h */; };
 		5CBED75E29D30E8000B1337A /* EventEmitter.h in Sources */ = {isa = PBXBuildFile; fileRef = 5C08F73529B5EE23003520E7 /* EventEmitter.h */; };
+		AD328E412C788E620069FBF2 /* SwiftToObjCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD328E402C788E620069FBF2 /* SwiftToObjCHelper.swift */; };
+		AD328E422C788E620069FBF2 /* SwiftToObjCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD328E402C788E620069FBF2 /* SwiftToObjCHelper.swift */; };
 		B723110FD7E8A46CCE8DA465 /* libPods-RNOTVPlayer-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C676C45FF3328F423BA4D915 /* libPods-RNOTVPlayer-tvOS.a */; };
 		BB34AB9D7F705E112601C50E /* libPods-RNOTVPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */; };
 /* End PBXBuildFile section */
@@ -118,6 +120,7 @@
 		7CB7EAA4574DE05D96571B0B /* Pods-RNOTVPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.debug.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNOTVPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F75B443B8FBF79B1A21DD54 /* Pods-RNOTVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.release.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		AD328E402C788E620069FBF2 /* SwiftToObjCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftToObjCHelper.swift; path = ../../src/ios/src/SwiftToObjCHelper.swift; sourceTree = "<group>"; };
 		ADEA743629659772009D4E9B /* libRNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOTVPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEA743729659772009D4E9B /* libRNOTVPlayer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNOTVPlayer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B286DFB7B06EBD85CA7DEB37 /* Pods-OPYIMAWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPYIMAWrapper.release.xcconfig"; path = "Target Support Files/Pods-OPYIMAWrapper/Pods-OPYIMAWrapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				AD328E402C788E620069FBF2 /* SwiftToObjCHelper.swift */,
 				5C08F71729B5ED07003520E7 /* OTVThumbnails.swift */,
 				5C08F71A29B5ED3E003520E7 /* OTVThumbnailModel.swift */,
 				5C08F72029B5ED82003520E7 /* OTVDRMHelper.h */,
@@ -405,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD328E412C788E620069FBF2 /* SwiftToObjCHelper.swift in Sources */,
 				5CBED74C29D3083500B1337A /* RCTOTVLog.h in Sources */,
 				5CA4E32929B9AA5F00332D2D /* OTVSSMService.swift in Sources */,
 				5CA4E32429B9A98B00332D2D /* RNOTVPlayer-Bridging-Header.h in Sources */,
@@ -444,6 +449,7 @@
 				5CA4E33229B9AFAB00332D2D /* OTVSSMService.swift in Sources */,
 				5CA4E33329B9AFAB00332D2D /* OTVDRMNetworkHandler.swift in Sources */,
 				5C08F71929B5ED07003520E7 /* OTVThumbnails.swift in Sources */,
+				AD328E422C788E620069FBF2 /* SwiftToObjCHelper.swift in Sources */,
 				5C08F71C29B5ED3F003520E7 /* OTVThumbnailModel.swift in Sources */,
 				5CA4E33529B9B03800332D2D /* OTVDRMHelper.h in Sources */,
 				5CBED74B29D307CE00B1337A /* RCTOTVLogEmitter.swift in Sources */,

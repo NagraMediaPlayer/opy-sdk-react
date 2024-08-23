@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) RCTDirectEventBlock onAudioTrackSelected;
 @property (nonatomic, copy) RCTDirectEventBlock onTextTrackSelected;
 @property (nonatomic, copy) RCTDirectEventBlock onVideoError;
+@property (nonatomic, copy) RCTDirectEventBlock onHttpError;
 @property (nonatomic, copy) RCTDirectEventBlock onStatisticsUpdate;
 @property (nonatomic, copy) RCTDirectEventBlock onVideoPaused;
 @property (nonatomic, copy) RCTDirectEventBlock onVideoStopped;
