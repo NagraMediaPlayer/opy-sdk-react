@@ -2345,11 +2345,11 @@ export class OTT implements OttPlayerProps {
    * @summary Fires when a HTTP error occurs.
    * @param {number} errorCode
    * @param {string} errorMessage
-   * @param {Array} details
+   * @param {object} details
    */
-  private _sdkHttpError = (errorCode: number, errorMessage: string, details: any[]) => {
+  private _sdkHttpError = (errorCode: number, errorMessage: string, details: any) => {
     const errorObj: OnHttpErrorParam = {
-      url: details[0],
+      url: details.data[0],
       date: new Date(),
       statusCode: errorCode,
       message: errorMessage,

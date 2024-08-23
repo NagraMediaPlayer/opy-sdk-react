@@ -380,13 +380,24 @@ describe(" Test state machine ", () => {
 		expect(ott._playerState).toEqual(OTTPlayerStates.ERROR);
 		expect(triggerErrorCB).toHaveBeenCalled();
 	});
+
 	test("State: Http ERROR", () => {
+		const url = "https://test.com";
+		const message = "help me please";
+
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onPlaying();
-		ott._sdkHttpError(404, "help me please", ["https://test.com"]);
+		ott._sdkHttpError(404, message, { data: [url, 1, true, "someOtherStuff"], });
 		expect(ott._playerState).toEqual(OTTPlayerStates.PLAYING);
-		expect(triggerHttpErrorCB).toHaveBeenCalled();
+		expect(triggerHttpErrorCB).toHaveBeenCalledWith(
+			expect.objectContaining({
+				message,
+				url,
+				statusCode: 404,
+				platform: expect.objectContaining({ name: "Web" }),
+			}));
 	});
+
 	test("State: PLAYING -> PLAY_REQUESTED", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onPlaying();
@@ -396,6 +407,7 @@ describe(" Test state machine ", () => {
 			OTTPlayerStates.PLAY_REQUESTED
 		);
 	});
+
 	test("State: WAITING -> PLAY_REQUESTED", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onWaiting();
