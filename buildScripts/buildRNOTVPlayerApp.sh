@@ -326,6 +326,13 @@ for platform in $BUILD_OS_LIST; do
           exit $RESULT
         fi
 
+        # Undo the patch for 72
+        if [[ "$RN_VERSION" != "0.72.4" ]]; then
+          pushd "${SCRIPT_PATH}"/../"$PROJECTNAME"/"$PROJECTVERSION"
+          $YARN_CMD postweb-prod
+          popd
+        fi
+
         #Need to make it proper for ios or tvos target.
         pushd simbuildartifacts/Build/Products/Release-$SIM_PLATFORM
 
@@ -363,6 +370,13 @@ for platform in $BUILD_OS_LIST; do
       else
         bash ./gradlew clean :app:assembleRelease
         bash ./gradlew copyApk
+      fi
+
+      # Undo the patch for 72
+      if [[ "$RN_VERSION" != "0.72.4" ]]; then
+        pushd "${SCRIPT_PATH}"/../"$PROJECTNAME"/"$PROJECTVERSION"
+        $YARN_CMD postweb-prod
+        popd
       fi
 
       RESULT=$?

@@ -32,6 +32,8 @@ const mockToolkit = {
 	},
 	networkStatistics: {
 		getAdaptiveStreaming: () => bitRates,
+		addNetworkListener: jest.fn(),
+		removeNetworkListener: jest.fn(),
 	},
 	playbackStatistics: {
 		reset: jest.fn(),
@@ -233,10 +235,15 @@ const onPausedCB = jest.fn();
 const onStoppedCB = jest.fn();
 const onWaitingCB = jest.fn();
 const triggerErrorCB = jest.fn();
+const triggerHttpErrorCB = jest.fn();
 const mockErrorHandler = {
 	triggerError: triggerErrorCB,
+	triggerHttpError: triggerHttpErrorCB,
 	set onErrorEvent(onErrorCallback) {
 		this._onError = onErrorCallback;
+	},
+	set onHttpErrorEvent(onHttpErrorCallback) {
+		this._onHttpError = onHttpErrorCallback;
 	},
 };
 const onStatisticsUpdateCB = jest.fn();
@@ -372,6 +379,13 @@ describe(" Test state machine ", () => {
 		ott._sdkError(2, 1, 1001, "error");
 		expect(ott._playerState).toEqual(OTTPlayerStates.ERROR);
 		expect(triggerErrorCB).toHaveBeenCalled();
+	});
+	test("State: Http ERROR", () => {
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott.onPlaying();
+		ott._sdkHttpError(404, "help me please", ["https://test.com"]);
+		expect(ott._playerState).toEqual(OTTPlayerStates.PLAYING);
+		expect(triggerHttpErrorCB).toHaveBeenCalled();
 	});
 	test("State: PLAYING -> PLAY_REQUESTED", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
@@ -1065,6 +1079,12 @@ describe(" Test Set Player Event properties ", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onErrorEvent = onErrorCallBack;
 		expect(mockErrorHandler._onError).toBe(onErrorCallBack);
+	});
+	test("Set Event property: onHttpError", () => {
+		const onHttpErrorCallBack = jest.fn();
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott.onHttpErrorEvent = onHttpErrorCallBack;
+		expect(mockErrorHandler._onHttpError).toBe(onHttpErrorCallBack);
 	});
 	test("Set Event property: onPlaying", () => {
 		const onPlayingCallBack = jest.fn();

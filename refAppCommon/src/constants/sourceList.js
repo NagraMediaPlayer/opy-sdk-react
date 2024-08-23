@@ -15,6 +15,20 @@ const unFilteredSourceListClear = [
 		},
 	},
 	{
+		name: 'BBB Missing Segments HLS',
+		source: {
+			src: 'https://otvplayer.nagra.com/demo/content/public_dev/DownloadToGo_MissChunks/some-chunks-not-exist.m3u8',
+			type: 'application/x-mpegURL',
+		},
+	},
+	{
+		name: 'BBB Missing Segments DASH',
+		source: {
+			src: 'https://otvplayer.nagra.com/demo/content/cd_big_buck_bunny_1080p_miss_segment/big_buck_bunny.mpd',
+			type: 'application/dash+xml',
+		},
+	},
+	{
 		name: 'DASH Live stream, Single adaptation set, 1x1 tiles (livesim)',
 		source: {
 			src: 'https://replacemewithyourown.com/vod/dash/dash-if_livesim/dashif-livesim_2019-01-24/vod/testpic_2s/Manifest_thumbs.mpd',

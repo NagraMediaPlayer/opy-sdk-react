@@ -137,6 +137,17 @@ export interface OnErrorParam {
   };
 }
 
+export interface OnHttpErrorParam {
+  url: string;
+  date: Date;
+  statusCode: number;
+  message: string;
+  platform?: {
+    name: "Android" | "iOS" | "Web";
+    data: string[];
+  }
+}
+
 export interface UserInfo {
   userId?: string;
   accountId?: string;
@@ -226,7 +237,6 @@ export interface StatisticsInformation {
   }
 }
 
-
 export interface Source {
   preferredDRM: string
   preferredPlayer: string | null
@@ -262,6 +272,7 @@ export type SelectTextTrack = (index: number) => void;
 export type setSDKLogLevel = (level: OTVSDK_LOGLEVEL, emitToJs?: boolean) => void;
 export type getVersion = () => SDKVersion;
 export type OnErrorEvent = (event: OnErrorParam) => void;
+export type OnHttpErrorEvent = (event: OnHttpErrorParam) => void;
 export type Stop = () => void;
 export type SetLiveContent = (content: LiveContentInfo) => void;
 export type SetVodContent = (content: VodContentInfo) => void;
@@ -317,6 +328,7 @@ export interface OTVPlayerProps {
   onAudioTrackSelected?: Function;
   onTextTrackSelected?: Function;
   onError: OnErrorEvent;
+  onHttpError: OnHttpErrorEvent;
   onStopped?: Function;
   onStatisticsUpdate?: OnStatisticsUpdateEvent;
   onThumbnailAvailable?: Function;
@@ -345,5 +357,3 @@ export interface InsightAgentType {
 export interface OTVPlayerWithInsightProps extends OTVPlayerProps {
   insightAgent: InsightAgentType;
 }
-
-

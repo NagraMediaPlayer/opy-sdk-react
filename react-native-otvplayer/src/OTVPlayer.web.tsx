@@ -18,6 +18,7 @@ import {
   OnTracksChangedParam,
   OnBitratesAvailableParam,
   OnErrorParam,
+  OnHttpErrorParam,
   OnSelectedBitrateChangedParam,
   OnDownloadResChangedParam,
   OnAudioTrackSelectedParam,
@@ -99,7 +100,7 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
         "Props: ",
         JSON.stringify(props)
       );
-      errorHandler.current = new ErrorHandler({ onError });
+      errorHandler.current = new ErrorHandler({ onError, onHttpError});
       nativeProps.errorHandler = errorHandler.current;
 
       // Initialising IPTV player by default so that we can stop the default
@@ -132,6 +133,7 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
     // prettier-ignore
     useEffect(() => { //NOSONAR
       const currentPlayer = player.current;
+      //added source undefined check because of this issue jira---> https://jira.opentv.com/browse/OTVPL-3378
       if (props.source !== undefined) {
         // Part1: initialize an instance (shaka or HbbTV player) based on the source type
         // OR switch to an already initlaized one
@@ -203,6 +205,7 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
      * @param
      */
     useEffect(() => {
+      //added source undefined check because of this issue jira---> https://jira.opentv.com/browse/OTVPL-3378
       if (props.source !== undefined) {
         logger.log(
           LOG_LEVEL.DEBUG,
@@ -1116,6 +1119,25 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
       if (props.onError) {
         setTimeout(() => {
           props.onError(event);
+        }, 0);
+      }
+    };
+
+    /**
+     * @function
+     * @summary Fires when the Http error occurs.
+     * @param {Object} event
+     */
+    const onHttpError = (event: OnHttpErrorParam) => {
+      logger.log(
+        LOG_LEVEL.DEBUG,
+        "OTVPlayer.web.tsx: onHttpError(): ",
+        "onHttpError event triggered",
+        JSON.stringify(event)
+      );
+      if (props.onHttpError) {
+        setTimeout(() => {
+          props.onHttpError(event);
         }, 0);
       }
     };

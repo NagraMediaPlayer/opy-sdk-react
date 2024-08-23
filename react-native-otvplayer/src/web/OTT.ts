@@ -29,6 +29,7 @@ import {
   OnLoadStartParam,
   OnSeekParam,
   OnTracksChangedParam,
+  OnHttpErrorParam,
   AudioMediaTrack,
   TextMediaTrack,
   TextTrack,
@@ -519,6 +520,10 @@ export class OTT implements OttPlayerProps {
       errorChanged: this._sdkError,
     });
 
+    this._playerInstance.otvtoolkit().networkStatistics?.addNetworkListener({
+      errorChanged: this._sdkHttpError,
+    });
+
     //Warning added this check because of unregister of streamBitrateChanged and resolutionChanged is not working
     let shouldSetPlaybackListener =
       this._playerInstance.otvtoolkit()?.playbackStatistics
@@ -620,23 +625,21 @@ export class OTT implements OttPlayerProps {
 
     if (resolution === null || resolution === undefined) {
       this._maxResolution = unCapResolution;
-    } else {
-      if (
+    } else if (
         typeof resolution.width !== "number" ||
         typeof resolution.height !== "number"
       ) {
-        let errorObj: PluginErrorParam = {
-          errorCode: PluginErrorCode.INVALID_RESOLUTION_CHANGE_PARAMETER,
-          errorMessage: "Invalid Resolution values for prop maxResolution",
-        };
-        this._errorHandler.triggerError(ErrorCodeTypes.PLUGIN, errorObj);
-        updateRes = false;
-      } else {
-        // resolution values like negative, 0 and other values lesser than the stream adaptation set lowest video resolution
-        // is considered by SDK as the lowest capping.
-        // TODO: Adaptation set switching from HD to UHD is not working as because of browser supports only HD.
-        this._maxResolution = resolution;
-      }
+      let errorObj: PluginErrorParam = {
+        errorCode: PluginErrorCode.INVALID_RESOLUTION_CHANGE_PARAMETER,
+        errorMessage: "Invalid Resolution values for prop maxResolution",
+      };
+      this._errorHandler.triggerError(ErrorCodeTypes.PLUGIN, errorObj);
+      updateRes = false;
+    } else {
+      // resolution values like negative, 0 and other values lesser than the stream adaptation set lowest video resolution
+      // is considered by SDK as the lowest capping.
+      // TODO: Adaptation set switching from HD to UHD is not working as because of browser supports only HD.
+      this._maxResolution = resolution;
     }
 
     if (this._maxResolution && updateRes) {
@@ -939,6 +942,19 @@ export class OTT implements OttPlayerProps {
 
   /**
    * @function
+   * @summary set onHttpError callback
+   * @param
+   */
+  set onHttpErrorEvent(onHttpErrorCallback: Function) {
+    this._logger.log(
+      LOG_LEVEL.DEBUG,
+      "OTT.ts: Set onHttpErrorEvent()"
+    );
+    this._errorHandler.onHttpErrorEvent = onHttpErrorCallback;
+  }
+
+  /**
+   * @function
    * @summary set onPaused callback
    * @param
    */
@@ -1189,7 +1205,14 @@ export class OTT implements OttPlayerProps {
       this._playerInstance.textTracks().off("removetrack", this.onTracksChanged);
       this._playerInstance.textTracks().off("change", this.onTextTrackSelected);
     }
+
     this._playerInstance.otvtoolkit().errorReporting.setErrorListener(null);
+    this._playerInstance.otvtoolkit().networkStatistics.removeNetworkListener(
+      {
+        errorChanged: this._sdkHttpError,
+      }
+    );
+
     //unregistration of bitrate resultion event is not happing
     this._playerInstance
       .otvtoolkit()
@@ -1600,7 +1623,7 @@ export class OTT implements OttPlayerProps {
     const ac3Set = ['ac-3', 'ec-3'];
     const dtsSet = ['dts', 'dtsc', 'dtsx'];
     const mpegSet = ['mp3'];
-    
+
     const codecBase = this._getNormalizedCodec(codec);
 
     if (aacSet.includes(codecBase)) {
@@ -2315,6 +2338,28 @@ export class OTT implements OttPlayerProps {
       this._updateState(OTTPlayerStates.ERROR);
     }
     this._errorHandler.triggerError(ErrorCodeTypes.OTT, errorObj);
+  };
+
+  /**
+   * @function
+   * @summary Fires when a HTTP error occurs.
+   * @param {number} errorCode
+   * @param {string} errorMessage
+   * @param {Array} details
+   */
+  private _sdkHttpError = (errorCode: number, errorMessage: string, details: any[]) => {
+    const errorObj: OnHttpErrorParam = {
+      url: details[0],
+      date: new Date(),
+      statusCode: errorCode,
+      message: errorMessage,
+      platform: {
+        name: "Web",
+        data: details,
+      }
+    };
+
+    this._errorHandler.triggerHttpError(errorObj);
   };
 
   /**
