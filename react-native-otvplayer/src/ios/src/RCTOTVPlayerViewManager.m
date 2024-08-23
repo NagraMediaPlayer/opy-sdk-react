@@ -53,6 +53,7 @@ RCT_EXPORT_VIEW_PROPERTY(onTracksChanged, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onAudioTrackSelected, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onTextTrackSelected, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onVideoError, RCTDirectEventBlock);
+RCT_EXPORT_VIEW_PROPERTY(onVideoHttpError, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onStatisticsUpdate, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onVideoPaused, RCTDirectEventBlock);
 RCT_EXPORT_VIEW_PROPERTY(onVideoPlay, RCTDirectEventBlock);

@@ -2157,26 +2157,28 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
     if ([_swiftHelper isThisAnHttpErrorWithNotification: notification]){
       statusCode = [NSNumber numberWithInt: _player.networkAnalytics.httpError];
-      message = _player.networkAnalytics.httpErrorMessage;
-      url = _player.networkAnalytics.contentServer.url;
+      //only do http errors
+      if (statusCode != [NSNumber numberWithInt: -1001]){
+        message = _player.networkAnalytics.httpErrorMessage;
+        url = _player.networkAnalytics.contentServer.url;
 
-      NSMutableDictionary* userInfo = [NSMutableDictionary new];
-      [userInfo setObject:[NSNumber numberWithInt: _player.networkAnalytics.httpErrorUnderlyingErrorCode] forKey:@"httpErrorUnderlyingErrorCode"];
-      [userInfo setObject:_player.networkAnalytics.httpErrorUnderlyingErrorDomain forKey:@"httpErrorUnderlyingErrorDomain"];
-      [platform setObject:userInfo forKey:@"underlyingError"];
+        NSMutableArray* userInfo = [NSMutableArray new];
+        [userInfo addObject:[NSNumber numberWithInt: _player.networkAnalytics.httpErrorUnderlyingErrorCode]];
+        [userInfo addObject:_player.networkAnalytics.httpErrorUnderlyingErrorDomain];
+        [platform setObject:userInfo forKey:@"data"];
 
-      NSMutableDictionary* nativeEvent = [NSMutableDictionary new];
-      [nativeEvent setObject:url forKey:@"url"];
-      [nativeEvent setObject:date forKey:@"date"];
-      [nativeEvent setObject:statusCode forKey:@"statusCode"];
-      [nativeEvent setObject:message forKey:@"message"];
-      [nativeEvent setObject:platform forKey:@"platform"];
+        NSMutableDictionary* nativeEvent = [NSMutableDictionary new];
+        [nativeEvent setObject:url forKey:@"url"];
+        [nativeEvent setObject:date forKey:@"date"];
+        [nativeEvent setObject:statusCode forKey:@"statusCode"];
+        [nativeEvent setObject:message forKey:@"message"];
+        [nativeEvent setObject:platform forKey:@"platform"];
 
 
-      if(self.onHttpError) {
-          self.onHttpError(nativeEvent);
+        if(self.onVideoHttpError) {
+            self.onVideoHttpError(nativeEvent);
+        }
       }
-
     }
   }
 
