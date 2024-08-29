@@ -4,6 +4,8 @@ package com.nagra.otvplayer.react;
 import nagra.otv.sdk.OTVLog;
 import nagra.otv.sdk.OTVTrackInfo;
 import nagra.otv.sdk.OTVVideoView;
+import nagra.otv.sdk.statistics.HTTPProcessing;
+import nagra.otv.sdk.statistics.OTVNetworkStatisticsListener;
 
 import java.util.List;
 
@@ -71,6 +73,7 @@ class ReactUPIPlayer {
     private static final String EVENT_ON_TEXT_TRACK_SELECTED = "onTextTrackSelected";
     private static final String EVENT_ON_TRACKS_CHANGED = "onTracksChanged";
     private static final String EVENT_ON_THUMBNAIL_AVAILABLE = "onThumbnailAvailable";
+    private static final String EVENT_ON_VIDEO_HTTP_ERROR = "onVideoHttpError";
 
     protected static final int THUMBNAIL_ERROR_ITEM = 7020;
     protected static final int THUMBNAIL_ERROR_POSITION = 7021;
@@ -439,14 +442,65 @@ class ReactUPIPlayer {
         private WritableArray makeTextTracks(List<IOTVUPIEventListener.TrackInfo> tracks) {
             return Utils.makeTracks(tracks, OTVTrackInfo.MEDIA_TRACK_TYPE_TIMEDTEXT);
         }
+    } // end of EventListener
+
+    // define network statistics listener.
+    private class NetworkStatisticsListener implements OTVNetworkStatisticsListener {
+        @Override
+        public void availableBitratesChanged(int[] xNewAvailableBitrates) {
+            OTV_LOG.d(ReactUPIPlayer.TAG, "availableBitratesChanged");
+        }
+
+        @Override
+        public void selectedBitrateChanged(int xNewSelectedBitrate) {
+           OTV_LOG.d(ReactUPIPlayer.TAG, "selectedBitrateChanged");
+        }
+
+        @Override
+        public void urlChanged(String xNewUrl, String xNewFinalUrl) {
+            OTV_LOG.d(ReactUPIPlayer.TAG, "urlChanged");
+        }
+
+        @Override
+        public void errorChanged(int xErrorCode, String xErrorMessage) {
+            OTV_LOG.e(ReactUPIPlayer.TAG, "errorChanged");
+        }
+
+        @Override
+        public void httpProcessingEnded(HTTPProcessing xHttpProcessing) {
+            OTV_LOG.d(ReactUPIPlayer.TAG, "httpProcessingEnded");
+        }
+        @Override
+        public void httpProcessingError(@NonNull HTTPProcessing xHttpProcessing) {
+            WritableMap event = Arguments.createMap();
+            event.putString("url", xHttpProcessing.getUrl());
+            event.putInt("date", (int)(xHttpProcessing.getEndTime()/SECONDS_TO_MS));
+            event.putInt("statusCode", xHttpProcessing.getStatus());
+            event.putString("message", xHttpProcessing.getErrorMessage());
+
+            WritableMap platform = Arguments.createMap();
+            platform.putString("name", "Android");
+            // response error body is only available for error code >= 400
+            byte[] responseBody = xHttpProcessing.getResponseBody();
+            String responseStr = responseBody != null ? new String(responseBody) : null;
+            WritableArray dataArray = Arguments.createArray();
+            dataArray.pushString(responseStr);
+            platform.putArray("data", dataArray);
+            event.putMap("platform", platform);
+            OTV_LOG.e(ReactUPIPlayer.TAG, "httpProcessingError: " + event);
+            fireJSEvent(EVENT_ON_VIDEO_HTTP_ERROR, event);
+        }
     }
 
-    public final IOTVUPIEventListener RCTUPIEventListener = new EventListener();
+    private final IOTVUPIEventListener RCTUPIEventListener = new EventListener();
+
+    private final OTVNetworkStatisticsListener RCTNetworkStatisticsListener = new NetworkStatisticsListener();
 
     public ReactUPIPlayer(ReactContext context, View parentView) {
         mReactContext = context;
         mParentView = parentView;
         mUPIPlayer = OTVUPIPlayerFactory.createPlayer(context, new OTVUPISource(), RCTUPIEventListener);
+        addNetworkStatisticsListener();
         OTV_LOG = OTV_LOG.getInstance(mReactContext, this);
         OTV_LOG.i(TAG, "React UPI Player object created.");
     }
@@ -678,13 +732,6 @@ class ReactUPIPlayer {
         fireJSEvent(EVENT_ON_VIDEO_LOAD_START, event);
     }
 
-    private void dispatchOnStopped() {
-        OTV_LOG.v(TAG, "Dispatch onStopped");
-        WritableMap event = Arguments.createMap();
-
-        mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(mParentView.getId(), "onVideoStopped", event);
-    }
-
     private void dispatchOnVideoError(OTVUPIError xError) {
         OTV_LOG.e(TAG, "Dispatch onVideoError");
         // Android gives us a pair of ints and little else. Trying to align with iOS.
@@ -721,6 +768,14 @@ class ReactUPIPlayer {
     private void fireJSEvent(String xEventName, WritableMap xEvent) {
         OTV_LOG.i(TAG, "Dispatch " + xEventName);
         mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(mParentView.getId(), xEventName, xEvent);
+    }
+
+    // Add network statistics listener to player for http error.
+    private void addNetworkStatisticsListener() {
+        OTVVideoView player = (OTVVideoView) mUPIPlayer.getOTVPlayer();
+        if (player != null) {
+            player.getNetworkStatistics().addNetworkStatisticsListener(RCTNetworkStatisticsListener);
+        }
     }
 
 }

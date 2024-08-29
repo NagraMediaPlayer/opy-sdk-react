@@ -13,7 +13,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "cd ../src && patch Menu.tsx menu.patch",
-    "postweb-prod": "cd ../src && patch -R Menu.tsx menu.patch"
+    "postweb-prod": "cd ../src && patch -R Menu.tsx menu.patch",
+    "postweb-dev": "cd ../src && patch -R Menu.tsx menu.patch"
   },
   "dependencies": {
     "@nagra/react-otvplayer": "file:../../react-native-otvplayer/dist/0.72.4",

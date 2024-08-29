@@ -14,6 +14,7 @@ import SSMPlayReady from "./SSMPlayReady";
 import SSMFairPlay from "./SSMFairPlay";
 import SSMTVKey from "./SSMTVKey";
 import PreferredAudioLanguage from "./PreferredAudioLanguage";
+import HttpErrors from "./HttpErrors";
 import { View, Button, Text, TouchableOpacity, Platform } from "react-native";
 import React, { useEffect, useReducer } from "react";
 import { NavigationContainer } from "@react-navigation/native";
@@ -294,6 +295,13 @@ function HomeScreen({ navigation }) {
         setFocusLabel={setFocusedIndex}
         registrationCallback={onRegistration}
       />)}
+      {!isSafari() && (<ExampleButton
+        navigation={navigation}
+        buttonText="HttpErrors"
+        focusLabel={state.current}
+        setFocusLabel={setFocusedIndex}
+        registrationCallback={onRegistration}
+      />)}
       <Button title="Back" onPress={() => window.history.go(-1)} />
     </View>
   );
@@ -411,7 +419,10 @@ function Menu() {
           name="PreferredAudioLanguage"
           component={PreferredAudioLanguage}
           options={{ title: "Preferred Audio Language" }} />
-
+        <Stack.Screen
+          name="HttpErrors"
+          component={HttpErrors}
+          options={{ title: "Handling Http Errors" }} />
       </Stack.Navigator>
     </NavigationContainer >
   );

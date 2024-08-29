@@ -1,5 +1,5 @@
 // Copyright (c) 2020--2023 Nagravision SA. All rights reserved.
-import { OnErrorParam } from "../../OTVPlayer.d";
+import { OnErrorParam, OnHttpErrorParam } from "../../OTVPlayer.d";
 import {
   ErrorCodeTypes,
   PluginErrorParam,
@@ -87,7 +87,9 @@ let ErrorCodes = {
     24: 7023, //Thumbnail not available
     25: 7024, //Thumbnail Status unknown
     26: 7026, //Autoplay rejected by Browser
-    29: 5022, //SSM Content toke error
+    // 27 gap
+    // 28 gap
+    29: 5022, //SSM Content token error
     30: 6003, //SSM License renew error
     31: 5002, //Invalid key system
     32: 5005, //license request data not matching source
@@ -97,44 +99,46 @@ let ErrorCodes = {
     1007: 6004, //User Reached maximum session limit
   },
 };
+
 export const enum PluginErrorCode {
   INVALID_MIMETYPE = 1,
-  INVALID_PROGRESS_UPDATE_INTERVAL,
-  INVALID_AUDIO_TRACK_INDEX,
-  INVALID_TEXT_TRACK_INDEX,
-  TEXT_TRACK_ALREADY_OFF,
-  SEEK_ERROR,
-  INTERNAL_ERROR,
-  NULL_SOURCE,
-  NULL_CHANNEL_LIST,
-  /*10*/ NULL_CHANNEL_OBJECT,
-  INVALID_BROADCAST_URL,
-  INVALID_VOLUME_LEVEL,
-  OIPF_NOT_SUPPORTED,
-  VIDEO_OBJ_CREATION_FAILED,
-  CONFIG_OBJ_CREATION_FAILED,
-  NO_TEXT_TRACK_AVAILABLE,
-  INVALID_BITRATE_INDEX,
-  SSM_SETUP_FAILURE,
-  SSM_TEARDOWN_FAILURE,
-  /*20*/ SSM_HEARTBEAT_SEND_MESSAGE_FAILURE,
-  THUMBNAIL_ITEM_ERROR,
-  THUMBNAIL_POSITION_ERROR,
-  THUMBNAIL_STYLING_ERROR,
-  THUMBNAIL_NOT_AVAILABLE_ERROR,
-  THUMBNAIL_STATUS_UNKNOWN_ERROR,
-  AUTOPLAY_REJECTED_BY_BROWSER,
-  INVALID_STATISTICS_UPDATE_INTERVAL, // TODO need to marry up PLUGIN_ERROR_CODE above
-  INVALID_RESOLUTION_CHANGE_PARAMETER, // TODO need to marry up PLUGIN_ERROR_CODE above
-  SSM_CONTENT_TOKEN_ERROR,
-  SSM_RENEW_ERROR,
-  INVALID_KEY_SYSTEM,
-  DRM_INVAILD_SOURCE,
-  DRM_LICENSE_REQUEST_FAILURE,
-  DRM_LICENSE_DATA_ERROR,
-  DRM_CERTIFICATE_REQUEST_FAILURE,
+  INVALID_PROGRESS_UPDATE_INTERVAL = 2,
+  INVALID_AUDIO_TRACK_INDEX = 3,
+  INVALID_TEXT_TRACK_INDEX = 4,
+  TEXT_TRACK_ALREADY_OFF = 5,
+  SEEK_ERROR = 6,
+  INTERNAL_ERROR = 7,
+  NULL_SOURCE = 8,
+  NULL_CHANNEL_LIST = 9,
+  NULL_CHANNEL_OBJECT = 10,
+  INVALID_BROADCAST_URL = 11,
+  INVALID_VOLUME_LEVEL = 12,
+  OIPF_NOT_SUPPORTED = 13,
+  VIDEO_OBJ_CREATION_FAILED = 14,
+  CONFIG_OBJ_CREATION_FAILED = 15,
+  NO_TEXT_TRACK_AVAILABLE = 16,
+  INVALID_BITRATE_INDEX = 17,
+  SSM_SETUP_FAILURE = 18,
+  SSM_TEARDOWN_FAILURE = 19,
+  SSM_HEARTBEAT_SEND_MESSAGE_FAILURE = 20,
+  THUMBNAIL_ITEM_ERROR = 21,
+  THUMBNAIL_POSITION_ERROR = 22,
+  THUMBNAIL_STYLING_ERROR = 23,
+  THUMBNAIL_NOT_AVAILABLE_ERROR = 24,
+  THUMBNAIL_STATUS_UNKNOWN_ERROR = 25,
+  AUTOPLAY_REJECTED_BY_BROWSER = 26,
+  INVALID_STATISTICS_UPDATE_INTERVAL = 27, // TODO need to marry up PLUGIN_ERROR_CODE above
+  INVALID_RESOLUTION_CHANGE_PARAMETER = 28, // TODO need to marry up PLUGIN_ERROR_CODE above
+  SSM_CONTENT_TOKEN_ERROR = 29,
+  SSM_RENEW_ERROR = 30,
+  INVALID_KEY_SYSTEM = 31,
+  DRM_INVAILD_SOURCE = 32,
+  DRM_LICENSE_REQUEST_FAILURE = 33,
+  DRM_LICENSE_DATA_ERROR = 34,
+  DRM_CERTIFICATE_REQUEST_FAILURE = 35,
   USER_REACHED_MAXIMUM_SESSIONS_LIMIT = 1007,
 }
+
 export const IPTV_ERRORS = {
   NullSource: "Source is NULL",
   NullChannelList: "Channel List is NULL",
@@ -149,25 +153,48 @@ export const IPTV_ERRORS = {
   TextTrackAlreadyOff: "Text Track Is Already Disabled",
   NoTextTrackAvailable: "No text track found",
 };
+
 export class ErrorHandler {
   static readonly DEFAULT_ERROR_CODE: number = 1000;
   _onError: Function;
+  _onHttpError: Function;
   constructor(params) {
     if (instance) {
       return instance;
     }
     this._onError = params.onError;
+    this._onHttpError = params.onHttpError;
     instance = this;
   }
 
   /**
    * @function
    * @summary set onError callback
-   * @param
+   * @param {Function} onErrorCallback
    */
   set onErrorEvent(onErrorCallback: Function) {
     this._onError = onErrorCallback;
   }
+
+  /**
+   * @function
+   * @summary set onHttpError callback
+   * @param {Function} onHttpErrorCallback
+   */
+  set onHttpErrorEvent(onHttpErrorCallback: Function) {
+    this._onHttpError = onHttpErrorCallback;
+  }
+
+  /**
+   * @function
+   * @summary gets called when HTTP errors occur.
+   * @param {OnHttpErrorParam} errorData
+   */
+  triggerHttpError = (errorData: OnHttpErrorParam) => {
+    if (this._onHttpError) {
+      this._onHttpError(errorData);
+    }
+  };
 
   /**
    * @function

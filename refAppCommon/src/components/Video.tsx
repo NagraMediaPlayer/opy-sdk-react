@@ -19,7 +19,8 @@ import type {
   OnTextTrackSelectedParam,
   OnDownloadResChangedParam,
   OnLicenseRequest,
-  TextTrack
+  TextTrack,
+  OnHttpErrorParam
 } from '@nagra/react-otvplayer';
 import {
   sourceList,
@@ -870,6 +871,12 @@ const Video = () => { //NOSONAR
       );
   }, []);
 
+  const httpErrorEventReceived = useCallback((event: OnHttpErrorParam) => {
+    console.log('onHttpError: ' + JSON.stringify(event.url) + ": " + JSON.stringify(event.statusCode));
+
+    handleEvent('onHttpError received with error code: ' + event.statusCode);
+  }, []);
+
   const stoppedEventReceived = useCallback(() => {
     setPlaying(false);
     console.log('onStopped in App');
@@ -1213,6 +1220,7 @@ const Video = () => { //NOSONAR
             onAudioTrackSelected={audioTrackSelection}
             onTextTrackSelected={textTrackSelection}
             onError={errorEventReceived}
+            onHttpError={httpErrorEventReceived}
             onStopped={stoppedEventReceived}
             onThumbnailAvailable={onThumbnailAvailable}
             {...(selectedStream.callbackMode ? { onLicenseRequest: getDRMLicense } : {})}

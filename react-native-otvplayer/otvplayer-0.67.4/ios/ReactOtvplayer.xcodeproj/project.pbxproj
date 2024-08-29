@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,6 +53,8 @@
 		5CBED77129D32EFF00B1337A /* RCTOTVLogImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED77029D32EFF00B1337A /* RCTOTVLogImpl.swift */; };
 		5CBED77229D32EFF00B1337A /* RCTOTVLogImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED77029D32EFF00B1337A /* RCTOTVLogImpl.swift */; };
 		5CBED77429D32FDE00B1337A /* RCTOTVLog.h in Sources */ = {isa = PBXBuildFile; fileRef = 5CBED77329D32FC900B1337A /* RCTOTVLog.h */; };
+		AD328E442C788F1D0069FBF2 /* SwiftToObjCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD328E432C788F1C0069FBF2 /* SwiftToObjCHelper.swift */; };
+		AD328E452C788F1D0069FBF2 /* SwiftToObjCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD328E432C788F1C0069FBF2 /* SwiftToObjCHelper.swift */; };
 		BB34AB9D7F705E112601C50E /* libPods-RNOTVPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,7 @@
 		7CB7EAA4574DE05D96571B0B /* Pods-RNOTVPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.debug.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		834C3F75C54C6C19521D6356 /* libPods-RNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNOTVPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F75B443B8FBF79B1A21DD54 /* Pods-RNOTVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNOTVPlayer.release.xcconfig"; path = "Target Support Files/Pods-RNOTVPlayer/Pods-RNOTVPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		AD328E432C788F1C0069FBF2 /* SwiftToObjCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftToObjCHelper.swift; path = ../../src/ios/src/SwiftToObjCHelper.swift; sourceTree = "<group>"; };
 		ADEA743629659772009D4E9B /* libRNOTVPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOTVPlayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADEA743729659772009D4E9B /* libRNOTVPlayer-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNOTVPlayer-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B286DFB7B06EBD85CA7DEB37 /* Pods-OPYIMAWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OPYIMAWrapper.release.xcconfig"; path = "Target Support Files/Pods-OPYIMAWrapper/Pods-OPYIMAWrapper.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 				5C08F72929B5EDCF003520E7 /* RCTOTVPlayerViewManager.m */,
 				5C08F72C29B5EDF0003520E7 /* RCTOTVSDKManager.m */,
 				5C08F72F29B5EDFE003520E7 /* RCTOTVSDKManager.swift */,
+				AD328E432C788F1C0069FBF2 /* SwiftToObjCHelper.swift */,
 				5C08F73529B5EE23003520E7 /* EventEmitter.h */,
 				5C08F73629B5EE2F003520E7 /* EventEmitter.m */,
 				5CA4E32329B9A48A00332D2D /* RNOTVPlayer-Bridging-Header.h */,
@@ -367,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD328E442C788F1D0069FBF2 /* SwiftToObjCHelper.swift in Sources */,
 				5CA4E32429B9A98B00332D2D /* RNOTVPlayer-Bridging-Header.h in Sources */,
 				5CBED77429D32FDE00B1337A /* RCTOTVLog.h in Sources */,
 				5CA4E32929B9AA5F00332D2D /* OTVSSMService.swift in Sources */,
@@ -401,6 +406,7 @@
 				5CA4E33029B9AFAB00332D2D /* OTVReactCommonLicenseDelegate.swift in Sources */,
 				5CA4E33129B9AFAB00332D2D /* OTVReactNativeLicenseDelegate.swift in Sources */,
 				5CA4E33229B9AFAB00332D2D /* OTVSSMService.swift in Sources */,
+				AD328E452C788F1D0069FBF2 /* SwiftToObjCHelper.swift in Sources */,
 				5CBED76229D32EC300B1337A /* LogFormatter.swift in Sources */,
 				5CA4E33329B9AFAB00332D2D /* OTVDRMNetworkHandler.swift in Sources */,
 				5C08F71929B5ED07003520E7 /* OTVThumbnails.swift in Sources */,

@@ -37,6 +37,7 @@ export interface OTVPlayerProps {
   onSeek?: Function;
   onEnd?: Function;
   onError?: Function;
+  onHttpError?: Function;
   onStatisticsUpdate?: Function;
   onStopped?: Function;
   maxResolution?: {
@@ -302,6 +303,19 @@ export interface OnErrorEvent {
 
 export interface OnErrorNativeEvent {
   nativeEvent: OnErrorEvent;
+}
+
+export interface OnHttpErrorNativeEvent {
+  nativeEvent: {
+    url: string;
+    date: number; // epoch in seconds
+    statusCode: number;
+    message: string;
+    platform?: {
+      name: "Android" | "iOS" | "Web";
+      data: string[];
+    }
+  };
 }
 
 export interface Resolution {

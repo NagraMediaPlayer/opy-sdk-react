@@ -1,32 +1,32 @@
 diff --git a/refAppCommon/src/components/Video.tsx b/refAppCommon/src/components/Video.tsx
-index 844ddd9..3f65eaa 100644
+index 864b37d5..2f8c8f3d 100644
 --- a/refAppCommon/src/components/Video.tsx
 +++ b/refAppCommon/src/components/Video.tsx
-@@ -40,7 +40,6 @@ import StatisticsLogging from './StatisticsLogging';
+@@ -41,7 +41,6 @@ import StatisticsLogging from './StatisticsLogging';
  import ActionButton from './common/ActionButton';
  import assets from '../constants/assets';
  import { Slider } from 'react-native-elements';
 -import RNInsight from '@nagra/react-native-insight';
-
+ 
  import {
    CONTENT_TYPE,
-@@ -236,13 +235,7 @@ const Video = () => { //NOSONAR
+@@ -237,13 +236,6 @@ const Video = () => { //NOSONAR
    const toggleStatisticsButton = () =>
      setStatisticsEnabled((previousState) => !previousState);
    const toggleInsightButton = () => {
 -    // Close down if it was on and now turned of
 -    isInsightEnabled && RNInsight.terminate();
-
+-
 -    // But re-init if its the other direction
 -    initializeRNInsight(!isInsightEnabled);
 -
 -    setInsightEnabled((previousState) => !previousState);
    };
-
+ 
    const toggleInfo = () => {
-@@ -297,9 +290,6 @@ const Video = () => { //NOSONAR
+@@ -298,9 +290,6 @@ const Video = () => { //NOSONAR
          break;
-
+ 
        case 'Seek Back':
 -        if (Platform.OS !== 'web') {
 -          isInsightEnabled && RNInsight.seeking();
@@ -34,9 +34,9 @@ index 844ddd9..3f65eaa 100644
          // @ts-ignore
          otvplayerInstance.current.seek(
            Math.max(0, currentPos - seekTime),
-@@ -307,9 +297,6 @@ const Video = () => { //NOSONAR
+@@ -308,9 +297,6 @@ const Video = () => { //NOSONAR
          break;
-
+ 
        case 'Seek Fwd':
 -        if (Platform.OS !== 'web') {
 -          isInsightEnabled && RNInsight.seeking();
@@ -44,10 +44,10 @@ index 844ddd9..3f65eaa 100644
          // @ts-ignore
          otvplayerInstance.current.seek(currentPos + seekTime);
          break;
-@@ -503,15 +490,7 @@ const Video = () => { //NOSONAR
+@@ -504,15 +490,7 @@ const Video = () => { //NOSONAR
      }
    };
-
+ 
 -  const initializeRNInsight = (enabled: boolean) => {
 -    if (Platform.OS === 'web') {
 -      enabled && RNInsight.initialize(insightConfig);
@@ -58,18 +58,18 @@ index 844ddd9..3f65eaa 100644
 -    }
 -  };
 +
-
-
+ 
+ 
    useEffect(() => {
-@@ -521,7 +500,6 @@ const Video = () => { //NOSONAR
+@@ -522,7 +500,6 @@ const Video = () => { //NOSONAR
      opVaultDownload();
      tvEventHandler.enable(null, rcuKeyHandler);
      AppState.addEventListener('change', handleAppStateChange);
 -    initializeRNInsight(isInsightEnabled);
-
+ 
      // Initialising source list index
      currentSourceListIndex = 0;
-@@ -670,14 +648,12 @@ const Video = () => { //NOSONAR
+@@ -671,14 +648,12 @@ const Video = () => { //NOSONAR
          content['type'] = 'LIVE';
          content['duration'] = 0
          console.log('Insight content', content);
@@ -84,16 +84,16 @@ index 844ddd9..3f65eaa 100644
        }
      }
    }, []);
-@@ -696,32 +672,11 @@ const Video = () => { //NOSONAR
+@@ -697,31 +672,12 @@ const Video = () => { //NOSONAR
        onLoadStartTimeDifference,
      );
      duration = 0;
 -    isInsightEnabled && RNInsight.play();
    }, []);
-
+ 
    const statisticsUpdate = useCallback((event: any) => {
      console.log('App :: onStatisticsUpdate received::' + JSON.stringify(event));
-
+ 
 -    /* Report available bitrates to insight only once on playback start */
 -    if (statisticsData?.network.adaptiveStreaming.availableBitrates === undefined) {
 -      isInsightEnabled &&
@@ -113,46 +113,46 @@ index 844ddd9..3f65eaa 100644
 -    ) {
 -      isInsightEnabled && RNInsight.setFrameDrops(event.rendering.frameDrops);
 -    }
--
++
+ 
      handleEvent('onStatisticsUpdate received');
      statisticsData = event;
-   }, []);
-@@ -746,14 +701,12 @@ const Video = () => { //NOSONAR
+@@ -747,14 +703,12 @@ const Video = () => { //NOSONAR
          console.log('OTT :: onPlaying :: Difference(in seconds) ' + onAutoplay);
        }
      }
 -    isInsightEnabled && RNInsight.playing();
    }, []);
-
+ 
    const pauseEventReceived = useCallback(() => {
      setPlaying(false);
      console.log('onPaused in App');
      handleEvent('onPaused received');
 -    isInsightEnabled && RNInsight.pause();
    }, []);
-
+ 
    const seekEventReceived = useCallback((event: OnSeekParam) => {
-@@ -763,19 +716,16 @@ const Video = () => { //NOSONAR
+@@ -764,19 +718,16 @@ const Video = () => { //NOSONAR
      handleEvent('onSeek position :: ' + seekPos);
      currentPos = currentPlaybackPos;
      setProgressPosition(currentPlaybackPos);
 -    isInsightEnabled && RNInsight.seekTo(event.seekPosition);
    }, []);
-
+ 
    const waitingEventReceived = useCallback(() => {
      console.log('onWaiting in App');
      handleEvent('onWaiting received');
 -    isInsightEnabled && RNInsight.buffering();
    }, []);
-
+ 
    const endEventReceived = useCallback(() => {
      console.log('onEnd in App');
      handleEvent('onEnd received');
 -    isInsightEnabled && RNInsight.stop();
    }, []);
-
+ 
    const audioTrackSelection = useCallback((event: OnAudioTrackSelectedParam) => {
-@@ -788,7 +738,6 @@ const Video = () => { //NOSONAR
+@@ -789,7 +740,6 @@ const Video = () => { //NOSONAR
        mediaTracks.audioTracks[selectedAudioTrackIndex]
      ) {
        lang = mediaTracks.audioTracks[selectedAudioTrackIndex].language;
@@ -160,7 +160,7 @@ index 844ddd9..3f65eaa 100644
      }
      console.log('onAudioTrackSelected in App::::' + lang);
      handleEvent('onAudioTrackSelected received :: audioLanguage :: ' + lang);
-@@ -802,9 +751,7 @@ const Video = () => { //NOSONAR
+@@ -803,9 +753,7 @@ const Video = () => { //NOSONAR
          ? //@ts-ignore
          mediaTracks.textTracks[selectedTextTrackIndex].language
          : 'text track disabled';
@@ -171,57 +171,57 @@ index 844ddd9..3f65eaa 100644
      console.log('onTextTrackSelected in App::::' + lang);
      handleEvent('onTextTrackSelected received :: textLanguage :: ' + lang);
    }, []);
-@@ -863,18 +810,12 @@ const Video = () => { //NOSONAR
+@@ -864,11 +812,6 @@ const Video = () => { //NOSONAR
        paused = true;
      }
-
+ 
 -    isInsightEnabled &&
 -      RNInsight.addErrorEvent(
 -        event.code.toString(),
 -        ' Error: ' + event.nativeError.details.errorMessage,
 -      );
    }, []);
-
-   const stoppedEventReceived = useCallback(() => {
+ 
+   const httpErrorEventReceived = useCallback((event: OnHttpErrorParam) => {
+@@ -881,7 +824,6 @@ const Video = () => { //NOSONAR
      setPlaying(false);
      console.log('onStopped in App');
      handleEvent('onStopped received');
 -    isInsightEnabled && RNInsight.stop();
    }, []);
-
+ 
    const setVideoContent = (itemIndex: number) => {
-@@ -911,7 +852,6 @@ const Video = () => { //NOSONAR
+@@ -918,7 +860,6 @@ const Video = () => { //NOSONAR
      selectedStreamData.current = theStream;
      statisticsData = undefined;
-
+ 
 -    isInsightEnabled && RNInsight.stop();
      //Reset the contentTokenTimer and isTimerOn flag on every zap
      console.log("Reset and Restart content token timer");
      clearTimeout(tokenRequestTimer);
-@@ -1120,6 +1060,7 @@ const Video = () => { //NOSONAR
+@@ -1127,6 +1068,7 @@ const Video = () => { //NOSONAR
    return (
      <>
        <Header toggleInfo={toggleInfo} infoEnabled={infoEnabled} focusedControl={focusedControl} setFocusedControl={setFocusedControl} infoLabel={"Info"} />
-+      {//@ts-ignore
++{ // @ts-ignore
        <View style={videoContainerStyle}>
          <View
            style={[
-@@ -1248,9 +1189,7 @@ const Video = () => { //NOSONAR
+@@ -1256,9 +1198,6 @@ const Video = () => { //NOSONAR
                  //@ts-ignore
                  otvplayerInstance.current.pause();
                }
 -              if (Platform.OS !== 'web') {
 -                isInsightEnabled && RNInsight.seeking();
 -              }
-+
              }}
              onSlidingComplete={(value) => {
                if (isThumbnailAvailable) {
-@@ -1453,6 +1392,7 @@ const Video = () => { //NOSONAR
+@@ -1461,6 +1400,7 @@ const Video = () => { //NOSONAR
            {isKeyMapsEnabled && <KeyHints />}
          </View>
        </View>
-+      }
++}
      </>
    );
  };
