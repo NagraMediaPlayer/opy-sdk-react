@@ -381,6 +381,13 @@ describe(" Test state machine ", () => {
 		expect(triggerErrorCB).toHaveBeenCalled();
 	});
 
+	test("State: ERROR (recoverable)", () => {
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott._sdkError(1, 1, 1001, "error");
+		expect(ott._playerState).toEqual(OTTPlayerStates.ERROR);
+		expect(triggerErrorCB).not.toHaveBeenCalled();
+	});
+
 	test("State: Http ERROR", () => {
 		const url = "https://test.com";
 		const message = "help me please";

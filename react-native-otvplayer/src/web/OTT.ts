@@ -2336,8 +2336,14 @@ export class OTT implements OttPlayerProps {
     const ERROR_SEVERITY_CRITICAL = 2;
     if (errorSeverity === ERROR_SEVERITY_CRITICAL) {
       this._updateState(OTTPlayerStates.ERROR);
+      this._errorHandler.triggerError(ErrorCodeTypes.OTT, errorObj);
+    } else {
+      this._logger.log(
+        LOG_LEVEL.DEBUG,
+        "OTT.ts: _sdkError(): non-critical error occurred: ",
+        JSON.stringify(errorObj)
+      );
     }
-    this._errorHandler.triggerError(ErrorCodeTypes.OTT, errorObj);
   };
 
   /**
