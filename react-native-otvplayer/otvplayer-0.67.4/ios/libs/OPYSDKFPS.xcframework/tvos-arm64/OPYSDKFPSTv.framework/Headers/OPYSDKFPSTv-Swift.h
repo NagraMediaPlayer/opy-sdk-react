@@ -974,9 +974,9 @@ SWIFT_CLASS("_TtC11OPYSDKFPSTv12OTVMediaInfo")
 @property (nonatomic, strong) OTVStreamInfo * _Nullable selectedStreamInfo;
 /// The AVMediaSelectionOption to be chosen for the asset being download. Either all (all trakcs) or defualt (default tracks)
 @property (nonatomic) enum OTVMediaSelectionOptions mediaSelections;
-/// The availble iFrame tracks for the media content
+/// The available iFrame tracks for the media content
 @property (nonatomic, readonly, copy) NSArray<OTVIframeTracks *> * _Nullable availableIFrameTracks;
-/// The list of availble video tracks to download and the media info assosiated
+/// The list of available video tracks to download and the media info assosiated
 @property (nonatomic, readonly, copy) NSArray<OTVStreamInfo *> * _Nullable availableStreamInfo;
 @end
 
@@ -996,6 +996,9 @@ SWIFT_CLASS("_TtC11OPYSDKFPSTv14OTVMediaTracks")
 @property (nonatomic, readonly, copy) NSString * _Nullable language;
 @property (nonatomic, readonly, copy) NSString * _Nullable isDefault;
 @property (nonatomic, readonly, copy) NSString * _Nullable autoSelect;
+@property (nonatomic, readonly, copy) NSString * _Nullable groupId;
+@property (nonatomic, readonly, copy) NSString * _Nullable characteristics;
+@property (nonatomic, readonly) NSInteger channels;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1005,6 +1008,11 @@ SWIFT_CLASS("_TtC11OPYSDKFPSTv14OTVMediaTracks")
 /// Not all values will be available immediately due to being accumulated over time
 SWIFT_CLASS("_TtC11OPYSDKFPSTv19OTVNetworkAnalytics")
 @interface OTVNetworkAnalytics : NSObject
+@property (nonatomic, readonly) NSInteger error;
+@property (nonatomic, readonly) NSInteger httpError;
+@property (nonatomic, readonly, copy) NSString * _Nullable httpErrorMessage;
+@property (nonatomic, readonly) NSInteger httpErrorUnderlyingErrorCode;
+@property (nonatomic, readonly, copy) NSString * _Nonnull httpErrorUnderlyingErrorDomain;
 /// Network analytics related to adaptive streaming
 @property (nonatomic, readonly, strong) id <AdaptiveStreaming> _Nonnull adaptiveStreaming;
 /// Network analytics related to network usage
@@ -1014,6 +1022,65 @@ SWIFT_CLASS("_TtC11OPYSDKFPSTv19OTVNetworkAnalytics")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM(NSInteger, OTVHTTPError, open) {
+/// Unrecognized http response 400.
+  OTVHTTPErrorUnrecognizedHttpResponse400 = 400,
+/// HTTP 401: Unauthorized
+  OTVHTTPErrorHttp401Unauthorized = 401,
+/// Unrecognized http response 402.
+  OTVHTTPErrorUnrecognizedHttpResponse402 = 402,
+/// HTTP 403: Forbidden.
+  OTVHTTPErrorHttp403Forbidden = 403,
+/// HTTP 404: File not found.
+  OTVHTTPErrorHttp404FileNotFound = 404,
+/// Unrecognized http response 405.
+  OTVHTTPErrorUnrecognizedHttpResponse405 = 405,
+/// Unrecognized http response 406.
+  OTVHTTPErrorUnrecognizedHttpResponse406 = 406,
+/// Unrecognized http response 407.
+  OTVHTTPErrorUnrecognizedHttpResponse407 = 407,
+/// Unrecognized http response 408.
+  OTVHTTPErrorUnrecognizedHttpResponse408 = 408,
+/// Unrecognized http response 409.
+  OTVHTTPErrorUnrecognizedHttpResponse409 = 409,
+/// Unrecognized http response 410.
+  OTVHTTPErrorUnrecognizedHttpResponse410 = 410,
+/// Unrecognized http response 411.
+  OTVHTTPErrorUnrecognizedHttpResponse411 = 411,
+/// Unrecognized http response 412.
+  OTVHTTPErrorUnrecognizedHttpResponse412 = 412,
+/// Unrecognized http response 413.
+  OTVHTTPErrorUnrecognizedHttpResponse413 = 413,
+/// Unrecognized http response 414.
+  OTVHTTPErrorUnrecognizedHttpResponse414 = 414,
+/// Unrecognized http response 415.
+  OTVHTTPErrorUnrecognizedHttpResponse415 = 415,
+/// Unrecognized http response 500.
+  OTVHTTPErrorUnrecognizedHttpResponse500 = 500,
+/// Unrecognized http response 501.
+  OTVHTTPErrorUnrecognizedHttpResponse501 = 501,
+/// Unrecognized http response 502.
+  OTVHTTPErrorUnrecognizedHttpResponse502 = 502,
+/// HTTP 503: Unavailable.
+  OTVHTTPErrorHttp503Unavailable = 503,
+/// Unrecognized http response 504.
+  OTVHTTPErrorUnrecognizedHttpResponse504 = 504,
+/// Unrecognized http response 505.
+  OTVHTTPErrorUnrecognizedHttpResponse505 = 505,
+};
+
+typedef SWIFT_ENUM(NSInteger, NetworkError, open) {
+  NetworkErrorUnknown = -1001,
+  NetworkErrorHttpError = 400,
+};
+
+typedef SWIFT_ENUM(NSInteger, Event, open) {
+  EventSelectedBitrateChanged = 0,
+  EventAvailableBitratesChanged = 1,
+  EventUrlChanged = 2,
+  EventErrorChanged = 3,
+};
 
 
 SWIFT_CLASS("_TtC11OPYSDKFPSTv22OTVOutputDeviceMonitor")
@@ -1183,6 +1250,12 @@ SWIFT_CLASS("_TtC11OPYSDKFPSTv12OTVTrackInfo")
 @property (nonatomic, readonly, copy) NSString * _Nullable language;
 /// The media type of the track, one of audio, webvtt, cc, smpte_tt, srt, apic or unknown
 @property (nonatomic, readonly, copy) NSString * _Nonnull mediaType;
+/// The number of channels in the audio track
+@property (nonatomic, readonly) NSInteger channelCount;
+/// Enumeration of the codec of the track
+@property (nonatomic, readonly) NSInteger codec;
+/// The accessibility characteristics of the track
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull characteristics;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end

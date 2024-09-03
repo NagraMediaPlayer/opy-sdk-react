@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target arm64-apple-tvos12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-bare-slash-regex -module-name OPYSDKFPSTv
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-tvos12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name OPYSDKFPSTv
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import CoreMedia
 import Foundation
@@ -318,30 +319,30 @@ extension Foundation.NSNotification.Name {
   @objc func url() -> Swift.String?
   @objc func numberOfServerAddressChanges() -> Swift.Int
 }
-@objc @_hasMissingDesignatedInitializers public class OTVNetworkAnalytics : ObjectiveC.NSObject {
-  public enum OTVHTTPError : Swift.Int, Swift.CaseIterable {
-    case unrecognizedHttpResponse400
-    case http401Unauthorized
-    case unrecognizedHttpResponse402
-    case http403Forbidden
-    case http404FileNotFound
-    case unrecognizedHttpResponse405
-    case unrecognizedHttpResponse406
-    case unrecognizedHttpResponse407
-    case unrecognizedHttpResponse408
-    case unrecognizedHttpResponse409
-    case unrecognizedHttpResponse410
-    case unrecognizedHttpResponse411
-    case unrecognizedHttpResponse412
-    case unrecognizedHttpResponse413
-    case unrecognizedHttpResponse414
-    case unrecognizedHttpResponse415
-    case unrecognizedHttpResponse500
-    case unrecognizedHttpResponse501
-    case unrecognizedHttpResponse502
-    case http503Unavailable
-    case unrecognizedHttpResponse504
-    case unrecognizedHttpResponse505
+@_hasMissingDesignatedInitializers @objc public class OTVNetworkAnalytics : ObjectiveC.NSObject {
+  @objc public enum OTVHTTPError : Swift.Int, Swift.CaseIterable {
+    case unrecognizedHttpResponse400 = 400
+    case http401Unauthorized = 401
+    case unrecognizedHttpResponse402 = 402
+    case http403Forbidden = 403
+    case http404FileNotFound = 404
+    case unrecognizedHttpResponse405 = 405
+    case unrecognizedHttpResponse406 = 406
+    case unrecognizedHttpResponse407 = 407
+    case unrecognizedHttpResponse408 = 408
+    case unrecognizedHttpResponse409 = 409
+    case unrecognizedHttpResponse410 = 410
+    case unrecognizedHttpResponse411 = 411
+    case unrecognizedHttpResponse412 = 412
+    case unrecognizedHttpResponse413 = 413
+    case unrecognizedHttpResponse414 = 414
+    case unrecognizedHttpResponse415 = 415
+    case unrecognizedHttpResponse500 = 500
+    case unrecognizedHttpResponse501 = 501
+    case unrecognizedHttpResponse502 = 502
+    case http503Unavailable = 503
+    case unrecognizedHttpResponse504 = 504
+    case unrecognizedHttpResponse505 = 505
     public init?(rawValue: Swift.Int)
     public typealias AllCases = [OPYSDKFPSTv.OTVNetworkAnalytics.OTVHTTPError]
     public typealias RawValue = Swift.Int
@@ -352,34 +353,40 @@ extension Foundation.NSNotification.Name {
       get
     }
   }
-  public enum NetworkError : Swift.Int {
-    case unknown
-    case httpError
+  @objc public enum NetworkError : Swift.Int {
+    case unknown = -1001
+    case httpError = 400
     public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
   }
-  public enum Event : Swift.Int {
-    case selectedBitrateChanged
-    case availableBitratesChanged
-    case urlChanged
-    case errorChanged
+  @objc public enum Event : Swift.Int {
+    case selectedBitrateChanged = 0
+    case availableBitratesChanged = 1
+    case urlChanged = 2
+    case errorChanged = 3
     public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
   }
-  public var error: Swift.Int {
-    get
+  @objc public var error: Swift.Int {
+    @objc get
   }
-  public var httpError: Swift.Int {
-    get
+  @objc public var httpError: Swift.Int {
+    @objc get
   }
-  public var httpErrorMessage: Swift.String? {
-    get
+  @objc public var httpErrorMessage: Swift.String? {
+    @objc get
+  }
+  @objc public var httpErrorUnderlyingErrorCode: Swift.Int {
+    @objc get
+  }
+  @objc public var httpErrorUnderlyingErrorDomain: Swift.String {
+    @objc get
   }
   @objc public var adaptiveStreaming: any OPYSDKFPSTv.AdaptiveStreaming {
     get
@@ -659,6 +666,15 @@ extension Foundation.NSNotification.Name {
     get
   }
   @objc public var autoSelect: Swift.String? {
+    get
+  }
+  @objc public var groupId: Swift.String? {
+    get
+  }
+  @objc public var characteristics: Swift.String? {
+    get
+  }
+  @objc public var channels: Swift.Int {
     get
   }
   @objc override dynamic public init()
