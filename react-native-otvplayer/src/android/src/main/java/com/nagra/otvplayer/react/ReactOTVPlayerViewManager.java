@@ -428,6 +428,7 @@ public class ReactOTVPlayerViewManager extends SimpleViewManager<ReactOTVPlayerC
                 .put("onDownloadResChanged", MapBuilder.of("registrationName", "onDownloadResChanged"))
                 .put("onBitratesAvailable", MapBuilder.of("registrationName", "onBitratesAvailable"))
                 .put("onSelectedBitrateChanged", MapBuilder.of("registrationName", "onSelectedBitrateChanged"))
+                .put("onVideoHttpError", MapBuilder.of("registrationName", "onVideoHttpError"))
                 .build();
     }
 }

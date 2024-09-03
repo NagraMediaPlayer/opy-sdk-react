@@ -38,7 +38,7 @@ class Thumbnail {
     } else {
       this.logger.log(LOG_LEVEL.ERROR, "thumbnailContainer is not created!!!");
     }
-  };
+  }
 
   public checkThumbnailAvailableAndTriggerEvent(onAvailable: Function) {
     this.logger.log(
@@ -159,7 +159,7 @@ class Thumbnail {
     } else {
       this._showOrHideThumbnailContainer("none");
     }
-  };
+  }
 
   private thumbnailHandler(thumbnailObject, style) {
     if (thumbnailObject) {
@@ -170,7 +170,12 @@ class Thumbnail {
         imgTag.id = "image";
         imgTag.src = thumbnailObject.url;
         imgTag.onload = () => {
-          that._updateContainerStyle(thumbnailContainer, imgTag, thumbnailObject, style);
+          that._updateContainerStyle(
+            thumbnailContainer,
+            imgTag,
+            thumbnailObject,
+            style
+          );
         };
       } else {
         this.logger.log(LOG_LEVEL.ERROR, "thumbnailContainer not Found");
@@ -184,7 +189,12 @@ class Thumbnail {
     }
   }
 
-  private _updateContainerStyle(thumbnailContainer, imgTag, thumbnailObject, style) {
+  private _updateContainerStyle(
+    thumbnailContainer,
+    imgTag,
+    thumbnailObject,
+    style
+  ) {
     let widthFactor = style.width / thumbnailObject.width;
     let heightFactor = style.height / thumbnailObject.height;
     this.logger.log(
@@ -212,14 +222,15 @@ class Thumbnail {
 
   public setThumbnailStyle(style: any) {
     this.logger.log(LOG_LEVEL.DEBUG, "OTT.ts: set thumbnailStyle: ");
-    const thumbnailContainerStyle =
-      this._getContainerElement()?.style;
+    const thumbnailContainerStyle = this._getContainerElement()?.style;
     if (thumbnailContainerStyle) {
       thumbnailContainerStyle.top = `${style.top}px`;
       thumbnailContainerStyle.left = `${style.left}px`;
       thumbnailContainerStyle.width = `${style.width}px`;
       thumbnailContainerStyle.height = `${style.height}px`;
-      thumbnailContainerStyle.borderStyle = style.borderWidth ? "solid" : "none";
+      thumbnailContainerStyle.borderStyle = style.borderWidth
+        ? "solid"
+        : "none";
       thumbnailContainerStyle.borderWidth = style.borderWidth
         ? `${style.borderWidth}px`
         : "none";
@@ -242,7 +253,9 @@ class Thumbnail {
     this._showOrHideThumbnailContainer("block");
   }
 
-  setThumbnailDisplay() { }
+  setThumbnailDisplay() {
+    // intentionally left blank?!
+  }
 
   private _showOrHideThumbnailContainer(style: string) {
     const thumbnailContainer = this._getContainerElement();

@@ -130,6 +130,17 @@ declare module "@nagra/react-otvplayer" {
     };
   }
 
+  export interface OnHttpErrorParam {
+    url: string;
+    date: Date;
+    statusCode: number;
+    message: string;
+    platform?: {
+      name: "Android" | "iOS" | "Web";
+      data: string[];
+    }
+  }
+
   export interface Source {
     preferredDRM: string
     preferredPlayer: string | null
@@ -249,6 +260,7 @@ declare module "@nagra/react-otvplayer" {
   export type SelectTextTrack = (index: number) => void;
   export type getVersion = () => SDKVersion;
   export type OnErrorEvent = (event: OnErrorParam) => void;
+  export type OnHttpErrorEvent = (event: OnHttpErrorParam) => void;
   export type Stop = () => void;
   export type SetLiveContent = (content: LiveContentInfo) => void;
   export type SetVodContent = (content: VodContentInfo) => void;
@@ -303,6 +315,7 @@ declare module "@nagra/react-otvplayer" {
     onAudioTrackSelected?: Function;
     onTextTrackSelected?: Function;
     onError: OnErrorEvent;
+    onHttpError: OnHttpErrorEvent;
     onStopped?: Function;
     onThumbnailAvailable?: Function;
     onLicenseRequest?: OnLicenseRequest;

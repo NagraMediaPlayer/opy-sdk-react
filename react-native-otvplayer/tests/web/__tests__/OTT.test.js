@@ -32,6 +32,8 @@ const mockToolkit = {
 	},
 	networkStatistics: {
 		getAdaptiveStreaming: () => bitRates,
+		addNetworkListener: jest.fn(),
+		removeNetworkListener: jest.fn(),
 	},
 	playbackStatistics: {
 		reset: jest.fn(),
@@ -233,10 +235,15 @@ const onPausedCB = jest.fn();
 const onStoppedCB = jest.fn();
 const onWaitingCB = jest.fn();
 const triggerErrorCB = jest.fn();
+const triggerHttpErrorCB = jest.fn();
 const mockErrorHandler = {
 	triggerError: triggerErrorCB,
+	triggerHttpError: triggerHttpErrorCB,
 	set onErrorEvent(onErrorCallback) {
 		this._onError = onErrorCallback;
+	},
+	set onHttpErrorEvent(onHttpErrorCallback) {
+		this._onHttpError = onHttpErrorCallback;
 	},
 };
 const onStatisticsUpdateCB = jest.fn();
@@ -373,6 +380,24 @@ describe(" Test state machine ", () => {
 		expect(ott._playerState).toEqual(OTTPlayerStates.ERROR);
 		expect(triggerErrorCB).toHaveBeenCalled();
 	});
+
+	test("State: Http ERROR", () => {
+		const url = "https://test.com";
+		const message = "help me please";
+
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott.onPlaying();
+		ott._sdkHttpError(404, message, { data: [url, 1, true, "someOtherStuff"], });
+		expect(ott._playerState).toEqual(OTTPlayerStates.PLAYING);
+		expect(triggerHttpErrorCB).toHaveBeenCalledWith(
+			expect.objectContaining({
+				message,
+				url,
+				statusCode: 404,
+				platform: expect.objectContaining({ name: "Web" }),
+			}));
+	});
+
 	test("State: PLAYING -> PLAY_REQUESTED", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onPlaying();
@@ -382,6 +407,7 @@ describe(" Test state machine ", () => {
 			OTTPlayerStates.PLAY_REQUESTED
 		);
 	});
+
 	test("State: WAITING -> PLAY_REQUESTED", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onWaiting();
@@ -1065,6 +1091,12 @@ describe(" Test Set Player Event properties ", () => {
 		ott.initialiseSDKPlayerSuccessCallback();
 		ott.onErrorEvent = onErrorCallBack;
 		expect(mockErrorHandler._onError).toBe(onErrorCallBack);
+	});
+	test("Set Event property: onHttpError", () => {
+		const onHttpErrorCallBack = jest.fn();
+		ott.initialiseSDKPlayerSuccessCallback();
+		ott.onHttpErrorEvent = onHttpErrorCallBack;
+		expect(mockErrorHandler._onHttpError).toBe(onHttpErrorCallBack);
 	});
 	test("Set Event property: onPlaying", () => {
 		const onPlayingCallBack = jest.fn();

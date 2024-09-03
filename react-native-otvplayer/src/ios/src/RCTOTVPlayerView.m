@@ -22,6 +22,9 @@ static NSString *const otvDRMLicenseDownloadedNotification = @"OTVLicenseDownloa
 
 static NSString *const otvLogNotification = @"OTVLogNotification";
 
+// httpError
+static NSString *const otvHTTPErrorNotification = @"OTVNetworkAnalyticsNotification";
+
 // Thumnails
 static NSString *const iIFrameThumbnailsAvailable = @"OTVIFrameThumbnailsAvailable";
 static NSString *const iIFrameThumbnailsNotAvailable = @"OTVIFrameThumbnailsNotAvailable";
@@ -148,6 +151,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   dispatch_semaphore_t tokenSemaphore;
   BOOL _waitForToken;
   NSString* _token;
+  SwiftToObjCHelper* _swiftHelper;
 }
 
 @property (nonatomic, weak) NSTimer* liveTimeObserver;
@@ -164,9 +168,10 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
   if (self = [super init]) {
     _player = [[OTVAVPlayer alloc] initWithPlayerItem: nil];
-    [self attachSSMErrorListners];
-    [self attachLogListners];
-    [self attachDRMErrorListners];
+   [self attachSSMErrorListeners];
+   [self attachLogListeners];
+   [self attachDRMErrorListeners];
+    _swiftHelper = [[SwiftToObjCHelper alloc]init];
     _src = @{};
     _autoplay = NO;
     _rate = 1.0;
@@ -289,9 +294,6 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
       [network setValue:contentServer forKey:@"contentServer"];
 
       [statistics setValue:network forKey:@"network"];
-
-
-
     }
     if (_enablePlaybackStats) {
       int bufferedDuration = [_player.playbackAnalytics.player bufferedDuration];
@@ -341,7 +343,6 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
       [playback setValue:playbackStartOffset forKey:@"playbackStartOffset"];
 
       [statistics setValue:playback forKey:@"playback"];
-
     }
 
 
@@ -359,13 +360,6 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
       [statistics setValue:rendering forKey:@"rendering"];
     }
-    /* Currently not supported
-
-     if (_enableEventStats) {
-     }
-     if (_enableDrmSecurityStats) {
-     }
-     */
 
     if (self.onStatisticsUpdate) {
       self.onStatisticsUpdate(statistics);
@@ -407,13 +401,14 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   [self removePlayerItemObservers];
   [self removePlayerTimeObserver];
   [self removePlayerObservers];
-  [self removeSSMErrorListners];
-  [self removeLogListners];
-  [self removeDRMErrorListners];
+  [self removeSSMErrorListeners];
+  [self removeLogListeners];
+  [self removeDRMErrorListeners];
   [self removeOnTracksChanged];
   [_player pause];
   [_player replaceCurrentItemWithPlayerItem:nil];
   _player = nil;
+  _swiftHelper = nil;
   RCTOTVLogD(@"dealloc exit");
 }
 
@@ -1175,6 +1170,12 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
                                           name:AVPlayerItemNewErrorLogEntryNotification
                                           object:[_player currentItem]];
 
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(httpErrorNotificationHandler:)
+                                          name:otvHTTPErrorNotification
+                                          object:nil];
+
+
   _errorHandlingListenersSet = YES;
 
   RCTOTVLogD(@"attachPlayerErrorListeners exit");
@@ -1189,6 +1190,10 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                             name:AVPlayerItemNewErrorLogEntryNotification
+                                            object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                            name:otvHTTPErrorNotification
                                             object:nil];
 
     _errorHandlingListenersSet = NO;
@@ -1730,6 +1735,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTOTVLogI(@"getTrackSelected enter with track type: %@", type == OTVTrackTypeSubtitle ? @"TEXT": @"AUDIO");
   NSInteger index = [_player selectedTrackWithType:type];
   NSArray* tracksInfo = [self getTracksInfo:type];
+
   if (index == -1 || (index >= [tracksInfo count])) {
     RCTOTVLogI(@"getTrackSelected exit with no track");
     return @{@"index": [NSNumber numberWithInt:-1], @"title": @"", @"language":@"" };
@@ -1777,9 +1783,9 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
 
 
 
--(void)attachSSMErrorListners
+-(void)attachSSMErrorListeners
 {
-  RCTOTVLogD(@"attachSSMErrorListners enter");
+  RCTOTVLogD(@"attachSSMErrorListeners enter");
 
   [[NSNotificationCenter defaultCenter] addObserver:self
                                             selector:@selector(onSSMError:)
@@ -1795,13 +1801,13 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
                                             selector:@selector(onSSMError:)
                                                 name:otvSSMHeartbeatErrorNotification
                                               object:nil];
-  RCTOTVLogD(@"attachSSMErrorListners exit");
+  RCTOTVLogD(@"attachSSMErrorListeners exit");
 
 }
 
--(void)removeSSMErrorListners
+-(void)removeSSMErrorListeners
 {
-  RCTOTVLogD(@"removeSSMErrorListners enter");
+  RCTOTVLogD(@"removeSSMErrorListeners enter");
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:otvSSMSetupErrorNotification
                                                   object:nil];
@@ -1814,29 +1820,29 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                    name:otvSSMHeartbeatErrorNotification
                                                  object:nil];
-  RCTOTVLogD(@"removeSSMErrorListners exit");
+  RCTOTVLogD(@"removeSSMErrorListeners exit");
 }
 
--(void)attachLogListners
+-(void)attachLogListeners
 {
-    RCTOTVLogD(@"attachLogListners enter");
+    RCTOTVLogD(@"attachLogListeners enter");
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(onLog:)
                                                   name:otvLogNotification
                                                 object:nil];
-    RCTOTVLogD(@"attachLogListners exit");
+    RCTOTVLogD(@"attachLogListeners exit");
 }
 
--(void)removeLogListners
+-(void)removeLogListeners
 {
-    RCTOTVLogD(@"removeLogListners enter");
+    RCTOTVLogD(@"removeLogListeners enter");
 
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                      name:otvLogNotification
                                                    object:nil];
 
-    RCTOTVLogD(@"removeLogListners exit");
+    RCTOTVLogD(@"removeLogListeners exit");
 
 }
 
@@ -1915,9 +1921,9 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTOTVLogD(@"onSSMError exit");
 }
 
--(void)attachDRMErrorListners
+-(void)attachDRMErrorListeners
 {
-  RCTOTVLogD(@"attachDRMErrorListners enter");
+  RCTOTVLogD(@"attachDRMErrorListeners enter");
 
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(onDRMError:)
@@ -1929,12 +1935,12 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
                                            name:otvDRMLicenseDownloadedNotification
                                            object:nil];
 
-  RCTOTVLogD(@"attachDRMErrorListners exit");
+  RCTOTVLogD(@"attachDRMErrorListeners exit");
 }
 
--(void)removeDRMErrorListners
+-(void)removeDRMErrorListeners
 {
-  RCTOTVLogD(@"removeDRMErrorListners enter");
+  RCTOTVLogD(@"removeDRMErrorListeners enter");
 
   [[NSNotificationCenter defaultCenter] removeObserver:self
                                                 name:otvDRMLicenseErrorNotification
@@ -1944,7 +1950,7 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
                                                 name:otvDRMLicenseDownloadedNotification
                                                 object:nil];
 
-  RCTOTVLogD(@"removeDRMErrorListners exit");
+  RCTOTVLogD(@"removeDRMErrorListeners exit");
 }
 
 - (void)onSSPLicenseSuccesful:(NSNotification *)notification {
@@ -2124,12 +2130,68 @@ static float const LIVE_DURATION = -1;  // because some react dependencies crash
   RCTOTVLogD(@"playerErrorNotificationHandler  exit");
 }
 
+- (void)httpErrorNotificationHandler:(NSNotification *)notification
+{
+  RCTOTVLogD(@"httpErrorNotificationHandler enter");
+  RCTOTVLogI(@"notification.name : %@", notification.name);
+
+  NSString* url = @"";
+  NSTimeInterval timeInSeconds = [[NSDate date] timeIntervalSince1970];
+  NSNumber* date =[NSNumber numberWithInt: timeInSeconds];
+  NSNumber* statusCode = [NSNumber numberWithInt: -1];
+  NSString* message = @"";
+  NSMutableDictionary* platform = [NSMutableDictionary new];
+
+  #if TARGET_OS_IOS
+    [platform setObject:@"iOS" forKey:@"name"];
+  #else
+    [platform setObject:@"tvOS" forKey:@"name"];
+  #endif
+
+  Event networkEvent = notification.object;
+
+
+  if ([notification.name isEqualToString: otvHTTPErrorNotification]) {
+    NSNotification* notifi = notification;
+    NetworkError* networkError;
+
+    if ([_swiftHelper isThisAnHttpErrorWithNotification: notification]){
+      statusCode = [NSNumber numberWithInt: _player.networkAnalytics.httpError];
+      //only do http errors
+      if (statusCode != [NSNumber numberWithInt: -1001]){
+        message = _player.networkAnalytics.httpErrorMessage;
+        url = _player.networkAnalytics.contentServer.url;
+
+        NSMutableArray* userInfo = [NSMutableArray new];
+        [userInfo addObject:[NSNumber numberWithInt: _player.networkAnalytics.httpErrorUnderlyingErrorCode]];
+        [userInfo addObject:_player.networkAnalytics.httpErrorUnderlyingErrorDomain];
+        [platform setObject:userInfo forKey:@"data"];
+
+        NSMutableDictionary* nativeEvent = [NSMutableDictionary new];
+        [nativeEvent setObject:url forKey:@"url"];
+        [nativeEvent setObject:date forKey:@"date"];
+        [nativeEvent setObject:statusCode forKey:@"statusCode"];
+        [nativeEvent setObject:message forKey:@"message"];
+        [nativeEvent setObject:platform forKey:@"platform"];
+
+
+        if(self.onVideoHttpError) {
+            self.onVideoHttpError(nativeEvent);
+        }
+      }
+    }
+  }
+
+
+  RCTOTVLogD(@"httpErrorNotificationHandler  exit");
+}
+
 - (void)thumbnailsError:(NSNotification *)notification
 {
   RCTOTVLogD(@"thumbnailsError enter");
   RCTOTVLogI(@"notification.name : %@", notification.name);
 
-  RCTOTVLogI(@"playerErrorNotificationHandler enter");
+  RCTOTVLogI(@"thumbnailsErrorNotificationHandler enter");
   NSInteger errorCode = 0;
   NSString *errorDomain = @"";
   NSString *localizedDesc = @"";

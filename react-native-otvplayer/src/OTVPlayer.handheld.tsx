@@ -35,6 +35,7 @@ import {
   OnStatisticsUpdateNativeEvent,
   OnLogNativeEvent,
   OnErrorNativeEvent,
+  OnHttpErrorNativeEvent,
   OnBitratesAvailableNativeEvent,
   OnSelectedBitrateNativeEvent,
   OnDownloadResChangedNativeEvent,
@@ -535,6 +536,30 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
      * @summary Wrap the native callback.
      * @param {Object} event
      */
+    const _onHttpError = (event: OnHttpErrorNativeEvent) => {
+      logger.log(LOG_LEVEL.DEBUG, "_onHttpError enter");
+
+      // props.onHttpError should only called if player is not stopped.
+      if (playerStatus !== PlayerStatus.STOPPED && props.onHttpError) {
+        const { nativeEvent } = event;
+        const httpError = {
+          url: nativeEvent.url,
+          date: new Date(nativeEvent.date * 1000), // Android and iOS provide date in epoch time (in seconds)
+          statusCode: nativeEvent.statusCode,
+          message: nativeEvent.message,
+          platform: nativeEvent.platform
+        };
+
+        props.onHttpError(httpError);
+      }
+      logger.log(LOG_LEVEL.DEBUG, "_onHttpError exit");
+    };
+
+    /**
+     * @private
+     * @summary Wrap the native callback.
+     * @param {Object} event
+     */
     // @ts-ignore
     const _onWaiting = (event: OnWaitingNativeEvent) => {
       logger.log(LOG_LEVEL.DEBUG, "_onWaiting enter");
@@ -723,6 +748,7 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
       onVideoPlay: _onPlay,
       onVideoPlaying: _onPlaying,
       onVideoError: _onError,
+      onVideoHttpError: _onHttpError,
       onVideoWaiting: _onWaiting,
       onStatisticsUpdate: _onStatisticsUpdate,
       onVideoStopped: _onStopped,
@@ -731,11 +757,9 @@ const OTVPlayer: React.FC<OTVPlayerProps> = React.forwardRef(
       onBitratesAvailable: _onBitratesAvailable,
       onThumbnailAvailable: _onThumbnailAvailable,
       onLog: _onLog,
-
-
     };
 
-    // When src changes do not provide thumbnail props 
+    // When src changes do not provide thumbnail props
     if (prevSrc === props.source?.src) {
       return <PlayerView ref={playerRef} {...nativeProps} {...thumbnailProp} {...nativeEventList} />;
     } else {
@@ -805,6 +829,7 @@ OTVPlayer.propTypes = {
   onPaused: PropTypes.func,
   onPlay: PropTypes.func,
   onError: PropTypes.func,
+  onHttpError: PropTypes.func,
   onWaiting: PropTypes.func,
   onStopped: PropTypes.func,
   onStatisticsUpdate: PropTypes.func,
@@ -864,19 +889,19 @@ export const OTVSDK = new OTVSDKManager();
  * @property {String} otvPlayerVersion The Plugin version.
  */
 
-/**  
+/**
  * @function multiSession
  * @memberof OTVSDK
  * @property {boolean} OTVSDK.multiSession multisession flag.
  *  The get, set accessors are used to update this multiSession flag value in OTVSDK.
  *  This value is used only once during the very first mount of the OTVPlayer in the Apps lifecycle,
- *  and any change after to this is not tracked. 
- *  These methods are not applicable in Android and IOS platfroms.  
+ *  and any change after to this is not tracked.
+ *  These methods are not applicable in Android and IOS platfroms.
  *  This property can be directly accessed and used in code using getter and setter methods as follows
  * @example
- * //To get the multiSession value 
+ * //To get the multiSession value
  * let value = OTVSDK.multiSession
- * 
+ *
  * //To Set the multiSession value to true
  * OTVSDK.multiSession = true
  */
@@ -1023,21 +1048,22 @@ const ERROR_TABLE = {
  *        borderWidth: 1
  *      },
  *      }
- *			onLoadStart={ console.log("OnLoadStart event called"); }
- *			onLoad={ console.log("OnLoad event called"); }
- *			onProgress={ console.log("onProgress event called"); }
- * 			onPaused={ console.log("onPaused event called"); }
- * 			onPlay={ console.log("onPlay event called"); }
- *			onEnd={ console.log("onEnd event called"); }
- *			onTracksChanged={ console.log("onTracksChanged event called"); }
- * 			onAudioTrackSelected={ console.log("onAudioTrackSelected event called"); }
- * 			onTextTrackSelected={ console.log("onTextTrackSelected event called"); }
- * 			onDownloadResChanged={ console.log("onDownloadResChanged event called"); }
- *			onError={ console.log("onError event called"); }
- *			onWaiting={ console.log("onWaiting event called"); }
- *			onPlaying={ console.log("onPlaying event called"); }
- *			onStopped={ console.log("onStopped event called"); }
- *      onStatisticsUpdate={ console.log("onStatisticsUpdate event called"); }
+ *			onLoadStart={ () => console.log("OnLoadStart event called"); }
+ *			onLoad={ () => console.log("OnLoad event called"); }
+ *			onProgress={ () => console.log("onProgress event called"); }
+ * 			onPaused={ () => console.log("onPaused event called"); }
+ * 			onPlay={ () => console.log("onPlay event called"); }
+ *			onEnd={ () => console.log("onEnd event called"); }
+ *			onTracksChanged={ () => console.log("onTracksChanged event called"); }
+ * 			onAudioTrackSelected={ () => console.log("onAudioTrackSelected event called"); }
+ * 			onTextTrackSelected={ () => console.log("onTextTrackSelected event called"); }
+ * 			onDownloadResChanged={ () => console.log("onDownloadResChanged event called"); }
+ *			onError={ () => console.log("onError event called"); }
+ *      		onHttpError={ () => console.log("onHttpError event called"); }
+ *			onWaiting={ () => console.log("onWaiting event called"); }
+ *			onPlaying={ () => console.log("onPlaying event called"); }
+ *			onStopped={ () => console.log("onStopped event called"); }
+ *      onStatisticsUpdate={ () => console.log("onStatisticsUpdate event called"); }
  *			/>
  */
 
@@ -1074,7 +1100,7 @@ const ERROR_TABLE = {
  * @property {Number} statisticsConfig.statisticsTypes The type of statistics to be enabled - NONE, ALL, RENDERING, NETWORK, PLAYBACK, EVENT, DRM.
 
  * @property {Object} thumbnail The thumbnail configuration. An Object with thumbnail display, thumbnail position and thumbnail style as its properties.
- * @property {Boolean} thumbnail.display Whether to display thumbnails or not. Default is false. 
+ * @property {Boolean} thumbnail.display Whether to display thumbnails or not. Default is false.
  * @property {Number} thumbnail.positionInSeconds The postion of the thumbnail to be shown. If positionInSeconds is not set, when display is true, a thumbnail at the current postion will be shown.
  * @property {Object} thumbnail.style The screen postion, size and styling of the thumbnail to be shown. top, left, width and height are mandatory. borderColor and borderWidth are optional.
  * @property {Number} thumbnail.style.top top position of the thumbnail
@@ -1117,6 +1143,9 @@ const ERROR_TABLE = {
  * @property {Function} onError Called when OTVPlayerView has encountered an error it will return an errorType, error and error message. </p>
  * Application needs to set handler to receive and handle information from the event. </p>
  * See {@link OTVPlayer.props.onError}
+  * @property {Function} onHttpError Called when any playback related HTTP error is encountered. This error may not be a crititcal error in which case playback will continue. </p>
+ * Application needs to set handler to receive and handle information from the event. </p>
+ * See {@link OTVPlayer.props.onHttpError}
  * @property {Function} onWaiting Called when playback has stalled. </p>
  * Application needs to set handler to receive and handle the event. </p>
  * See {@link OTVPlayer.props.onWaiting}
@@ -1252,6 +1281,19 @@ const ERROR_TABLE = {
  */
 
 /**
+ * @callback OTVPlayer.props.onHttpError
+ * @summary Callback set by application to handle event onHttpError.
+ * @param {Object} event The event object.
+ * @param {string} event.url URL on which the error was detected.
+ * @param {Date} event.date Timestamp of the response / error.
+ * @param {number} event.statusCode Status code (>= 400) of the error.
+ * @param {string} event.message Error message in response.
+ * @param {Object} event.platform Optional platform specific error details
+ * @param {string} event.platform.name Name of the platform. Android | iOS | Web.
+ * @param {Array} event.platform.data String Array of additional error data.
+ */
+
+/**
  * @callback OTVPlayer.props.onWaiting
  * @summary Callback set by application to handle event onWaiting.
  * @param {Object} event The event object. This will be empty.
@@ -1367,7 +1409,7 @@ const ERROR_TABLE = {
  * @param {String} source.token The token string. Should be what App provided as a prop: <b>source→token</b>. Undefined if not provided as a prop.
  * @param {String} source.type Mime type of the src request. Should be what App provided as a prop: source→type. Undefined if not provided as a prop.
  * @param {ArrayBuffer} requestPayload Payload data to be used for making license request
- * @param {String} licenseRequestType Request type: 
+ * @param {String} licenseRequestType Request type:
  * <ul style="list-style: marker">
  * <li> <b>"license-request":</b> a new license
  * <li> <b>"license-renewal":</b>  a renewal of license
