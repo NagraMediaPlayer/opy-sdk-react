@@ -13,7 +13,14 @@
       "expectedOutput": {
         "duration": 888.125,
         "availableBitrates": [
-          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+          800000,
+          1000000,
+          2000000,
+          2500000,
+          3500000,
+          4500000,
+          5000000,
+          6500000
         ],
         "tracks": {
           "textTracks": [
@@ -60,7 +67,12 @@
       },
       "expectedOutput": {
         "duration": -1,
-        "availableBitrates": [432000, 648000, 864000, 1404000],
+        "availableBitrates": [
+          432000,
+          648000,
+          864000,
+          1404000
+        ],
         "tracks": {
           "textTracks": [],
           "audioTracks": [
@@ -315,7 +327,14 @@
       "expectedOutput": {
         "duration": 888.125,
         "availableBitrates": [
-          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+          800000,
+          1000000,
+          2000000,
+          2500000,
+          3500000,
+          4500000,
+          5000000,
+          6500000
         ],
         "tracks": {
           "textTracks": [
@@ -460,7 +479,14 @@
       "expectedOutput": {
         "duration": 596,
         "availableBitrates": [
-          800000, 1000000, 2000000, 2500000, 3500000, 4500000, 5000000, 6500000
+          800000,
+          1000000,
+          2000000,
+          2500000,
+          3500000,
+          4500000,
+          5000000,
+          6500000
         ],
         "tracks": {
           "textTracks": [],
@@ -618,21 +644,27 @@
                   "encodeType": 0,
                   "title": "en[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "en",
                   "encodeType": 0,
                   "title": "en[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "en",
                   "encodeType": 0,
                   "title": "en[AAC]",
                   "channelCount": 6,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "de",
@@ -660,21 +692,27 @@
                   "encodeType": 0,
                   "title": "de[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "de",
                   "encodeType": 0,
                   "title": "de[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "de",
                   "encodeType": 0,
                   "title": "de[AAC]",
                   "channelCount": 6,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "fr",
@@ -702,21 +740,27 @@
                   "encodeType": 0,
                   "title": "fr[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "fr",
                   "encodeType": 0,
                   "title": "fr[AAC]",
                   "channelCount": 2,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 },
                 {
                   "language": "fr",
                   "encodeType": 0,
                   "title": "fr[AAC]",
                   "channelCount": 6,
-                  "characteristics": ["public.accessibility.describes-video"]
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ]
                 }
               ]
             }
@@ -751,6 +795,23 @@
       "ssmServerURL": "https://tenantname-ssm.anycast.nagra.com/TENANTNAME/ssm",
       "killServer": "https://tenantname-op.anycast.nagra.com/TENANTNAME/ssm/v1/sessions/killAccountSessions",
       "drm": "Widevine",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS Missing Segments": {
+      "url": "https://replacemewithyourown.com/demo/content/public_dev/DownloadToGo_MissChunks/some-chunks-not-exist.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH Missing Segments": {
+      "url": "https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p_miss_segment/big_buck_bunny.mpd",
+      "mimeType": "application/dash+xml",
       "props": {
         "autoplay": true,
         "muted": true,

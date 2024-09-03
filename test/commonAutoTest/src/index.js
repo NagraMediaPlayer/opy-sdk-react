@@ -15,7 +15,6 @@ import { getTestTagConfig } from "./utils/tagging";
 
 import {
 	isRunningInSafariBrowser,
-	isRunningOnAndroid,
 	isRunningOniOS,
 } from "./utils/platformVariations";
 
@@ -29,6 +28,7 @@ import { executeSSMTests } from "./testSteps/events/whenScrambledStream/ssm.test
 import { executeStatisticsTests } from "./testSteps/events/whenClearStream/played/statistics.test";
 import { executePropertyTestsForContent } from "./testSteps/properties/propertiesTest";
 import { executeTrackSelectionTests } from "./testSteps/events/trackSelection.test";
+import { executeHttpErrorTests } from "./testSteps/events/httpErrors.test";
 import { executeLongPlayTests } from "./testSteps/robustness/longPlay.test";
 import { executePlayZapTests } from "./testSteps/robustness/playPauseSeekZap.test";
 import { executePlayerSDKConfigTests } from "./testSteps/properties/licenseCallback";
@@ -126,6 +126,13 @@ let otvPlayer;
 				"BBC Multi Track Content"
 			);
 		}
+
+		await executeHttpErrorTests(
+			otvPlayer,
+			(isRunningInSafariBrowser() || isRunningOniOS())
+				? "HLS Missing Segments"
+				: "DASH Missing Segments"
+		);
 
 		// Robustness tests
 		await executeLongPlayTests(
