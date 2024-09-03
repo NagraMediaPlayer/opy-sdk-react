@@ -166,7 +166,14 @@
       "expectedOutput": {
         "duration": 600,
         "availableBitrates": [
-          553010, 582387, 774387, 922242, 951619, 1143619, 1296989, 1326366
+          553010,
+          582387,
+          774387,
+          922242,
+          951619,
+          1143619,
+          1296989,
+          1326366
         ],
         "tracks": {
           "textTracks": [
@@ -205,7 +212,13 @@
       },
       "expectedOutput": {
         "duration": -1,
-        "availableBitrates": [122032, 604906, 825602, 1046298, 1598037],
+        "availableBitrates": [
+          122032,
+          604906,
+          825602,
+          1046298,
+          1598037
+        ],
         "tracks": {
           "textTracks": [
             {
@@ -270,7 +283,12 @@
       },
       "expectedOutput": {
         "duration": 152,
-        "availableBitrates": [1431254, 2452993, 3474733, 4496472],
+        "availableBitrates": [
+          1431254,
+          2452993,
+          3474733,
+          4496472
+        ],
         "tracks": {
           "textTracks": [
             {
@@ -419,7 +437,11 @@
       "drm": "Fairplay",
       "expectedOutput": {
         "duration": 635,
-        "availableBitrates": [20504711, 24702207, 30545551],
+        "availableBitrates": [
+          20504711,
+          24702207,
+          30545551
+        ],
         "tracks": {
           "textTracks": [
             {
@@ -670,5 +692,14 @@
           }
         ]
       }
+    },
+    "HLS Missing Segments": {
+      "url": "https://replacemewithyourown.com/demo/content/public_dev/DownloadToGo_MissChunks/some-chunks-not-exist.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    }
   }
 }

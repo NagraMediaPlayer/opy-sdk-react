@@ -69,6 +69,10 @@ export default class PlayerEventVerifier {
 		this.logEventOccurrence("onError", event);
 	};
 
+	onHttpError = (event) => {
+		this.logEventOccurrence("onHttpError", event);
+	};
+
 	onBitratesAvailable = (event) => {
 		this.logEventOccurrence("onBitratesAvailable", event);
 	};

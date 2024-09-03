@@ -13,7 +13,14 @@
       "expectedOutput": {
         "duration": 634.633,
         "availableBitrates": [
-          992000, 1192000, 2192000, 2692000, 3692000, 4692000, 5192000, 6692000
+          992000,
+          1192000,
+          2192000,
+          2692000,
+          3692000,
+          4692000,
+          5192000,
+          6692000
         ],
         "tracks": {
           "audioTracks": [
@@ -43,7 +50,14 @@
       "expectedOutput": {
         "duration": 888.125,
         "availableBitrates": [
-          896000, 1096000, 2096000, 2596000, 3596000, 4596000, 5096000, 6596000
+          896000,
+          1096000,
+          2096000,
+          2596000,
+          3596000,
+          4596000,
+          5096000,
+          6596000
         ],
         "tracks": {
           "audioTracks": [
@@ -88,7 +102,12 @@
       },
       "expectedOutput": {
         "duration": 0,
-        "availableBitrates": [528000, 744000, 960000, 1500000],
+        "availableBitrates": [
+          528000,
+          744000,
+          960000,
+          1500000
+        ],
         "tracks": {
           "audioTracks": [
             {
@@ -373,7 +392,10 @@
           "url",
           "bytesDownloaded"
         ],
-        "statisticsPlayback": ["streamBitrate", "selectedResolution"]
+        "statisticsPlayback": [
+          "streamBitrate",
+          "selectedResolution"
+        ]
       }
     },
     "VOD Clear Statistics": {
@@ -415,7 +437,10 @@
           "url",
           "bytesDownloaded"
         ],
-        "statisticsPlayback": ["streamBitrate", "selectedResolution"]
+        "statisticsPlayback": [
+          "streamBitrate",
+          "selectedResolution"
+        ]
       }
     },
     "HLS Zap Stream": {
@@ -483,7 +508,14 @@
       "expectedOutput": {
         "duration": 634.6333,
         "availableBitrates": [
-          992000, 1192000, 2192000, 2692000, 3692000, 4692000, 5192000, 6692000
+          992000,
+          1192000,
+          2192000,
+          2692000,
+          3692000,
+          4692000,
+          5192000,
+          6692000
         ],
         "tracks": {
           "audioTracks": [
@@ -693,7 +725,14 @@
       "expectedOutput": {
         "duration": 596,
         "availableBitrates": [
-          896000, 1096000, 2096000, 2596000, 3596000, 4596000, 5096000, 6596000
+          896000,
+          1096000,
+          2096000,
+          2596000,
+          3596000,
+          4596000,
+          5096000,
+          6596000
         ],
         "tracks": {
           "audioTracks": [
@@ -723,7 +762,14 @@
       "expectedOutput": {
         "duration": 596,
         "availableBitrates": [
-          896000, 1096000, 2096000, 2596000, 3596000, 4596000, 5096000, 6596000
+          896000,
+          1096000,
+          2096000,
+          2596000,
+          3596000,
+          4596000,
+          5096000,
+          6596000
         ],
         "tracks": {
           "audioTracks": [
@@ -751,7 +797,6 @@
         "volume": 0
       }
     },
-
     "HLS SSM Encrypted VOD": {
       "mimeType": "application/x-mpegURL",
       "token": "eyJraWQiOiI2MTgyMzgiLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIxLjAiLCJ0eXAiOiJDb250ZW50QXV0aFoiLCJkZXZpY2UiOnsiYWNjb3VudElkIjoiaW9zMTAwMCJ9LCJjb250ZW50UmlnaHRzIjpbeyJkZWZhdWx0S2NJZHMiOlsiMTBmZjlhMzEtMTBiZC00ODgwLWIyMzEtZmZkZjg0ZGNhOGMyIl0sImNvbnRlbnRJZCI6IjJhNmY4NWI1LWM0MWYtNDYxZi04ZmYyLWFhM2MxOWE2MjljZCIsInN0b3JhYmxlIjp0cnVlLCJzZXNzaW9uQ29udHJvbCI6eyJtYXhTZXNzaW9ucyI6MTAwMCwic2Vzc2lvbkNvbnRyb2xFbmFibGVkIjp0cnVlfSwiZGVmYXVsdFVzYWdlUnVsZXMiOnsibWluTGV2ZWwiOjAsImRpZ2l0YWxPbmx5Ijp0cnVlLCJ1bnByb3RlY3RlZERpZ2l0YWxPdXRwdXQiOnRydWV9fV19.uHSVqlgaK_vKfL2wyuHcddGE1IcCzHLEaJ-YlK2gf2s",
@@ -1043,17 +1088,20 @@
                   "language": "en",
                   "title": "en (alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 2
                 },
                 {
                   "language": "en",
                   "title": "en (alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 6
                 },
-
                 {
                   "language": "de",
                   "title": "de (dub)",
@@ -1072,17 +1120,20 @@
                   "language": "de",
                   "title": "de (dub,alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 2
                 },
                 {
                   "language": "de",
                   "title": "de (dub,alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 6
                 },
-
                 {
                   "language": "fr",
                   "title": "fr (dub)",
@@ -1101,14 +1152,18 @@
                   "language": "fr",
                   "title": "fr (dub,alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 2
                 },
                 {
                   "language": "fr",
                   "title": "fr (dub,alternate)",
                   "encodeType": 0,
-                  "characteristics": ["public.accessibility.describes-video"],
+                  "characteristics": [
+                    "public.accessibility.describes-video"
+                  ],
                   "channelCount": 6
                 }
               ]
@@ -1130,6 +1185,23 @@
         "Content-Type": "application/octet-stream",
         "nv-tenant-id": "TENANTNAME"
       },
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "HLS Missing Segments": {
+      "url": "https://replacemewithyourown.com/demo/content/public_dev/DownloadToGo_MissChunks/some-chunks-not-exist.m3u8",
+      "props": {
+        "autoplay": true,
+        "muted": true,
+        "volume": 0
+      }
+    },
+    "DASH Missing Segments": {
+      "url": "https://replacemewithyourown.com/demo/content/cd_big_buck_bunny_1080p_miss_segment/big_buck_bunny.mpd",
+      "mimeType": "application/dash+xml",
       "props": {
         "autoplay": true,
         "muted": true,

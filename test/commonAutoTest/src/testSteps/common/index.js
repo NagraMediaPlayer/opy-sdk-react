@@ -103,6 +103,7 @@ export async function playThisStream(
 		onDownloadResChanged: eventVerifier.onDownloadResChanged,
 		onSelectedBitrateChanged: eventVerifier.onSelectedBitrateChanged,
 		onError: eventVerifier.onError,
+		onHttpError: eventVerifier.onHttpError,
 		onStatisticsUpdate: eventVerifier.onStatisticsUpdate,
 		ref: (ref1) => (otvplayerRef = ref1),
 		style: { width: "100%", height: "100%" },
